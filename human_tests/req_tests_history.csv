@@ -1,0 +1,23 @@
+ID,test,test-description
+1,Global History,Verify that visited links are recorded.
+2,Global History,Verify that the correct link is recorded after a server redirect.
+3,Global History,Verify that double-clicking on a history link causes it to be launched in a browser window.
+4,Global History,Delete a History entry
+5,Global History,Delete multiple History entries
+6,Global History,Clear all of history
+7,,
+8,Global History,Change the History View to Group by Day|Site|None
+9,Global History,sort and reverse-sort per column
+10,Global History,Verify that columns are resizable to show/hide more of entries
+11,Global History,Show and hide columns.
+12,"Global History
+ (Negative test)",Verify that things that aren't supposed to be added to history aren't (eg chorme:/// url's)
+13,"Global History
+ (Regression test)",Don't ever show 302 redirects in history
+14,Go menu list,Verify correct recently visited sites are in go menu.
+15,Back and Forward button dropdowns,Verify recently visited sites are in Back and Forward button dropdown menu and work.
+16,Surf Go menuitems,Verify browser goes back and forward to recently visited sites
+17,Back and forward with frames,Verify browser goes back and forward correctly from page with frames.
+18,New session,Verify that a new session is started with a new browser window or a restart.
+19,Back and forward with named anchors,Verify browser goes back and forward correctly from sites that use named anchors
+20,Retain scroll position,Verify that browser remembers scroll state when returning to pages in SH

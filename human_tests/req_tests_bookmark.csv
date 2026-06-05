@@ -1,0 +1,23 @@
+ID,test,test-description
+1,View Bookmarks,Verify that bookmarks appear at the standard(4) access points
+2,Add Bookmark,Verify that bookmarks are properly added to bookmarks file and appear in all access points.
+3,File Bookmark,Add a new bookmark into a specific location within the bookmarks hierarchy.
+4,Create new bookmark,Verify new bookmarks can be created (not added).
+5,Delete Bookmark,Verify that bookmarks are properly deleted from bookmarks file and disappear from all access points.
+6,Add/Delete Personal Toolbar bookmark,Verify that items from the personal toolbar folder are properly added/deleted.
+7,Create Folder,Verify new folder creation and nesting of new folders.
+8,Surf Bookmark,Verify that double-clicking on a bookmark causes it to be launched in a browser window
+9,Surf All Bookmarks,Verify that there are no 'dead' default links.
+10,Edit item properties,Verify that changes to an item are saved without loss of item integrity.
+11,Delete Folder,Verify folder(s) are correctly deleted.
+12,Show/Hide Folder,Verify that disclosure triangles/folder icons are in sync.
+13,Create/Delete separator,Verify separators are properly added/deleted.
+14,Save State,Verify that changes are saved over restart/crash
+15,View item properties,"Verify that view properties works as appropriate for bookmarks, folders, and separators(negative)"
+16,Rename bookmark inline - not implemented,Change the name of a bookmark without use of the bookmark properties dialog.
+17,Custom Keywords,surf using user-defined 'custom keyword'.
+18,Sort by columns,sort and reverse-sort per column
+19,Resize columns,Verify that columns are resizable to show/hide more of entries
+20,Show/Hide columns,Show and hide columns.
+21,Delete multiple bookmarks,Verify that several bookmarks are deleted at one time.
+22,Prevent bad drops,Verify that several bookmarks are deleted at one time.
