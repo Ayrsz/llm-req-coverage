@@ -1,23 +1,325 @@
-ID,test,test-description
-1,Global History,Verify that visited links are recorded.
-2,Global History,Verify that the correct link is recorded after a server redirect.
-3,Global History,Verify that double-clicking on a history link causes it to be launched in a browser window.
-4,Global History,Delete a History entry
-5,Global History,Delete multiple History entries
-6,Global History,Clear all of history
-7,,
-8,Global History,Change the History View to Group by Day|Site|None
-9,Global History,sort and reverse-sort per column
-10,Global History,Verify that columns are resizable to show/hide more of entries
-11,Global History,Show and hide columns.
-12,"Global History
- (Negative test)",Verify that things that aren't supposed to be added to history aren't (eg chorme:/// url's)
-13,"Global History
- (Regression test)",Don't ever show 302 redirects in history
-14,Go menu list,Verify correct recently visited sites are in go menu.
-15,Back and Forward button dropdowns,Verify recently visited sites are in Back and Forward button dropdown menu and work.
-16,Surf Go menuitems,Verify browser goes back and forward to recently visited sites
-17,Back and forward with frames,Verify browser goes back and forward correctly from page with frames.
-18,New session,Verify that a new session is started with a new browser window or a restart.
-19,Back and forward with named anchors,Verify browser goes back and forward correctly from sites that use named anchors
-20,Retain scroll position,Verify that browser remembers scroll state when returning to pages in SH
+ID,test,test-overview,test-description
+1,Global History,Verify that visited links are recorded.,"Purpose
+
+This basic testcase is designed to verify that links are properly added to the global history file.
+Initial Conditions
+
+    You must have used the installation of the browser you plan to test.
+    If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+Steps/Description
+
+    Select Go|History.
+    Observe the contents of the Global History Window.
+    Quit and restart the browser.
+    Select Go|History.
+
+Expected Results
+
+    If you've observed the initial conditions, the History window should be non-empty upon first observation.
+    After restart, the History window should still be non-empty."
+
+2,Global History,Verify that the correct link is recorded after a server redirect.,"Purpose
+
+This basic testcase is designed to verify that the correct link is added to the global history file after a server-side redirect.
+Initial Conditions
+
+    You must have used the installation of the browser you plan to test.
+    If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+Steps/Description
+
+    Select Go|History.
+    Click this link.
+
+Expected Results
+    You should have only one new entry in your history. It should be titled Small Business. The url should be http://home.netscape.com/netcenter/smallbusiness/index.html, NOT http://home.netscape.com/taskbar/6_0b1/bus4.html."
+3,Global History,Verify that double-clicking on a history link causes it to be launched in a browser window.,"Purpose
+
+This basic testcase is designed to verify that clicking on a history link takes you to that page.
+Initial Conditions
+
+    You must have used the installation of the browser you plan to test.
+    If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+Steps/Description
+
+    Select Go|History.
+    Double-click any history link in the window.
+
+Expected Results
+
+    The url for that link should load in your preexisting 'topmost' browser window, or create a new browser window if none existed.
+"
+4,Global History,Delete a History entry,"Purpose
+
+This basic testcase is designed to verify that links are properly deleted and no longer displayed
+Initial Conditions
+
+    You must have used the installation of the browser you plan to test.
+    If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+Steps/Description
+
+    Select Go|History.
+    Select (highlight) a history entry, press the delete key, OR
+    Select (highlight) a history entry, Select Edit|Delete.
+    Restart the browser.
+
+Expected Results
+
+    After step(3) the title of and link to the history entry should now be removed from the history window.
+    After step(4) it should still be gone.
+"
+5,Global History,Delete multiple History entries,"Purpose
+
+This basic testcase is designed to verify that multiple links are properly deleted and no longer displayed
+Initial Conditions
+
+    You must have used the installation of the browser you plan to test.
+    If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+Steps/Description
+
+    Select Go|History.
+    Select any history entry. Shift+click or drag to select more (at least 3).
+    Select Edit|Delete.
+    Restart the browser. Select Go|History
+
+Expected Results
+
+    After step(3) the titles and links to the history entries should now be removed from the history window.
+    After step(4) they should still be gone."
+6,Global History,Clear all of history,"Purpose
+
+This basic testcase is designed to verify that all links are properly removed from the global history file.
+Initial Conditions
+
+    You must have used the installation of the browser you plan to test.
+    If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+Steps/Description
+
+    Select Go|History.
+    Observe the contents of the Global History Window.
+    Select Edit|Preferences (from a navigator window)
+    Browse to the Navigator|History Panel.
+    Under 'Browsing History' click the 'Clear History' button.
+    Return to observe the contents of the Global History Window.
+
+Expected Results
+
+    If you've observed the initial conditions, the History window should be non-empty upon first observation.
+    After pressing the button, the history window should be empty of individual history items."
+7,,,
+8,Global History,Change the History View to Group by Day|Site|None,"Purpose
+
+This testcase is designed to verify that history items appear grouped in the new 'by day' format or the 'old skool' flat format in the global history window.
+Initial Conditions
+
+    You must have used the installation of the browser you plan to test.
+    If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+Steps/Description
+
+    Select Go|History.
+    In the Global History window, select View|Group By|Day.
+    In the Global History window, select View|Group By|Site.
+    In the Global History window, select View|Group By|None.
+
+Expected Results
+
+    After Step(2), history entries should appear grouped into folders labeled 'Today', 'Yesterday', '2 days ago', ... ,'6 days ago', and 'Older than 6 days'.
+    After Step(3), the history items should appear grouped by domain name (no folders).
+    After Sep (4), the history items should appear -???"
+9,Global History,sort and reverse-sort per column,"Purpose
+
+This testcase is designed to verify that the column sorting feature works properly.
+Initial Conditions
+
+    You must have used the installation of the browser you plan to test.
+    If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+Steps/Description
+
+    Select Go|History. This is most easily tested by using the View|Group By|None setting but not strictly necessary.
+    Click on the 'Title' column once.
+    Click on the 'Title' column a second time.
+    Click on the 'Title' column a third time.
+    Click on the 'Location' column once, and a second time.
+    Click on the 'Last Visited' column once, and a second time.
+
+Expected Results
+
+    By step:
+    The bookmarks should sort into alphabetical order, by Title.
+    The bookmarks should sort into reverse-alphabetical order, by Title.
+    The bookmarks should sort into 'natural' order (the way they were originally sorted).
+    The bookmarks should sort into order by Location and then the reverse of that order.
+    The bookmarks should sort into order by Last Visited and then the reverse of that order."
+10,Global History,Verify that columns are resizable to show/hide more of entries,"Purpose
+
+This testcase is designed to verify that columns are resizable by dragging them to an arbitrary size.
+Initial Conditions
+
+    You must have used the installation of the browser you plan to test.
+    If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+Steps/Description
+
+    Select Go|History.
+    Mouseover the separator between the 'Name' and 'URL' columns.
+    Click and drag that separator to the left and right.
+    Repeat this with each of the other column separators.
+
+Expected Results
+
+    In step(2) the mouse pointer should change to a double-arrowed icon(platform specific or XP?).
+    In step(3) the column sizes on either side of the separator should shrink and grow as you drag. The content of the column should move with the column header. Column content that is obscured should be replaced by the ellipsis(?)."
+11,Global History,Show and hide columns.,"Purpose
+
+This testcase is designed to verify that you can pick which columns you would like to show/hide.
+Initial Conditions
+
+    You must have used the installation of the browser you plan to test.
+    If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+Steps/Description
+
+    Select Go|History.
+    Click the icon on the far right of the column headers.
+    Uncheck two of the items (columns).
+    Recheck an item.
+    Quit and restart the application.
+
+Expected Results
+
+    Step(2) a popup menu should appear listing all of the column headers as menuitems.
+    Step(3), they should all be checked by default and unchecking should cause that column to disappear from the manage bookmarks window.
+    Step(4), the columns should reappear upon rechecking its name on the list.
+    Step(5) the columns should appear just as the did after step(4)."
+12,"Global History (Negative test)",Verify that things that aren't supposed to be added to history aren't (eg chorme:/// url's),"do-not-record-links"
+13,"Global History (Regression test)",Don't ever show 302 redirects in history,"Bug 102043"
+14,Go menu list,Verify correct recently visited sites are in go menu.,"Purpose
+
+This basic testcase is designed to verify that links are properly added to the session history and displayed in the browser's Go menu.
+Initial Conditions
+
+    Your session history needs to be empty for this test so restart the browser or open a new window. To check, the 'Go' menu should list no sites when the session history is empty.
+
+Steps/Description
+
+    Follow this Netscape link.
+    Follow this Netscape People link.
+    Wait for the redirect (15sec).
+    Follow this Mozilla QA link.
+    Follow this Mozilla link.
+    Click the browser 'Back' button in the other window.
+
+Expected Results
+
+    Expected result by step:
+
+    The Go menu should list the title of this page, 'Netcenter'.
+    The Go menu should list 'Netcenter' and 'How Claudius Got His Groove Back'.
+    The Go menu should list 'Netcenter', 'How Claudius Got His Groove Back' and 'CMaximus' Marquee'.
+    The Go menu should list 'Netcenter', 'How Claudius Got His Groove Back', 'CMaximus' Marquee', and 'Mozilla QA Home Page'.
+    The Go menu should list 'Netcenter', 'How Claudius Got His Groove Back', 'CMaximus' Marquee', 'Mozilla QA Home Page', and 'Mozilla.org'.
+    The Go menu should look the same as in step(5), with the same order.
+    In each case ,the page you are currently visiting should be checked off on the list in the Go menu."
+15,Back and Forward button dropdowns,Verify recently visited sites are in Back and Forward button dropdown menu and work.,"Purpose
+
+This basic testcase is designed to verify that links are properly added to the global history file.
+Initial Conditions
+
+    Your session history needs to be empty for this test so restart the browser or open a new window. To check, the Back/Forward buttons should be inactive and the dropdowns should not appear at all when the session history is empty.
+
+Steps/Description
+
+    Follow this Netscape link.
+    Follow this Netscape People link.
+    Wait for the redirect (15sec).
+    Follow this Mozilla QA link.
+    Follow this Mozilla link.
+    From the 'Back' button dropdown select the 4th item from the top 'Netscape.com'.
+    From the 'Forward' button dropdown select the 3rd item from the top 'Mozilla QA Home Page'
+
+Expected Results
+
+    For Step(6), the dropdown menu should be apparent and active, the 4th item should be 'Netscape.com', the page title, and selecting it should actually load that page
+    For Step(7), the dropdown menu should be apparent and active, the 3rd item should be 'Mozilla QA Home Page', the page title, and selecting it should actually load that page."
+16,Surf Go menuitems,Verify browser goes back and forward to recently visited sites,"Purpose
+
+This basic testcase is designed to verify that links generated from session history in the Go menu function properly.
+Initial Conditions
+
+    Execute the gomenu-list.html testcase first.
+
+Steps/Description
+
+    Select Go|Back.
+    Select Go|Forward.
+    Select Go|Netcenter.
+    Click any link on the page.
+
+Expected Results
+
+    Each selection should take you to the appropriate page in your session history.
+    After step(4), the Go menu should only contain 'Netcenter' and the title of the page you just surfed to by clicking a link."
+17,Back and forward with frames,Verify browser goes back and forward correctly from page with frames.,"Purpose
+
+This basic testcase is designed to verify that session history works for frames.
+Initial Conditions
+
+    None
+
+Steps/Description
+
+    Click the link labeled "First" below.
+    Click the link labeled "Second" below. Click "Back". Click "Forward".
+    Click the link labeled "Third" below. Click "Back". Click "Forward".
+    Click "Back" two times. Click "Forward" two times.
+
+Expected Results
+
+    In each case the bottommost frame should change to show you the number corresponding to where you are in the session history list(FIRST, SECOND or THIRD).
+    Step(4) should walk you through the session history list in reverse then forward order."
+18,New session,Verify that a new session is started with a new browser window or a restart.,"Purpose
+
+This basic testcase is designed to verify that a new, empty session history file is created when appropriate.
+Initial Conditions
+
+    You must have used the installation of the browser you plan to test.
+    If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+Steps/Description
+
+    Select File|New Navigator Window.
+    Select the Go menu.
+    Quit and restart the browser.
+    Select the Go menu.
+
+Expected Results
+
+    After steps(2) and (4) the browser go meu should be 'empty' ie only Back, Forward, and Home should be listed."
+19,Back and forward with named anchors,Verify browser goes back and forward correctly from sites that use named anchors,"Purpose
+
+This testcase is designed to verify that anchored links are properly added to the global history file.
+Initial Conditions
+
+    Make the window short enough so that you can only see the Steps/Description portion of this document.
+
+Steps/Description
+
+    Click on this anchor link to the purpose.
+    Click on this anchor link to the steps.
+    Click on this anchor link to the links.
+    Click 'Back' three times. Click forward three times.
+    Select Go|History.
+
+Expected Results
+
+    You'll see the view scroll as you follow each link, the url should be updated with the #<anchorname> appended to the url.
+    Step(4) should load the pages in this order; #steps, #purpose, main page, #pupose, #steps, #links.
+    The Global History window should list each named anchor as a separate entry."
+20,Retain scroll position,Verify that browser remembers scroll state when returning to pages in SH,"Bug XXXXX"
