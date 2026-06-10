@@ -1,0 +1,1019 @@
+﻿TEST ID;GT;PREDICT;SIMILARITY;STATUS;MANUAL REVIEW
+2;"Purpose
+
+This basic testcase is designed to verify that a bookmark is properly added and is displayed at the appropriate places.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Select the toplevel 'Bookmarks' menu then select the first menuitem 'Add Bookmark'.
+
+Expected Results
+
+The title of the page you selected should appear as a bookmark in:
+
+    the toplevel 'Bookmarks' menu
+    the 'Bookmarks' popup menu on the personal toolbar
+    the 'Bookmarks' panel in MySidebar
+    in the Manage Bookmarks view (select Bookmarks| Manage Bookmarks)";"Purpose
+
+To verify that newly added bookmarks are correctly saved to the bookmarks file and are accessible from all standard user interfaces.
+
+Initial Conditions
+
+*   Firefox browser is open.
+*   A unique webpage is loaded in the active tab (e.g., `http://www.example.com/bookmark_test_page`).
+*   The sidebar is customized to include a bookmarks panel.
+
+Steps/Description
+
+1.  Navigate to a unique URL (e.g., `http://www.example.com/bookmark_test_page`).
+2.  Use the ""Bookmark This Page"" function (e.g., `Ctrl+D` or via the `Bookmarks` menu -> `Bookmark This Page`).
+3.  In the ""Add Bookmark"" dialog:
+    *   Set the ""Name"" to ""Test Bookmark for All Access Points"".
+    *   Ensure the ""Location"" is set to ""Bookmarks Menu"" (or ""Unsorted Bookmarks"" for easy visibility).
+    *   Click ""Done"" or ""Add"" to save the bookmark.
+4.  Open the main ""Bookmarks"" menu from the browser's menu bar.
+5.  Open the sidebar and select the ""Bookmarks"" panel.
+6.  Open the ""Manage Bookmarks"" window (e.g., `Ctrl+Shift+B` or via the `Bookmarks` menu -> `Manage Bookmarks`).
+
+Expected Results
+
+1.  After Step 3, a visual confirmation (e.g., star icon turning blue, a brief notification) should indicate the bookmark has been successfully added.
+2.  In Step 4, ""Test Bookmark for All Access Points"" should be visible as a menu item within the ""Bookmarks Menu"" section of the main Bookmarks dropdown.
+3.  In Step 5, ""Test Bookmark for All Access Points"" should be visible within the ""Bookmarks Menu"" (or ""Unsorted Bookmarks"") folder in the sidebar's Bookmarks panel.
+4.  In Step 6, the ""Manage Bookmarks"" window should open, and ""Test Bookmark for All Access Points"" should be present under the ""Bookmarks Menu"" (or ""Unsorted Bookmarks"") folder in the folder tree and the main content pane.
+5.  The URL associated with the ""Test Bookmark for All Access Points"" bookmark in all access points should match `http://www.example.com/bookmark_test_page`.";0.8275;TP;
+2;"Purpose
+
+This basic testcase is designed to verify that a bookmark is properly added and is displayed at the appropriate places.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Select the toplevel 'Bookmarks' menu then select the first menuitem 'Add Bookmark'.
+
+Expected Results
+
+The title of the page you selected should appear as a bookmark in:
+
+    the toplevel 'Bookmarks' menu
+    the 'Bookmarks' popup menu on the personal toolbar
+    the 'Bookmarks' panel in MySidebar
+    in the Manage Bookmarks view (select Bookmarks| Manage Bookmarks)";"1. Purpose
+This test case is designed to verify that the ""Bookmark This Page"" functionality correctly writes new bookmark entries to the bookmarks storage file and that these entries are immediately propagated and visible across all standard browser access points.
+
+2. Initial Conditions
+*   A valid user profile is loaded with an existing bookmarks structure.
+*   The browser is open and displaying a web page.
+*   The ""Bookmarks"" menu, ""Bookmarks Toolbar,"" and ""Bookmarks Sidebar"" are available for verification.
+
+3. Steps/Description
+*   Navigate to a unique web page (e.g., ""http://www.example.com"").
+*   Trigger the ""Bookmark This Page"" command via the browser interface (e.g., Ctrl+D or Bookmarks menu option).
+*   In the ""Add Bookmark"" dialog, assign a specific name and select a folder location.
+*   Click ""Save"" or ""Done"" to commit the bookmark.
+*   Verify the entry in the ""Bookmarks"" top-level menu.
+*   Verify the entry in the ""Bookmarks"" toolbar (if added to that folder).
+*   Open the ""Bookmarks Sidebar"" and verify the entry is present.
+*   Open the ""Manage Bookmarks"" (Bookmark Manager) window and verify the entry exists in the specified folder.
+
+4. Expected Results
+*   The bookmark is successfully saved to the bookmarks storage file without error.
+*   The bookmark appears as a selectable item in the ""Bookmarks"" top-level menu.
+*   The bookmark is visible on the ""Bookmarks Toolbar"" if the correct folder was selected.
+*   The bookmark is listed in the ""Bookmarks Sidebar"" with the correct icon and title.
+*   The ""Manage Bookmarks"" window displays the new entry, and the entry's properties (Name, URL, Location) match the input provided during the save process.";0.8177;TP;
+3;"Purpose
+
+This basic testcase is designed to verify that bookmarks can be added and file to a specific location in one step.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Open this link in a new window.
+    With the new window in front select from the toplevel menu Bookmarks|File Bookmark.
+    In the folder tree select a folder and click 'OK'.
+
+Expected Results
+
+    After Step(2) a dialog should appear with the Name and Location of the current page pre-filled.
+    After Step(3) the bookmark should immediately appear in the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window at the specified position within the hierarchy.";"Purpose
+
+To verify that a user can successfully add a new bookmark and specify its exact location within the existing bookmarks folder hierarchy.
+
+Initial Conditions
+
+1. The Bookmarks Manager is open.
+2. The bookmarks library contains at least one parent folder and one sub-folder.
+3. A web page is currently loaded in the browser.
+
+Steps/Description
+
+1. Open the ""Bookmarks"" menu and select ""Bookmark This Page"" or use the equivalent command in the Bookmarks Manager.
+2. In the ""Add Bookmark"" dialog, locate the ""Create In"" dropdown menu.
+3. Expand the folder tree within the ""Create In"" dropdown to navigate to the desired target sub-folder.
+4. Select the target sub-folder as the destination.
+5. Enter a name and optional tags/description for the bookmark.
+6. Click the ""Save"" or ""Done"" button to confirm the action.
+7. Navigate to the selected sub-folder within the Bookmarks Manager or Bookmarks Menu to verify the placement.
+
+Expected Results
+
+1. The ""Add Bookmark"" dialog correctly displays the full hierarchy of the bookmarks folder structure.
+2. The bookmark is saved specifically into the chosen sub-folder rather than the default ""Bookmarks Menu"" or ""Unsorted Bookmarks"" root.
+3. The bookmark appears in the designated location upon inspection in the Bookmarks Manager.
+4. All metadata (name, tags, description) is correctly associated with the new bookmark entry.";0.8091;TP;
+4;"Purpose
+
+This basic testcase is designed to verify that new bookmarks are properly created. *This testcase will change/evolve as the UI for this feature becomes finalized.*
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Select Bookmarks|Manage Bookmarks.
+    Select File|New Bookmark.
+    Type in any name and location (URL)
+    Click Enter.
+
+Expected Results
+
+    A dialog box should appear prompting you for the Name and Location (URL) of the new bookmark.
+    The new bookmark should immediately appear on the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window.";"Purpose
+
+This test case verifies that the browser correctly handles the creation of new, unique bookmarks and prevents the addition of duplicate URLs, as per the requirement to intelligently manage bookmark redundancy.
+
+Initial Conditions
+
+    The browser is open and a web page is currently loaded.
+    The user has access to the ""Add Bookmark"" functionality.
+    The ""Duplicate bookmark warning"" feature is enabled in settings.
+
+Steps/Description
+
+    1. Navigate to a unique URL that is not currently in the bookmarks list.
+    2. Trigger the ""Add Bookmark"" dialog (e.g., via Ctrl+D or the menu).
+    3. Enter a unique name for the bookmark and save it.
+    4. Navigate to a URL that is already present in the bookmarks list.
+    5. Trigger the ""Add Bookmark"" dialog for this existing URL.
+    6. Observe the system response to the duplicate entry.
+    7. Select the ""Add new one here"" option if prompted by the duplicate warning.
+    8. Verify if the system offers to merge or update existing metadata (tags/descriptions) instead of creating a full duplicate, if applicable.
+
+Expected Results
+
+    1. The new, unique bookmark is successfully saved and appears in the bookmark list/manager.
+    2. When attempting to add an existing URL, the system displays a ""Duplicate bookmark warning"" dialog.
+    3. The warning dialog provides options such as ""Add new one here,"" ""Copy existing,"" or ""Cancel.""
+    4. If ""Add new one here"" is selected, the bookmark is added.
+    5. If the system supports intelligent duplicate handling, new tags or descriptions provided during the second attempt are merged into the existing bookmark record rather than creating a redundant entry.";0.8209;TP;
+5;"Purpose
+
+This basic testcase is designed to verify that a bookmark is properly deleted and is no longer displayed at the appropriate places.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+Select the toplevel 'Bookmarks' menu then select the 'Manage Bookmarks' menuitem.
+
+    Select (highlight) a bookmark, press the delete key, OR
+    Select (highlight) a bookmark, Select Edit|Delete. Click OK in the dialog that appears.
+
+Expected Results
+
+The title of and link to the bookmark should now be removed from:
+
+    the toplevel 'Bookmarks' menu
+    the 'Bookmarks' popup menu on the personal toolbar
+    the 'Bookmarks' panel in MySidebar
+    in the Manage Bookmarks view (select Bookmarks| Manage Bookmarks)";"1. Purpose
+This test case is designed to verify that deleting a bookmark from the Bookmarks Manager successfully removes the entry from the underlying storage file and from all user-facing access points (Menus, Toolbars, and Sidebar).
+
+2. Initial Conditions
+* A browser session with existing bookmarks and folders.
+* The Bookmarks Manager is accessible.
+* The Bookmarks Toolbar is enabled and visible.
+* The Bookmarks Sidebar is enabled and visible.
+* At least one bookmark is currently present in the root or a subfolder.
+
+3. Steps/Description
+* Open the Bookmarks Manager.
+* Select a specific bookmark entry.
+* Perform a ""Delete"" action (e.g., via the Delete key, context menu ""Delete"", or Edit menu).
+* Verify the entry is removed from the Bookmarks Manager list.
+* Close the Bookmarks Manager.
+* Check the ""Bookmarks"" top-level menu to ensure the bookmark is no longer listed.
+* Check the ""Bookmarks Toolbar"" to ensure the bookmark icon/link has been removed.
+* Check the ""Bookmarks Sidebar"" to ensure the bookmark is no longer present in the tree.
+* (Optional) Close and restart the browser to ensure the change persists in the storage file (e.g., bookmarks.html).
+
+4. Expected Results
+* The bookmark is immediately removed from the Bookmarks Manager view upon the delete command.
+* The bookmark is no longer visible in the Bookmarks menu.
+* The bookmark is no longer visible on the Bookmarks Toolbar.
+* The bookmark is no longer visible in the Bookmarks Sidebar.
+* The deletion is persistent across browser restarts, confirming the entry was successfully removed from the bookmarks storage file.";0.8911;TP;
+6;"Purpose
+
+This basic testcase is designed to verify that bookmarks are added and deleted from the personal toolbar properly.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Open the Manage Bookmarks Window.
+    Edit|Cut or Edit|Copy any bookmark.
+    Select the 'Personal Toolbar Folder'. Double-click it or single-click the triangle to open the folder.
+    Select Edit|Paste.
+    Go to a browser window and click once on the new link in the personal toolbar.
+
+Expected Results
+
+    The bookmark you added should appear immediately on the personal toolbar in a browser window and be activated by a single click.
+    It should also be present as a subitem under ""Personal Toolbar Folder"" in the toplevel Bookmarks menu, in the bookmarks popup within the personal toolbar itself, and in the bookmarks sidepanel.";"Purpose
+
+This test case is designed to verify the CRUD (Create, Read, Update, Delete) functionality of items within the Personal Toolbar Folder, ensuring that additions and deletions are correctly persisted and reflected in the UI.
+
+Initial Conditions
+
+    The browser application is open.
+    The ""Bookmarks Toolbar"" is visible in the browser interface.
+    The user has access to the ""Manage Bookmarks"" window or the ""Add Bookmark"" dialog.
+
+Steps/Description
+
+    1. Navigate to a webpage and use the ""Add Bookmark"" feature to create a new bookmark, selecting ""Bookmarks Toolbar"" as the destination folder.
+    2. Verify the presence of the new bookmark icon/label on the Bookmarks Toolbar.
+    3. Right-click on the newly created bookmark in the toolbar and select ""Delete"".
+    4. Create a new folder within the ""Bookmarks Toolbar"" directory via the ""Manage Bookmarks"" window.
+    5. Drag and drop an existing bookmark into this new folder on the toolbar.
+    6. Right-click the new folder and select ""Delete"" to remove the folder and its contents.
+    7. Restart the browser to ensure changes persist across sessions.
+
+Expected Results
+
+    1. The bookmark is successfully saved and immediately appears on the Bookmarks Toolbar.
+    2. The bookmark icon/label is removed from the toolbar immediately after the delete action.
+    3. The folder is created and appears on the toolbar; the moved bookmark is successfully contained within it.
+    4. Upon deleting the folder, both the folder and the contained bookmark are removed from the toolbar UI.
+    5. All additions and deletions persist correctly after the browser is restarted.";0.8833;TP;
+7;"Purpose
+
+This basic testcase is designed to verify that folders are properly created and inserted into the bookmarks hierarchy.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Select Bookmarks|Manage Bookmarks.
+    Select any item in your list. Select File|New Folder. Click ""OK"" in the dialog that appears.
+    Select the folder you just created. Select File|New Folder. Click ""OK"" in the dialog that appears.
+    Double-click the folder you just created. Select File|New Folder. Click ""OK"" in the dialog that appears.
+
+Expected Results
+
+    For step (2) a folder named ""New Folder"" should have been created and added just below the item you had selected. That item could be a bookmark, a folder, or a separator.
+    For step (3) the folder should have again been created below the item (New Folder). In step (4) however, the folder should be created inside the previous folder.
+    All of the newly created folders should appear with the correct hierarchical structure in the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks panel in the sidebar, and of course the manage bookmarks window.";"1. Purpose
+
+This test case is designed to verify the functionality of creating new bookmark folders and the ability to nest these folders within existing structures to ensure hierarchical integrity.
+
+2. Initial Conditions
+
+    The Bookmark Manager is open.
+    The user has write permissions to the bookmarks database/file.
+    At least one existing folder exists in the hierarchy (or the root folder is accessible).
+
+3. Steps/Description
+
+    In the Bookmark Manager, select a parent folder or the root directory.
+    Right-click the selected area and choose the ""New Folder"" option from the context menu.
+    Enter a name for the new folder in the dialog box and click ""OK"".
+    Verify the folder appears in the selected location.
+    Select the newly created folder, right-click it, and select ""New Folder"" again to create a sub-folder.
+    Enter a name for the sub-folder and click ""OK"".
+    Drag and drop an existing folder into another folder to test manual nesting.
+    Expand the parent folder to verify the visibility of the nested sub-folder.
+
+4. Expected Results
+
+    The ""New Folder"" command successfully creates a new container in the selected location.
+    The folder naming dialog accepts valid input and saves the folder name correctly.
+    The hierarchy reflects the nesting, allowing the parent folder to be expanded to reveal the sub-folder.
+    The drag-and-drop operation correctly moves the folder into the target parent, maintaining the data and structure of the moved folder.
+    No errors or crashes occur during the creation or movement of folders.";0.873;TP;
+8;"Purpose
+
+This basic testcase is designed to verify that the fundamental bookmark function is in place, i.e. clicking on a bookmark takes you to that page.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Select the toplevel ""Bookmarks"" menu. Select any bookmark on the list.
+    Click ""Bookmarks"" on the Bookmarks/personal toolbar. Select any bookmark on the list.
+    Open the sidebar; click on the ""Bookmarks"" panel. Double-click any bookmark on the list.
+    From the toplevel ""Bookmarks"" menu select ""Manage Bookmarks"". Double-click any bookmark in the window.
+
+Expected Results
+
+In all cases, the url corresponding to the bookmark you selected should be loaded in the browser window.";"1. Purpose
+
+This test case is designed to verify that the standard user interaction of double-clicking a bookmark in the Bookmarks Manager or sidebar successfully triggers the navigation to the associated URL in a browser window.
+
+2. Initial Conditions
+
+    The browser application is open.
+    The Bookmarks Manager or Bookmarks sidebar is open and visible.
+    At least one valid bookmark (with a functional URL) exists within the bookmark list.
+
+3. Steps/Description
+
+    Locate an existing bookmark within the Bookmarks Manager or the Bookmarks sidebar.
+    Position the mouse cursor over the specific bookmark entry.
+    Perform a rapid double-click action using the primary mouse button.
+    Observe the browser's behavior regarding the current tab or window.
+
+4. Expected Results
+
+    The browser should immediately initiate a request to the URL stored within the selected bookmark.
+    The content of the bookmarked page should load in the active browser window or a new tab, depending on the current browser configuration.
+    No error messages or unexpected dialogs should appear during the navigation process.";0.8608;TP;
+9;"Purpose
+
+This basic testcase is designed to verify that all the bookmarks within the default bookmarks file that is packaged with the browser are valid links.
+Initial Conditions
+
+You must have the default bookmarks file installed. Here is the Netscape bookmarks file, here is the Mozilla bookmarks file.
+Steps/Description
+
+Using the Bookmarks menu or the Manage Bookmarks window, select and surf each and every bookmark in turn.
+Expected Results
+
+Each bookmark should load completely in the browser window. There should be no ""dead"" links.";"1. Purpose
+
+This test case is designed to verify the integrity of default bookmarks provided upon installation, ensuring that none of the links are ""dead"" (i.e., they do not return a 404 Not Found, 500 Internal Server Error, or other connection failure).
+
+2. Initial Conditions
+
+    A fresh installation of the browser has been performed.
+    The default bookmarks set is present in the Bookmarks library.
+    An active internet connection is available to perform HTTP requests.
+
+3. Steps/Description
+
+    Open the Bookmarks Manager.
+    Iterate through every bookmark contained within the default folder structure.
+    For each bookmark, perform a ""Check Link"" operation (or manually open the URL in a new tab if an automated check feature is not present).
+    Record the HTTP status code returned by the server for each URL.
+    Specifically verify that no link returns a 404 (Not Found), 410 (Gone), or results in a DNS resolution failure.
+
+4. Expected Results
+
+    All default bookmarks must resolve to a valid, reachable webpage (HTTP 200 OK).
+    No bookmark should trigger a 404 or 5xx error.
+    The browser should successfully load the landing page for every default bookmark provided.";0.8686;TP;
+10;"Purpose
+
+This basic testcase is designed to verify that the edit properties feature works as prescribed for various items.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Select Bookmarks|Manage Bookmarks.
+    Select a bookmark. Select File|Bookmark Properties.
+        Change the Name OR the Location.
+        Edit the Description field. Click ""OK""
+        Surf the link.
+    Select a folder. Select File|Bookmark Properties.
+        Change the Name.
+        Change the description. Click ""OK"".
+
+Expected Results
+
+    For step(2) the changes should take effect upon pressing ""OK"". The changes should be seen in the four standard locations.If the name changed clicking the new bookmark name should go to the same url. If the url changed, clicking the same name should go to the new url.
+    For step(3) the changes should take effect upon pressing ""OK"". The changes should be seen in the four standard locations.";"Purpose
+
+This test case is designed to verify that modifying an existing bookmark’s properties (Name, Location/URL, Keyword, Description, or Tags) does not corrupt the bookmark entry, alter its structure, or result in data loss after saving.
+
+Initial Conditions
+
+    A browser instance with the Bookmarks Manager accessible.
+    At least one existing bookmark entry populated with a Name, URL, Keyword, and Description.
+    The ""Add/Edit Bookmark"" interface is functional.
+
+Steps/Description
+
+    1. Open the ""Manage Bookmarks"" window.
+    2. Select an existing bookmark and open its ""Properties"" dialog.
+    3. Modify the ""Name"" field to a new string.
+    4. Modify the ""Location"" (URL) field to a valid, different URL.
+    5. Update the ""Keyword"" field with a new unique keyword.
+    6. Update the ""Description"" or ""Tags"" field with new text.
+    7. Click ""Save"" or ""OK"" to commit the changes.
+    8. Close the properties dialog and re-open the same bookmark's properties to verify the saved data.
+    9. Perform a browser restart and verify that the modified bookmark persists with the correct updated values.
+
+Expected Results
+
+    All fields (Name, URL, Keyword, Description/Tags) are updated correctly in the UI.
+    No data corruption occurs (e.g., fields are not blanked out or concatenated incorrectly).
+    The bookmark remains valid and functional (i.e., clicking it navigates to the updated URL).
+    The integrity of the bookmark entry is maintained after the application is restarted, confirming the changes were successfully written to the underlying storage/database.";0.8602;TP;
+11;"Purpose
+
+This basic testcase is designed to verify that folders are properly deleted.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Select Bookmarks|Manage Bookmarks.
+    Select any folder.
+    Select from the following choices:
+        Select Edit|Delete. Click OK.
+        Hit the Backspace key.
+        Hit the Delete key
+    Select 2 or many folders, repeat step (3).
+
+Expected Results
+
+    In step (3a) a confirmation dialog should appear, allowing you to cancel the delete operation.
+    In steps (3b) and (3c), or after clicking ""OK"" in (3a), the folder should be immediately deleted.
+    In step (4) you should only be presented with one confirmation dialog, clicking ""OK"" should result in all selected folders being deleted.
+    Folders should immediately disappear (be deleted) from the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window.";"Purpose
+
+This test case verifies that deleting a bookmark folder correctly removes the folder and its contents from the bookmark system, and that the system handles the removal of multiple entries consistently.
+
+Initial Conditions
+
+    The Bookmarks Manager is open and populated with at least one folder containing multiple sub-bookmarks and/or sub-folders.
+    The user has permissions to modify the bookmark structure.
+
+Steps/Description
+
+    1. In the Bookmarks Manager, select a folder that contains both bookmarks and sub-folders.
+    2. Trigger the delete action (e.g., press the 'Delete' key, select 'Delete' from the right-click context menu, or use the menu bar 'Edit' -> 'Delete').
+    3. Confirm the deletion if a confirmation dialog appears.
+    4. Verify the status of the deleted folder and its contained items in the Bookmarks Manager tree view.
+    5. Perform a secondary check by attempting to access the deleted folder or its contents via the main ""Bookmarks"" menu or the Bookmarks Toolbar.
+    6. (Optional/Advanced) If the system supports multi-folder selection, select multiple non-adjacent folders using Ctrl+Click and attempt to delete them simultaneously.
+
+Expected Results
+
+    1. The selected folder and all nested bookmarks and sub-folders are immediately removed from the Bookmarks Manager interface.
+    2. No remnants of the deleted folder or its contents should remain visible in the Bookmarks menu or the Bookmarks Toolbar.
+    3. If multiple folders were selected for deletion, all selected folders and their respective contents should be removed successfully.
+    4. The application should not crash or enter an unstable state during the deletion process.
+    5. If the folder was linked to a keyword or shortcut, the associated functionality should be invalidated or removed.";0.9041;TP;
+12;"Purpose
+
+This basic testcase is designed to verify that the show/hide behavior for folders is correct.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Double-click a closed folder.
+    Click a closed(points right) disclosure triangle.
+    Double-click an open folder.
+    Click an open(points down) disclosure triangle.
+
+Expected Results
+
+    Steps (1) and (2), the folder's contents should be exposed, the folder icon should change to an open folder icon, the disclosure triangle should point down.
+    Steps (3) and (4), the folder's contents should be concealed, the open folder icon should change to a closed folder icon, the disclosure triangle should point right.";"1. Purpose
+
+This test case verifies that the UI representation of bookmark folders (specifically the presence of disclosure triangles and folder icons) accurately reflects the contents of the folder within the Bookmarks Manager and menus.
+
+2. Initial Conditions
+
+    The browser is launched with a populated bookmarks profile.
+    The Bookmarks Manager window is open.
+    The Bookmarks menu is accessible via the top-level navigation.
+    The profile contains at least one folder with sub-items and at least one empty folder.
+
+3. Steps/Description
+
+    Navigate to the Bookmarks Manager.
+    Identify a folder containing one or more bookmarks or sub-folders.
+    Observe the icon and the presence of a disclosure triangle next to the folder.
+    Expand the folder and remove all contents (bookmarks/sub-folders) so the folder is empty.
+    Observe the icon and the disclosure triangle status in the Bookmarks Manager.
+    Navigate to the top-level ""Bookmarks"" menu and locate the same folder.
+    Observe the icon and the disclosure triangle status in the menu.
+    Add a new bookmark into the previously emptied folder.
+    Observe the icon and the disclosure triangle status in both the Bookmarks Manager and the Bookmarks menu.
+
+4. Expected Results
+
+    When a folder contains items, it must display a standard folder icon and a disclosure triangle (or equivalent indicator) to signify it can be expanded.
+    When a folder is emptied, the disclosure triangle must disappear immediately to indicate there is no content to reveal.
+    The UI state (disclosure triangle presence) must be synchronized between the Bookmarks Manager and the Bookmarks menu.
+    When a bookmark is added to an empty folder, the disclosure triangle must reappear in both the Bookmarks Manager and the Bookmarks menu to signify the folder is no longer empty.";0.8353;TP;
+13;"Purpose
+
+This basic testcase is designed to verify that separators are properly added and deleted.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Select Bookmarks|Manage Bookmarks.
+    Select a bookmark.
+    Select File|New Separator.
+    Select the separator. Select Edit|Delete, click ""OK"".
+
+Expected Results
+
+    After step (3) separator should immediately appear below the selected item in the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window.
+    After step (4) the separator should immediately disappear (be deleted) from the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window.";"Purpose
+
+This test case is designed to verify that the Bookmark Manager correctly handles the creation, placement, and deletion of separator lines within bookmark folders.
+
+Initial Conditions
+
+    The Bookmark Manager window is open.
+    At least one bookmark folder exists with multiple bookmarks present.
+    The user has permissions to modify the bookmark structure.
+
+Steps/Description
+
+    1. Select a folder within the Bookmark Manager tree.
+    2. Right-click within the folder content area or use the ""New"" menu to select ""New Separator"".
+    3. Verify the visual appearance and placement of the separator.
+    4. Drag and drop the separator to a different position within the same folder.
+    5. Select the separator and press the ""Delete"" key or use the context menu to delete it.
+    6. Perform a ""Sort"" operation on the folder containing the separator to ensure the separator maintains its relative position or behaves according to defined sorting logic.
+
+Expected Results
+
+    1. The separator is successfully inserted into the folder list.
+    2. The separator appears as a distinct horizontal line within the bookmark list, differentiating groups of bookmarks.
+    3. The separator moves to the new location without error or duplication.
+    4. The separator is removed from the list immediately upon deletion.
+    5. The separator remains visible and functional after sorting operations, or is handled consistently according to the folder's sort settings.";0.902;TP;
+14;"Purpose
+
+This basic testcase is designed to verify that bookmarks are added and deleted from the personal
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Select Bookmarks|Manage Bookmarks.
+    Click on disclosure triangles to open/close several folders.
+    Remember which were open/closed.
+    Do the same for bookmarks folders in the bookmarks sidepanel. (Do not close Manage Bookmarks)
+    Quit the browser (alternately, induce a crash)
+    Launch the browser and open the sidebar and Manage Bookmarks.
+
+Expected Results
+
+    The bookmarks tree should have the same shape, ie folders that were closed should still be closed and those that were open should still be open.
+    This should be true for the bookmarks in the sidepanel as well.";"Purpose
+
+This test case is designed to verify the integrity and persistence of the bookmark database, ensuring that all additions, modifications, and deletions are successfully committed to storage and remain available after a browser restart or an unexpected application crash.
+
+Initial Conditions
+
+    The browser is launched with an existing profile and a populated set of bookmarks.
+    The user has access to the Bookmark Manager and the browser's interface for adding/editing bookmarks.
+    The environment is stable for performing a controlled restart and a simulated crash.
+
+Steps/Description
+
+    1. Open the Bookmark Manager, add a new bookmark with a unique name and URL, and create a new folder.
+    2. Edit the properties of an existing bookmark (e.g., change the name or description) and move a bookmark into the newly created folder.
+    3. Perform a graceful shutdown of the browser (File > Exit) and relaunch it.
+    4. Verify that the added bookmark, the new folder, the edited properties, and the moved bookmark persist correctly.
+    5. Perform a second set of modifications (delete a bookmark, rename a folder).
+    6. While the browser is open, simulate a crash by terminating the browser process via the OS task manager (e.g., `kill -9` or Task Manager ""End Task"").
+    7. Relaunch the browser and navigate to the Bookmarks menu/Manager to inspect the state of the data.
+
+Expected Results
+
+    1. After the graceful restart, all changes made in steps 1 and 2 must be present, with no data corruption or loss of metadata (tags, descriptions, folder structure).
+    2. After the simulated crash, the bookmarks database must remain in a consistent state.
+    3. The deleted bookmark must remain absent, and the renamed folder must reflect the changes made prior to the crash.
+    4. No ""orphaned"" entries or duplicate bookmarks should be generated as a result of the recovery process.";0.8631;TP;
+15;"Purpose
+
+This testcase is designed to verify that the view properties feature works as prescribed for various items.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Select Bookmarks|Manage Bookmarks.
+    Select a bookmark. Select File|Bookmark Properties. Verify, click ""OK"".
+    Select a folder. Select File|Bookmark Properties. Verify, click ""OK"".
+    Select a separator. Select File|Bookmark Properties.
+
+Expected Results
+
+    For step(2) the Bookmark Properties dialog should appear. It should have fields for name, location(url), custom keyword, and description. There should also be a section for setting update and notification options.
+    For step(3) the Bookmark Properties dialog should appear. It should have fields for name and description. No other fileds should appear in this dialog.
+    For step(4) no dialog should appear.";"Purpose
+
+This test case verifies that the ""Properties"" functionality is correctly enabled for individual bookmarks and folders, and remains appropriately disabled or non-functional for separators within the Bookmarks Manager.
+
+Initial Conditions
+
+    The Bookmarks Manager is open.
+    The bookmarks library contains at least one bookmark, one folder, and one separator.
+    The user has sufficient permissions to edit bookmark metadata.
+
+Steps/Description
+
+    1. Select an individual bookmark entry within the Bookmarks Manager.
+    2. Attempt to open the ""Properties"" dialog (e.g., via right-click context menu or keyboard shortcut).
+    3. Select a bookmark folder entry within the Bookmarks Manager.
+    4. Attempt to open the ""Properties"" dialog (e.g., via right-click context menu or keyboard shortcut).
+    5. Select a separator line within the Bookmarks Manager.
+    6. Attempt to open the ""Properties"" dialog (e.g., via right-click context menu or keyboard shortcut).
+
+Expected Results
+
+    1. The ""Properties"" dialog opens for the selected bookmark, displaying fields such as Name, Location, Keyword, Description, and Tags.
+    2. The ""Properties"" dialog opens for the selected folder, displaying fields such as Name and Keyword (if applicable).
+    3. The ""Properties"" option is either grayed out (disabled) in the context menu for the separator, or attempting to trigger it results in no action, as separators do not possess editable metadata properties.";0.8943;TP;
+16;"Purpose
+
+This basic testcase is designed to verify that bookmarks can be renamed ""inline"" i.e. without having to use the bookmarks properties dialog.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Select Bookmarks|Manage Bookmarks.
+    Click a bookmark by single clicking on the name of the bookmark.
+    Type a new name. Press enter.
+    Select Edit|Bookmark Properties, look at the name field.
+
+Expected Results
+
+    In step(2) the bookmark name should hilite and become editable.
+    In step(3) and step(4) the new name you typed should replace the old name.";"Purpose
+
+To verify that a user can rename a bookmark directly within the Bookmarks Manager interface (inline editing) without needing to open the ""Properties"" dialog box.
+
+Initial Conditions
+
+    The Bookmarks Manager window is open.
+    At least one bookmark exists in the current bookmarks list.
+
+Steps/Description
+
+    1. Navigate to the folder containing the target bookmark within the Bookmarks Manager.
+    2. Click once on the bookmark to select it.
+    3. Perform a secondary action to initiate renaming (e.g., click again on the name label, press the 'F2' key, or select ""Rename"" from the context menu).
+    4. Type the new name for the bookmark directly into the field.
+    5. Press the 'Enter' key or click outside the text field to commit the change.
+
+Expected Results
+
+    The bookmark name is updated in the list view immediately after the commit action.
+    The ""Properties"" dialog box is not triggered or displayed during this process.
+    The change is persisted correctly, and the bookmark retains its original URL and other metadata.";0.891;TP;
+17;"Purpose
+
+This basic testcase is designed to verify that the edit properties feature works as prescribed for various items.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Select Bookmarks|Manage Bookmarks.
+    Select a bookmark. Select File|Bookmark Properties.
+    Enter the word ""blah"" in the custom keyword field. Click ""OK"".
+    In a browser window. Type ""blah"" into the url field and press enter.
+
+Expected Results
+
+    You should be taken to the url associated with the same bookmark the custom keyword ""blah"" was associated with.
+    The browser should NOT perform an ""internet keyword search"", ""netsape smart browsing search"", or any other search.";"1. Purpose
+This test case verifies that the browser correctly interprets and executes a user-defined custom keyword to navigate to a specific URL or perform a search associated with that keyword.
+
+2. Initial Conditions
+* The browser is open and in a functional state.
+* At least one bookmark exists with a user-defined ""Keyword"" assigned in its properties (e.g., Keyword: ""mozilla"", URL: ""http://www.mozilla.org"").
+* The user is on the main browser window with the Location bar (address bar) accessible.
+
+3. Steps/Description
+* Click on the Location bar to gain focus.
+* Type the user-defined keyword (e.g., ""mozilla"") into the Location bar.
+* Press the ""Enter"" key on the keyboard.
+* (Optional/Additional) If the keyword requires an argument (e.g., a search keyword mapping to ""http://example.com/search?q=%s""), type the keyword followed by a space and the search term (e.g., ""search firefox"").
+* (Optional/Additional) Press the ""Enter"" key.
+
+4. Expected Results
+* The browser should recognize the keyword as a shortcut to the associated bookmark URL.
+* The browser should immediately navigate to the URL defined in the bookmark's properties.
+* If an argument was provided (using %s), the browser should correctly substitute the argument into the URL string and navigate to the resulting dynamic address.
+* The transition should be seamless, mimicking standard navigation behavior.";0.8229;TP;
+18;"Purpose
+
+This basic testcase is designed to verify that the column sorting feature works properly.
+Initial Conditions
+
+    Install this bookmarks file.(abcdbookmarks.html)
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Select Bookmarks|Manage Bookmarks.
+    Click on the ""Name"" column once.
+    Click on the ""Name"" column a second time.
+    Click on the ""Name"" column a third time.
+    Click on the ""URL"" column once, and a second time.
+    Click on the ""Custom Keyword"" column once, and a second time.
+    Click on the ""Description"" column once, and a second time.
+    Click on the ""Last Visit"" column once, and a second time.
+    Click on the ""Added On"" column once, and a second time.
+    Click on the ""Last Modified"" column once, and a second time.
+
+Expected ResultsBy step
+
+    The bookmarks should sort into alphabetical order. (a-b-c-d-e)
+    The bookmarks should sort into reverse-alphabetical order. (e-d-c-b-a)
+    The bookmarks should sort into ""natural"" order (the way they were originally sorted). (a-d-e-b-c)
+    The bookmarks should sort into order by URL and then the reverse of that order. (d-a-b-c-e)
+    The bookmarks should sort into order by Custom Keyword and then the reverse of that order. (c-d-a-b-e)
+    The bookmarks should sort into order by Description and then the reverse of that order. (b-c-d-a-e)
+    The bookmarks should sort into order by Last Visited time and then the reverse of that order.
+    The bookmarks should sort into order by Added On date and then the reverse of that order.
+    The bookmarks should sort into order by Last Modified date and then the reverse of that order.
+    Separators should separate the sort as well, ie step one should result in a-b-c-d-e|aa-bb-cc-dd-ee, not a-aa-b-bb-c-cc-d-dd-e|.";"1. Purpose
+
+This test case verifies the functionality of sorting and reverse-sorting bookmarks within the Bookmark Manager columns (e.g., Name, Location, Date Added, Last Visited).
+
+2. Initial Conditions
+
+    The Bookmark Manager window is open.
+    The bookmark list is populated with multiple entries containing diverse metadata (different names, URLs, and timestamps).
+    The view is set to ""Details"" or a similar mode that displays sortable columns.
+
+3. Steps/Description
+
+    Click on the ""Name"" column header to sort the bookmarks alphabetically (A-Z).
+    Click on the ""Name"" column header a second time to reverse-sort the bookmarks (Z-A).
+    Click on the ""Date Added"" or ""Last Visited"" column header to sort chronologically (oldest to newest).
+    Click on the same date/time column header a second time to reverse-sort (newest to oldest).
+    Perform sorting operations on the ""Location"" (URL) column to verify alphanumeric ascending and descending order.
+
+4. Expected Results
+
+    The bookmark list updates immediately to reflect the alphabetical order (A-Z) after the first click on ""Name"".
+    The bookmark list updates to reflect the reverse alphabetical order (Z-A) after the second click.
+    The list correctly reorders based on the selected date/time criteria in both ascending and descending directions.
+    The URL column sorts correctly based on the domain/path string structure in both directions.
+    The visual indicators (e.g., arrows) in the column headers correctly reflect the current sort direction.";0.8797;TP;
+19;"Purpose
+
+This basic testcase is designed to verify that columns are resizable by dragging them to an arbitrary size.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Select Bookmarks|Manage Bookmarks.
+    Mouseover the separator between the ""Name"" and ""URL"" columns.
+    Click and drag that separator to the left and right.
+    Repeat this with each of the other column separators.
+
+Expected Results
+
+    In step(2) the mouse pointer should change to a double-arrowed icon (platform specific or XP?).
+    In step(3) the column sizes on either side of the separator should shrink and grow as you drag. The content of the column should move with the column header. Column content that is obscured should be replaced by the ellipsis(?).";"Purpose
+
+This test case is designed to verify that the columns within the Bookmarks Manager are resizable, allowing the user to adjust the width of columns to display or hide more information about the bookmark entries.
+
+Initial Conditions
+
+    The Bookmarks Manager window is open (accessible via the ""Manage Bookmarks..."" menu item).
+    The Bookmarks Manager is populated with multiple bookmarks containing various metadata fields (e.g., Name, Location/URL, Tags, Date Added, Last Visited).
+    The view is set to a ""Details"" or list-based view where column headers are visible.
+
+Steps/Description
+
+    1. Locate the vertical divider lines between the column headers (e.g., between the ""Name"" and ""Location"" columns).
+    2. Hover the mouse cursor over a divider line until the cursor changes to a resize icon (typically a double-headed arrow).
+    3. Click and hold the left mouse button on the divider line.
+    4. Drag the divider line to the left to shrink the column width.
+    5. Drag the divider line to the right to expand the column width.
+    6. Release the mouse button to set the new column width.
+    7. Observe the behavior of the content within the columns during and after the resizing operation.
+
+Expected Results
+
+    The column width should adjust dynamically as the mouse is dragged.
+    Content within the column should be truncated or revealed based on the new width (e.g., long URLs should be hidden or shown depending on the column size).
+    The layout should remain stable after the resize, and the new column width should persist while the Bookmarks Manager window remains open.
+    The resizing action should not cause the application to crash or the UI to become unresponsive.";0.9082;TP;
+20;"Purpose
+
+This basic testcase is designed to verify that you can pick which columns you would like to show/hide.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Select Bookmarks|Manage Bookmarks.
+    Click the icon on the far right of the column headers.
+    Uncheck two of the items (columns).
+    Recheck an item.
+    Quit and restart the application.
+
+Expected Results
+
+    Step(2) a popup menu should appear listing all of the column headers as menuitems.
+    Step(3), they should all be checked by default and unchecking should cause that column to disappear from the manage bookmarks window.
+    Step(4), the columns should reappear upon rechecking its name on the list.
+    Step(5) the columns should appear just as the did after step(4).";"Purpose
+
+This test case is designed to verify the functionality of showing and hiding columns within the Bookmarks Manager interface, ensuring users can customize their view of bookmark metadata.
+
+Initial Conditions
+
+1. The Bookmarks Manager window is open.
+2. The view is set to a detailed list mode that displays multiple columns (e.g., Name, Location, Tags, Date Added, Last Visited).
+3. The user has access to the column header context menu or the view settings menu.
+
+Steps/Description
+
+1. Right-click on any column header in the Bookmarks Manager.
+2. Observe the context menu listing all available columns with checkboxes.
+3. Uncheck a currently visible column (e.g., ""Tags"").
+4. Verify the removal of the column from the display.
+5. Right-click on a column header again.
+6. Check the previously hidden column (e.g., ""Tags"").
+7. Verify the reappearance of the column in the display.
+8. Toggle multiple columns on and off in various combinations.
+
+Expected Results
+
+1. A context menu appears listing all available metadata fields (Name, Location, Tags, etc.).
+2. Unchecking a column immediately hides that specific column from the Bookmarks Manager list view.
+3. Checking a column immediately restores that column to the display, preserving the data associated with each bookmark.
+4. The application handles column state persistence correctly, maintaining the visibility settings during the session.
+5. The layout of the remaining columns adjusts automatically to fill the available space when a column is hidden or shown.";0.8904;TP;
+21;"Purpose
+
+This basic testcase is designed to verify that multiple bookmarks can be deleted at one time. It also serves to test marquee (multiple) selection in the Manage Bookmarks context.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+
+Steps/Description
+
+    Select the toplevel ""Bookmarks"" menu. Select Bookmarks|Manage Bookmarks.
+    Select any bookmark. Shift+click or drag to select more (at least 3).
+    Select Edit|Delete.
+
+Expected Results
+
+    The bookmarks should no longer appear in the Manage Bookmarks window, the bookmarks sidebar panel, the top-level ""Bookmarks"" menu and the bookmarks popup on the personal toolbar.";"Purpose
+
+This test case is designed to verify that the Bookmark Manager supports the selection and deletion of multiple bookmark entries simultaneously.
+
+Initial Conditions
+
+    The Bookmarks Manager is open and populated with multiple bookmarks.
+    Multiple bookmarks are located within the same folder or viewable list.
+
+Steps/Description
+
+    Open the ""Manage Bookmarks"" window.
+    Navigate to a folder containing at least three bookmarks.
+    Select the first bookmark, then hold the ""Ctrl"" key (or ""Cmd"" on Mac) and click on two additional bookmarks to create a multi-selection.
+    Right-click on the selected group and choose ""Delete"" from the context menu, or press the ""Delete"" key on the keyboard.
+    Confirm the deletion if a confirmation dialog appears.
+
+Expected Results
+
+    All selected bookmarks are successfully removed from the folder.
+    The remaining bookmarks in the folder are unaffected.
+    The deletion action is reflected correctly in the folder tree and the main list view.";0.9138;TP;
+22;"Purpose
+
+This basic testcase is designed to verify that bookmarks and folders can't be dropped onto themselves, an immediate parent container or any child container.
+Initial Conditions
+
+    You must have a bookmarks file.
+    To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+    You also have the option to use this very large bookmarks file.
+    You must also customize your sidebar to include a bookmarks panel.
+    As part of your bookmarks file you need a folder (lets' call it folder ""A"") that contains bookmarks and another folder (let's call this folder ""A1"" (read Asub1)) that contains bookmarks as well.
+
+Steps/Description
+
+    Select Bookmarks|Manage Bookmarks.
+    Select folder A1 then drag&drop it onto or within itself
+    Select folder A1 then drag&drop it onto or within folder A.
+    Select folder A then drag&drop it onto or within folder A1.
+    Select a bookmark within folder A1 and drop it onto folder A1.
+
+Expected Results
+
+    Nothing should happen! No bookmark or folder should be moved in any of these cases. Ideally, one should see the International symbol for ""No"" cursor.";"1. Purpose
+This test case is designed to verify that the Bookmark Manager correctly handles the bulk deletion of multiple selected bookmarks or folders in a single operation.
+
+2. Initial Conditions
+* The Bookmark Manager window is open.
+* The user has a list of bookmarks and/or folders populated in the manager.
+* The user has the ability to select multiple items using standard selection methods (e.g., Ctrl+Click or Shift+Click).
+
+3. Steps/Description
+* Open the Bookmark Manager.
+* Select a range of bookmarks or folders using the mouse and keyboard (e.g., hold 'Ctrl' and click multiple individual items, or hold 'Shift' to select a contiguous block).
+* Right-click on the selection to open the context menu and select ""Delete"", or press the ""Delete"" key on the keyboard.
+* Confirm the deletion if a confirmation dialog is presented.
+* Observe the bookmark list in the manager.
+
+4. Expected Results
+* All selected bookmarks and folders are removed from the Bookmark Manager interface immediately after the deletion command.
+* If the deleted items were visible in other access points (e.g., Bookmarks Menu, Bookmarks Toolbar), they are no longer present in those locations.
+* The application remains stable and does not crash during the bulk removal process.
+* If a confirmation dialog was shown, the items are only removed upon explicit user confirmation.";0.7465;TP;
