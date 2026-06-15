@@ -1,112 +1,158 @@
 import pytest
 from solution import calculate_final_price
 
-# 1. Testes de Classes de Equivalência (EP) e Casos Negativos/Invariantes para value negativo
+
 @pytest.mark.parametrize(
-    "value, customer_type, expected",
+    "value, customer_type, expected_price",
     [
-        # Cenário: value negativo (preço final é 0.0)
+        # Casos Negativos / Análise de Valores-Limite / Invariantes (AC4)
         (-50.0, "common", 0.0),
-        (-1.0, "premium", 0.0),
-        # Cenário: value negativo (reforço)
-        (-0.0001, "common", 0.0),
-        # Cenário: Invariante: Preço final nunca negativo
-        (-999.99, "premium", 0.0),
+        (-0.01, "premium", 0.0),
+        (-100.0, "common", 0.0),
+    ],
+    ids=[
+        "negative_value_common",
+        "negative_value_premium_close_to_zero",
+        "negative_value_large",
     ],
 )
-def test_negative_value_returns_zero(value, customer_type, expected):
-    assert calculate_final_price(value, customer_type) == expected
+def test_calculate_final_price_negative_values_return_zero(
+    value, customer_type, expected_price
+):
+    """
+    Testa que valores de entrada negativos resultam em preço final 0.0.
+    Cobre AC4 e outros casos negativos.
+    """
+    assert calculate_final_price(value, customer_type) == pytest.approx(expected_price)
 
 
-# 2. Testes para 0 <= value <= 100 (sem desconto) e Valores-Limite
 @pytest.mark.parametrize(
-    "value, customer_type, expected",
+    "value, customer_type, expected_price",
     [
-        # Cenário: 0 <= value <= 100 (sem desconto)
-        (100.0, "common", 100.0),  # AC1
-        (100.0, "premium", 100.0),
+        # Análise de Valores-Limite / Classes de Equivalência (0 <= value <= 100)
+        (0.0, "common", 0.0),
+        (0.01, "premium", 0.01),
         (50.0, "common", 50.0),
         (50.0, "premium", 50.0),
-        (0.0, "common", 0.0),
-        # Cenário: Limite inferior para value > 0
-        (0.01, "common", 0.01),
-        # Cenário: Limite superior para value <= 100
         (99.99, "common", 99.99),
-        # Cenário: Invariante: Preço final nunca maior que value (para value >= 0)
-        (75.0, "common", 75.0),
+        (100.0, "common", 100.0),  # AC1
+        (100.0, "premium", 100.0),
+        # Casos de Borda / Arredondamento (sem desconto)
+        (95.015, "common", 95.02),  # 95.015 arredondado para 95.02
+    ],
+    ids=[
+        "value_zero",
+        "value_just_above_zero_premium",
+        "value_mid_range_common",
+        "value_mid_range_premium",
+        "value_just_below_limit",
+        "value_at_limit_common_AC1",
+        "value_at_limit_premium",
+        "rounding_no_discount",
     ],
 )
-def test_value_up_to_100_no_discount(value, customer_type, expected):
-    assert calculate_final_price(value, customer_type) == pytest.approx(expected)
+def test_calculate_final_price_no_discount_up_to_100(
+    value, customer_type, expected_price
+):
+    """
+    Testa que não há desconto para compras de valor <= 100.0,
+    independentemente do tipo de cliente.
+    Cobre AC1 e casos de arredondamento sem desconto.
+    """
+    assert calculate_final_price(value, customer_type) == pytest.approx(expected_price)
 
 
-# 3. Testes para value > 100 e customer_type = "common" (5% de desconto)
 @pytest.mark.parametrize(
-    "value, customer_type, expected",
+    "value, customer_type, expected_price",
     [
-        # Cenário: value > 100 e customer_type = "common" (5% de desconto)
-        (200.0, "common", 190.0),  # AC2
-        (150.0, "common", 142.50),
-        # Cenário: Limite inferior para value > 100 (com desconto)
+        # Análise de Valores-Limite / Classes de Equivalência (value > 100, common)
         (100.01, "common", 95.01),  # 100.01 * 0.95 = 95.0095 -> 95.01
-        # Cenário: Valores extremos para value (muito grandes)
-        (1_000_000.0, "common", 950_000.0),
-    ],
-)
-def test_value_over_100_common_customer_5_percent_discount(value, customer_type, expected):
-    assert calculate_final_price(value, customer_type) == pytest.approx(expected)
-
-
-# 4. Testes para value > 100 e customer_type = "premium" (10% de desconto)
-@pytest.mark.parametrize(
-    "value, customer_type, expected",
-    [
-        # Cenário: value > 100 e customer_type = "premium" (10% de desconto)
-        (200.0, "premium", 180.0),  # AC3
-        (150.0, "premium", 135.00),
-        # Cenário: Limite inferior para value > 100 (com desconto)
-        (100.01, "premium", 90.01),  # 100.01 * 0.90 = 90.009 -> 90.01
-        # Cenário: Valores extremos para value (muito grandes)
-        (1_000_000.0, "premium", 900_000.0),
-        # Cenário: Invariante: Preço final nunca maior que value (para value >= 0)
-        (300.0, "premium", 270.0),
-    ],
-)
-def test_value_over_100_premium_customer_10_percent_discount(value, customer_type, expected):
-    assert calculate_final_price(value, customer_type) == pytest.approx(expected)
-
-
-# 5. Testes para customer_type desconhecido (tratado como common)
-@pytest.mark.parametrize(
-    "value, customer_type, expected",
-    [
-        # Cenário: customer_type desconhecido (tratado como common)
-        (200.0, "desconhecido", 190.0),  # AC5
-        (200.0, "outro_tipo_qualquer", 190.0),
-        # Cenário: customer_type com case sensitivity (não reconhecido)
-        (200.0, "COMMON", 190.0),
-        (200.0, "PREMIUM", 190.0),
-        # Cenário: customer_type vazio ou com espaços em branco
-        (200.0, "", 190.0),
-        (200.0, "   ", 190.0),
-    ],
-)
-def test_unknown_customer_type_treated_as_common(value, customer_type, expected):
-    assert calculate_final_price(value, customer_type) == pytest.approx(expected)
-
-
-# 6. Testes de arredondamento para 2 casas decimais
-@pytest.mark.parametrize(
-    "value, customer_type, expected",
-    [
-        # Cenário: Testes de arredondamento para 2 casas decimais (com round(x, 2))
-        (105.263, "common", 100.00),  # 105.263 * 0.95 = 99.99985 -> 100.00
-        (105.264, "common", 100.00),  # 105.264 * 0.95 = 100.0008 -> 100.00
-        (105.265, "common", 100.00),  # 105.265 * 0.95 = 100.00175 -> 100.00
+        (200.0, "common", 190.0),  # AC2
+        (1000.0, "common", 950.0),
+        # Casos de Borda / Arredondamento (common)
+        (142.975, "common", 135.83),  # 142.975 * 0.95 = 135.82625 -> 135.83
         (100.005, "common", 95.00),  # 100.005 * 0.95 = 95.00475 -> 95.00
         (100.015, "common", 95.01),  # 100.015 * 0.95 = 95.01425 -> 95.01
-        (100.025, "common", 95.02),  # 100.025 * 0.95 = 95.02375 -> 95.02
+        (
+            100.00000000000001,
+            "common",
+            95.00,
+        ),  # 100.00000000000001 * 0.95 = 95.0000000000000095 -> 95.00
+    ],
+    ids=[
+        "value_just_above_limit_common",
+        "value_200_common_AC2",
+        "value_1000_common",
+        "rounding_common_half_up_1",
+        "rounding_common_half_up_2",
+        "rounding_common_half_up_3",
+        "rounding_common_float_precision",
     ],
 )
-def test_rounding_to_two_decimal_places(value, customer_type, expected):
-    assert calculate_final_price(value, customer_type) == pytest.approx(expected)
+def test_calculate_final_price_discount_common_customer(
+    value, customer_type, expected_price
+):
+    """
+    Testa o cálculo de desconto de 5% para clientes 'common' em compras > 100.0.
+    Cobre AC2 e casos de arredondamento.
+    """
+    assert calculate_final_price(value, customer_type) == pytest.approx(expected_price)
+
+
+@pytest.mark.parametrize(
+    "value, customer_type, expected_price",
+    [
+        # Análise de Valores-Limite / Classes de Equivalência (value > 100, premium)
+        (100.01, "premium", 90.01),  # 100.01 * 0.90 = 90.009 -> 90.01
+        (200.0, "premium", 180.0),  # AC3
+        (1000.0, "premium", 900.0),
+        # Casos de Borda / Arredondamento (premium)
+        (142.975, "premium", 128.68),  # 142.975 * 0.90 = 128.6775 -> 128.68
+        (100.005, "premium", 90.00),  # 100.005 * 0.90 = 90.0045 -> 90.00
+        (100.015, "premium", 90.01),  # 100.015 * 0.90 = 90.0135 -> 90.01
+    ],
+    ids=[
+        "value_just_above_limit_premium",
+        "value_200_premium_AC3",
+        "value_1000_premium",
+        "rounding_premium_half_up_1",
+        "rounding_premium_half_up_2",
+        "rounding_premium_half_up_3",
+    ],
+)
+def test_calculate_final_price_discount_premium_customer(
+    value, customer_type, expected_price
+):
+    """
+    Testa o cálculo de desconto de 10% para clientes 'premium' em compras > 100.0.
+    Cobre AC3 e casos de arredondamento.
+    """
+    assert calculate_final_price(value, customer_type) == pytest.approx(expected_price)
+
+
+@pytest.mark.parametrize(
+    "value, customer_type, expected_price",
+    [
+        # Classes de Equivalência / Casos Negativos (customer_type desconhecido)
+        (200.0, "desconhecido", 190.0),  # AC5
+        (200.0, "", 190.0),
+        (200.0, "COMMON", 190.0),  # Case-insensitive, tratado como common
+        (200.0, "PREMIUM", 180.0),  # Case-insensitive, tratado como premium
+        (200.0, None, 190.0),  # None type, tratado como common
+    ],
+    ids=[
+        "unknown_customer_type_AC5",
+        "empty_customer_type",
+        "uppercase_common_customer_type",
+        "uppercase_premium_customer_type",
+        "none_customer_type",
+    ],
+)
+def test_calculate_final_price_unknown_customer_type_treated_as_common(
+    value, customer_type, expected_price
+):
+    """
+    Testa que tipos de cliente desconhecidos são tratados como 'common'.
+    Cobre AC5 e variações de entrada para customer_type.
+    """
+    assert calculate_final_price(value, customer_type) == pytest.approx(expected_price)
