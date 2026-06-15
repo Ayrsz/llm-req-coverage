@@ -1,10 +1,17 @@
 # Fault: off-by-one na fronteira (< em vez de <=).
 # Aplica desconto em compras de exatamente R$ 100.
+from decimal import Decimal, ROUND_HALF_UP
+
+
+def _round2(x: Decimal) -> float:
+    return float(x.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
+
+
 def calculate_final_price(value: float, customer_type: str) -> float:
-    if value < 0:
+    v = Decimal(str(value))
+    if v < 0:
         return 0.0
-    if value < 100:
-        return round(float(value), 2)
-    if customer_type == "premium":
-        return round(value * 0.90, 2)
-    return round(value * 0.95, 2)
+    if v < 100:
+        return _round2(v)
+    rate = Decimal("0.90") if customer_type == "premium" else Decimal("0.95")
+    return _round2(v * rate)
