@@ -1,0 +1,9 @@
+strategy,requirement,generated,executable,valid_rate,passing_correct,correct_pass_rate,useful,bug_detection_rate,bugs_total,bugs_killed,mutation_score,redundant_tests
+direct,ALL,73,73,1.0,69,0.9452,46,0.6667,15,15,1.0,40
+direct,req_001,29,29,1.0,25,0.8621,23,0.92,5,5,1.0,23
+direct,req_002,26,26,1.0,26,1.0,14,0.5385,5,5,1.0,11
+direct,req_003,18,18,1.0,18,1.0,9,0.5,5,5,1.0,6
+two_step,ALL,69,69,1.0,69,1.0,49,0.7101,15,15,1.0,43
+two_step,req_001,33,33,1.0,33,1.0,30,0.9091,5,5,1.0,30
+two_step,req_002,21,21,1.0,21,1.0,11,0.5238,5,5,1.0,8
+two_step,req_003,15,15,1.0,15,1.0,8,0.5333,5,5,1.0,5
