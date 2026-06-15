@@ -1,14 +1,25 @@
 # LLM Requirements → Executable Tests
 
-Projeto experimental para avaliar se um LLM consegue **gerar testes unitários
-executáveis (`pytest`)** a partir de requisitos em linguagem natural.
+Projeto experimental que avalia se um LLM consegue **gerar testes unitários
+executáveis (`pytest`)** a partir de requisitos escritos em linguagem natural.
 
-A qualidade do teste **não** é medida por similaridade textual com testes
-humanos. É medida por **execução**: um bom teste passa na implementação correta
-e falha em pelo menos uma implementação defeituosa (estilo *mutation testing*).
+A pergunta central é objetiva e verificável por execução:
 
-> A abordagem anterior (similaridade por embeddings) foi descontinuada em favor
-> desta avaliação executável.
+> O teste gerado **valida a implementação correta** e **detecta implementações
+> defeituosas**?
+
+Cada teste gerado é executado contra uma implementação correta e contra várias
+implementações com defeitos controlados (estilo *mutation testing*). Um bom teste
+passa na implementação correta e falha em pelo menos uma defeituosa.
+
+## Questões de pesquisa
+
+- **QP1 — Executabilidade:** que proporção dos testes gerados é válida e executa?
+- **QP2 — Correção:** que proporção passa na implementação correta?
+- **QP3 — Detecção:** que proporção detecta pelo menos um defeito?
+- **QP4 — Efetividade por bug:** quais tipos de defeito são mais detectados?
+- **QP5 — Estratégia:** gerar em duas etapas (identificar técnicas e depois
+  escrever os testes) supera a geração direta?
 
 ## Fluxo
 
@@ -132,4 +143,3 @@ O free tier do Gemini impõe limites baixos (ex.: ~20 gerações/dia em
   I/O, UI ou integração externa.
 - **Dependência da assinatura:** o requisito padroniza a interface para reduzir isso.
 - **N pequeno:** piloto com 3 requisitos; ampliar para conclusões mais fortes.
-```
