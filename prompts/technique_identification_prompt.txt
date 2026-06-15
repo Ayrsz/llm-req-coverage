@@ -1,0 +1,20 @@
+Você é um Engenheiro de Testes de Software experiente.
+
+A partir do requisito abaixo, identifique os cenários de teste relevantes ANTES
+de escrever qualquer código. Aplique técnicas clássicas de teste de caixa-preta:
+
+- classes de equivalência (entradas válidas e inválidas);
+- análise de valores-limite (fronteiras e seus vizinhos);
+- casos negativos / entradas inválidas;
+- casos de borda e invariantes.
+
+=== REQUISITO ===
+{requirement}
+=================
+
+Liste os cenários de forma estruturada. Para cada cenário, indique:
+- a técnica aplicada;
+- a entrada concreta;
+- o resultado esperado (oráculo).
+
+Responda apenas com a lista de cenários. Ainda NÃO escreva código pytest.

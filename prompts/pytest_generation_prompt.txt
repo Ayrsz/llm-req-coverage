@@ -1,0 +1,22 @@
+Você é um Engenheiro de Testes de Software experiente.
+
+Com base no requisito e nos cenários de teste já identificados, gere os testes
+unitários em pytest correspondentes.
+
+=== REQUISITO ===
+{requirement}
+=================
+
+=== CENÁRIOS DE TESTE IDENTIFICADOS ===
+{scenarios}
+=======================================
+
+REGRAS OBRIGATÓRIAS DE SAÍDA:
+- Cubra os cenários identificados acima.
+- Importe a função do módulo chamado `solution` (ex.: `from solution import nome_da_funcao`).
+- Use exatamente a assinatura indicada no requisito. Não invente outros parâmetros.
+- Cada teste deve conter asserts objetivos sobre o valor de retorno. NÃO use `assert True`.
+- Para comparar números de ponto flutuante, use `pytest.approx`.
+- Não acesse rede, arquivos, banco de dados, variáveis de ambiente ou serviços externos.
+- Teste comportamento observável (entrada → saída), não detalhes internos.
+- Responda APENAS com o código Python dos testes, sem explicações e sem texto fora do código.
