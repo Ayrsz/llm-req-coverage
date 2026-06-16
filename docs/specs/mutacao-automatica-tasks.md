@@ -75,13 +75,13 @@
 
 ## Bloco E — Orquestração e saída
 
-### [ ] T11 — `evaluate_config` + `main()` + flags
+### [x] T11 — `evaluate_config` + `main()` + flags
 - **O que fazer:** `evaluate_config(req_id, strategy, passing_tests, timeout)` encadeia invocação→parsing→score e devolve a linha de resultado (incl. `status` ok/skipped). `main()` itera as `(req × estratégia)` com teste gerado, lê os verdes (T07), agrega; flags `--timeout` e (recomendado) `--limit`/`--strategy`, no padrão dos scripts existentes.
 - **Onde fazer:** `evaluation/mutation_run.py`.
 - **Pré-req:** T06, T08, T10.
 - **Como validar:** `python evaluation/mutation_run.py --limit 1` roda uma config ponta-a-ponta sem erro.
 
-### [ ] T12 — Escrita dos CSVs de saída
+### [x] T12 — Escrita dos CSVs de saída
 - **O que fazer:** gravar `evaluation/mutation_summary.csv` (`requirement, strategy, mutants_total, mutants_killed, mutants_survived, mutants_timeout, mutants_suspicious, mutation_score_auto, status`) e `evaluation/mutation_survivors.csv` (`requirement, strategy, mutant_id, status, diff`). UTF-8, no padrão de `metrics.py`.
 - **Onde fazer:** `evaluation/mutation_run.py`.
 - **Pré-req:** T11.

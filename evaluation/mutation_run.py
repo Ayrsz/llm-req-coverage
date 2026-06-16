@@ -33,6 +33,8 @@ DEFAULT_MATRIX = REPO_ROOT / "evaluation" / "results_matrix.csv"
 DEFAULT_GENERATED = REPO_ROOT / "generated_tests"
 DEFAULT_IMPL = REPO_ROOT / "implementations"
 
+STRATEGIES = ("direct", "two_step")
+
 # Linha-resumo da matriz que não corresponde a um node id de teste real.
 COLLECTION_ERROR = "<collection_error>"
 
@@ -221,3 +223,153 @@ def show_survivor_diff(workdir: Path, mutant_id: str) -> str:
         stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
     )
     return r.stdout
+
+
+# --- Montagem de linhas de CSV (puro) -------------------------------------
+
+SUMMARY_FIELDS = [
+    "requirement", "strategy", "mutants_total", "mutants_killed",
+    "mutants_survived", "mutants_timeout", "mutants_suspicious",
+    "mutation_score_auto", "status",
+]
+SURVIVOR_FIELDS = ["requirement", "strategy", "mutant_id", "status", "diff"]
+
+
+def summary_row(req_id: str, strategy: str, status: str,
+                result: MutationResult | None = None) -> dict:
+    """Uma linha de ``mutation_summary.csv``. ``result=None`` ⇒ config sem dados."""
+    if result is None:
+        return {
+            "requirement": req_id, "strategy": strategy,
+            "mutants_total": 0, "mutants_killed": 0, "mutants_survived": 0,
+            "mutants_timeout": 0, "mutants_suspicious": 0,
+            "mutation_score_auto": 0.0, "status": status,
+        }
+    return {
+        "requirement": req_id, "strategy": strategy,
+        "mutants_total": result.total, "mutants_killed": result.killed,
+        "mutants_survived": len(result.survived),
+        "mutants_timeout": len(result.timeout),
+        "mutants_suspicious": len(result.suspicious),
+        "mutation_score_auto": mutation_score(result), "status": status,
+    }
+
+
+def survivor_rows(req_id: str, strategy: str, result: MutationResult,
+                  diffs: dict[str, str]) -> list[dict]:
+    """Linhas de ``mutation_survivors.csv``: um mutante não-morto por linha."""
+    rows = []
+    for status_name in NOT_KILLED_STATUSES:
+        for mutant_id in getattr(result, status_name):
+            rows.append({
+                "requirement": req_id, "strategy": strategy,
+                "mutant_id": mutant_id, "status": status_name,
+                "diff": diffs.get(mutant_id, ""),
+            })
+    return rows
+
+
+# --- Orquestração ---------------------------------------------------------
+
+
+def evaluate_config(req_id: str, strategy: str, *, timeout: int = 120,
+                    matrix_path=DEFAULT_MATRIX, generated_dir=DEFAULT_GENERATED,
+                    impl_dir=DEFAULT_IMPL) -> tuple[dict, list[dict]]:
+    """Avalia uma ``(requisito, estratégia)``: invocação → parsing → linhas.
+
+    Devolve ``(linha_summary, linhas_survivors)``. Config sem testes verdes é
+    ``skipped`` sem invocar o mutmut. Falha de execução vira ``status="error"``.
+    """
+    passing = select_passing_tests(req_id, strategy, matrix_path)
+    if should_skip(passing):
+        return summary_row(req_id, strategy, "skipped"), []
+
+    failing = select_failing_tests(req_id, strategy, matrix_path)
+    workdir = prepare_workdir(req_id, strategy, failing,
+                              generated_dir=generated_dir, impl_dir=impl_dir)
+    try:
+        run_out, results_out = run_mutmut(workdir, timeout)
+        total = parse_run_total(run_out)
+        result = build_mutation_result(total, parse_results(results_out))
+        diffs = {
+            mid: show_survivor_diff(workdir, mid)
+            for status_name in NOT_KILLED_STATUSES
+            for mid in getattr(result, status_name)
+        }
+        return (summary_row(req_id, strategy, "ok", result),
+                survivor_rows(req_id, strategy, result, diffs))
+    except (subprocess.TimeoutExpired, ValueError) as exc:
+        print(f"  [erro] {req_id}/{strategy}: {type(exc).__name__}", file=sys.stderr)
+        return summary_row(req_id, strategy, "error"), []
+    finally:
+        shutil.rmtree(workdir, ignore_errors=True)
+
+
+def _write_csv(path: Path, fieldnames: list[str], rows: list[dict]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def _parse_args():
+    import argparse
+    p = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    p.add_argument("--matrix", default=str(DEFAULT_MATRIX))
+    p.add_argument("--generated-dir", default=str(DEFAULT_GENERATED))
+    p.add_argument("--implementations-dir", default=str(DEFAULT_IMPL))
+    p.add_argument("--out", default=str(REPO_ROOT / "evaluation" / "mutation_summary.csv"))
+    p.add_argument("--survivors-out",
+                   default=str(REPO_ROOT / "evaluation" / "mutation_survivors.csv"))
+    p.add_argument("--strategy", choices=[*STRATEGIES, "all"], default="all")
+    p.add_argument("--limit", type=int, default=0,
+                   help="Limita o número de requisitos (0 = todos).")
+    p.add_argument("--timeout", type=int, default=120,
+                   help="Timeout (s) por execução do mutmut em uma config.")
+    return p.parse_args()
+
+
+def main():
+    args = _parse_args()
+    impl_root = Path(args.implementations_dir)
+    generated_root = Path(args.generated_dir)
+    strategies = list(STRATEGIES) if args.strategy == "all" else [args.strategy]
+
+    req_dirs = sorted(d for d in impl_root.glob("req_*") if d.is_dir())
+    if args.limit:
+        req_dirs = req_dirs[:args.limit]
+    if not req_dirs:
+        sys.exit(f"Nenhuma implementação encontrada em {impl_root}")
+
+    summary_all, survivors_all = [], []
+    for req_dir in req_dirs:
+        req_id = req_dir.name
+        for strategy in strategies:
+            if not (generated_root / strategy / f"test_{req_id}.py").exists():
+                print(f"[skip] {strategy}/{req_id}: teste não gerado.")
+                continue
+            print(f"[run] {strategy}/{req_id} ...")
+            summary, survivors = evaluate_config(
+                req_id, strategy, timeout=args.timeout, matrix_path=Path(args.matrix),
+                generated_dir=generated_root, impl_dir=impl_root,
+            )
+            summary_all.append(summary)
+            survivors_all.extend(survivors)
+            print(f"  -> status={summary['status']} "
+                  f"score={summary['mutation_score_auto']} "
+                  f"({summary['mutants_killed']}/{summary['mutants_total']} mortos)")
+
+    if not summary_all:
+        sys.exit("Nenhuma config avaliada. Gere os testes antes (generate_tests.py).")
+
+    _write_csv(Path(args.out), SUMMARY_FIELDS, summary_all)
+    _write_csv(Path(args.survivors_out), SURVIVOR_FIELDS, survivors_all)
+    print(f"\nSummary -> {args.out}  ({len(summary_all)} configs)")
+    print(f"Survivors -> {args.survivors_out}  ({len(survivors_all)} mutantes não-mortos)")
+
+
+if __name__ == "__main__":
+    main()

@@ -192,3 +192,37 @@ def test_prepare_workdir_sem_reprovados_nao_emite_deselect():
     finally:
         import shutil
         shutil.rmtree(workdir, ignore_errors=True)
+
+
+# --- T11/T12: montagem de linhas de CSV (puro) + caminho skipped -----------
+
+def test_summary_row_skipped():
+    row = mr.summary_row("req_001", "direct", "skipped")
+    assert row["status"] == "skipped"
+    assert row["mutants_total"] == 0 and row["mutation_score_auto"] == 0.0
+
+
+def test_summary_row_ok():
+    res = mr.MutationResult(total=26, killed=23, survived=["a", "b", "c"])
+    row = mr.summary_row("req_001", "two_step", "ok", res)
+    assert row["mutants_total"] == 26
+    assert row["mutants_killed"] == 23
+    assert row["mutants_survived"] == 3
+    assert row["mutation_score_auto"] == 0.8846
+    assert row["status"] == "ok"
+
+
+def test_survivor_rows():
+    res = mr.MutationResult(total=5, killed=3, survived=["m1"], timeout=["m2"])
+    rows = mr.survivor_rows("req_001", "direct", res, {"m1": "diff-1"})
+    assert {r["mutant_id"]: r["status"] for r in rows} == {"m1": "survived", "m2": "timeout"}
+    by_id = {r["mutant_id"]: r for r in rows}
+    assert by_id["m1"]["diff"] == "diff-1"
+    assert by_id["m2"]["diff"] == ""  # sem diff fornecido
+
+
+def test_evaluate_config_skipped_nao_invoca_mutmut(matrix_file):
+    # req_003 só tem <collection_error> -> sem testes verdes -> skipped, sem I/O
+    summary, survivors = mr.evaluate_config("req_003", "direct", matrix_path=matrix_file)
+    assert summary["status"] == "skipped"
+    assert survivors == []
