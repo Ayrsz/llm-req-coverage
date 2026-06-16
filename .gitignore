@@ -1,0 +1,22 @@
+# Secrets / API keys
+.env
+.env.local
+*.key
+
+# Generated experiment outputs
+output/
+content/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# OS / editor
+.DS_Store
+*.swp
