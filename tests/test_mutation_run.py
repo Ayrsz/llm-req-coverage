@@ -114,3 +114,52 @@ def test_mutation_score_todos_mortos():
 def test_mutation_score_total_zero():
     res = mr.MutationResult(total=0, killed=0)
     assert mr.mutation_score(res) == 0.0
+
+
+# --- T07: seleção de testes verdes/reprovados a partir da matriz -----------
+
+_MATRIX_CSV = (
+    "requirement,strategy,test,correct,bug_001,classification\n"
+    "req_001,direct,test_a,pass,fail,useful\n"
+    "req_001,direct,test_b,pass,pass,weak\n"
+    "req_001,direct,test_c,fail,fail,invalid\n"          # reprovado na correta
+    "req_001,two_step,test_d,pass,fail,useful\n"          # outra estratégia
+    "req_002,direct,test_e,pass,fail,useful\n"            # outro requisito
+    "req_003,direct,<collection_error>,error,error,not_executable\n"
+)
+
+
+@pytest.fixture
+def matrix_file(tmp_path):
+    p = tmp_path / "results_matrix.csv"
+    p.write_text(_MATRIX_CSV, encoding="utf-8")
+    return p
+
+
+def test_select_passing_tests_filtra_por_config(matrix_file):
+    # só os correct == pass de (req_001, direct)
+    assert mr.select_passing_tests("req_001", "direct", matrix_file) == ["test_a", "test_b"]
+
+
+def test_select_passing_tests_outra_config(matrix_file):
+    assert mr.select_passing_tests("req_001", "two_step", matrix_file) == ["test_d"]
+
+
+def test_select_failing_tests_exclui_pass_e_collection_error(matrix_file):
+    # reprovados reais (correct != pass), sem a linha <collection_error>
+    assert mr.select_failing_tests("req_001", "direct", matrix_file) == ["test_c"]
+
+
+def test_select_failing_tests_collection_error_nao_e_node_id(matrix_file):
+    # <collection_error> não é um node id deselecionável -> não entra
+    assert mr.select_failing_tests("req_003", "direct", matrix_file) == []
+
+
+# --- T08: guard puro should_skip ------------------------------------------
+
+def test_should_skip_lista_vazia():
+    assert mr.should_skip([]) is True
+
+
+def test_should_skip_com_testes():
+    assert mr.should_skip(["test_x"]) is False

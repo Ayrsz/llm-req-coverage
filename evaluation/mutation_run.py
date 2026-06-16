@@ -19,8 +19,16 @@ offline (CA4) possa importá-lo sem efeitos colaterais.
 
 from __future__ import annotations
 
+import csv
 import re
 from dataclasses import dataclass, field
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_MATRIX = REPO_ROOT / "evaluation" / "results_matrix.csv"
+
+# Linha-resumo da matriz que não corresponde a um node id de teste real.
+COLLECTION_ERROR = "<collection_error>"
 
 # Status que o ``mutmut results`` lista (todos significam "não-morto").
 NOT_KILLED_STATUSES = ("survived", "timeout", "suspicious", "skipped")
@@ -101,3 +109,37 @@ def mutation_score(result: MutationResult) -> float:
     if result.total == 0:
         return 0.0
     return round(result.killed / result.total, 4)
+
+
+# --- Filtro de baseline verde (T07/T08) -----------------------------------
+# O ``mutmut`` exige que a suíte passe inteira na implementação não-mutada; um
+# teste ``invalid`` (que reprova na ``correct.py``) faz o ``mutmut`` abortar.
+# A classificação por teste já existe em ``results_matrix.csv``; reusamos.
+
+
+def _config_rows(req_id: str, strategy: str, matrix_path) -> list[dict]:
+    with open(matrix_path, newline="", encoding="utf-8") as f:
+        return [
+            row for row in csv.DictReader(f)
+            if row["requirement"] == req_id and row["strategy"] == strategy
+        ]
+
+
+def select_passing_tests(req_id: str, strategy: str, matrix_path=DEFAULT_MATRIX) -> list[str]:
+    """Nomes de teste que passam na implementação correta (``correct == pass``)."""
+    return [r["test"] for r in _config_rows(req_id, strategy, matrix_path)
+            if r["correct"] == "pass"]
+
+
+def select_failing_tests(req_id: str, strategy: str, matrix_path=DEFAULT_MATRIX) -> list[str]:
+    """Nomes de teste a deselecionar: reprovam na correta (``correct != pass``).
+
+    Exclui a linha-resumo ``<collection_error>``, que não é um node id real.
+    """
+    return [r["test"] for r in _config_rows(req_id, strategy, matrix_path)
+            if r["correct"] != "pass" and r["test"] != COLLECTION_ERROR]
+
+
+def should_skip(passing_tests: list[str]) -> bool:
+    """Decide se a config deve ser ``skipped``: sem nenhum teste verde."""
+    return not passing_tests

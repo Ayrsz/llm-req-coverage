@@ -46,13 +46,13 @@
 
 ## Bloco C — Filtro de baseline verde
 
-### [ ] T07 — Função de seleção de testes verdes
+### [x] T07 — Função de seleção de testes verdes
 - **O que fazer:** implementar função que, dada `(req_id, strategy)`, lê `evaluation/results_matrix.csv` e devolve os nomes de teste com `correct == pass` para aquela config.
 - **Onde fazer:** `evaluation/mutation_run.py`.
 - **Pré-req:** T03.
 - **Como validar:** teste em `tests/test_mutation_run.py` com um CSV sintético (linhas pass/fail/error) retorna apenas os `pass`; passa em `python -m pytest`.
 
-### [ ] T08 — Guard puro de skip (config sem testes verdes)
+### [x] T08 — Guard puro de skip (config sem testes verdes)
 - **O que fazer:** implementar uma função pura `should_skip(passing_tests) -> bool` (ou `select_or_skip(...)`) que decide, a partir da lista de testes verdes de T07, se a config deve ser marcada `skipped` (lista vazia ⇒ `True`). O `evaluate_config` (T11) apenas consome esse guard; nenhuma lógica de skip vive dentro do `evaluate_config`.
 - **Onde fazer:** `evaluation/mutation_run.py`.
 - **Pré-req:** T07.
