@@ -1,6 +1,36 @@
 # STATE — memória entre sessões
 
-Feature em execução: **Avaliação por mutação automática** (Fase 2).
+Feature em execução: **Escalar o número de requisitos** (Fase 3, 3 → 15).
+Specs: [docs/specs/escalar-requisitos.md](docs/specs/escalar-requisitos.md) ·
+[plano](docs/specs/escalar-requisitos-plan.md) ·
+[tarefas](docs/specs/escalar-requisitos-tasks.md).
+
+## Fase 3 — gabarito e taxonomia (T02, seguir em T03–T08)
+
+**Gabarito de `requirements/req_XXX.md`** (igual a `req_001..003`): título; Descrição;
+Interface (módulo `solution` + **Assinatura**) **com a linha `from solution import <nome>`**
+num bloco de código (âncora do teste de consistência); Domínio de entrada; Regras
+(numeradas); Classes de equivalência; Valores-limite; Entradas inválidas; Invariantes;
+Critérios de aceitação (AC1..). Função **determinística** — proibido `now()`, `random`, I/O.
+
+**Taxonomia dos 5 mutantes** (1 defeito cada, sem erro de sintaxe/import):
+- `bug_001` — fronteira / off-by-one (`<` vs `<=`, limite incluso/excluso)
+- `bug_002` — operador errado (aritmético ou de comparação trocado)
+- `bug_003` — ramo/retorno trocado (classe certa, valor de outra)
+- `bug_004` — constante/literal errado (taxa, limite, mensagem)
+- `bug_005` — guarda ausente / condição invertida (caso inválido não tratado)
+
+**Lista (plano):** req_004 `bmi_category` · req_005 `triangle_type` · req_006 `is_valid_ipv4`
+· req_007 `slugify` · req_008 `is_leap_year` · req_009 `days_between` · req_010 `average_above`
+· req_011 `most_frequent` · req_012 `income_tax` · req_013 `shipping_cost` · req_014 `final_balance`
+· req_015 `apply_commands`.
+
+**Rede de segurança:** `tests/test_requirements_consistency.py` (T01) valida o contrato de
+todo `implementations/req_*` — rodar após cada par autorado.
+
+---
+
+## Histórico — Fase 2 (Avaliação por mutação automática, CONCLUÍDA)
 Specs: [docs/specs/mutacao-automatica.md](docs/specs/mutacao-automatica.md) ·
 [plano](docs/specs/mutacao-automatica-plan.md) ·
 [tarefas](docs/specs/mutacao-automatica-tasks.md).
