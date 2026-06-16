@@ -21,11 +21,17 @@ from __future__ import annotations
 
 import csv
 import re
+import shutil
+import subprocess
+import sys
+import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MATRIX = REPO_ROOT / "evaluation" / "results_matrix.csv"
+DEFAULT_GENERATED = REPO_ROOT / "generated_tests"
+DEFAULT_IMPL = REPO_ROOT / "implementations"
 
 # Linha-resumo da matriz que não corresponde a um node id de teste real.
 COLLECTION_ERROR = "<collection_error>"
@@ -143,3 +149,75 @@ def select_failing_tests(req_id: str, strategy: str, matrix_path=DEFAULT_MATRIX)
 def should_skip(passing_tests: list[str]) -> bool:
     """Decide se a config deve ser ``skipped``: sem nenhum teste verde."""
     return not passing_tests
+
+
+# --- Camada de invocação (I/O; chama o mutmut real) -----------------------
+# Mesma ideia de isolamento de run_tests.py::run_against_variant: a variante vira
+# solution.py num diretório próprio e o teste é copiado para lá. Diferença: o
+# diretório PRECISA persistir entre 'mutmut run', 'results' e 'show', então o
+# chamador é responsável por removê-lo (não usamos TemporaryDirectory aqui).
+
+
+def _setup_cfg(deselect_node_ids: list[str]) -> str:
+    """Conteúdo do setup.cfg do workdir.
+
+    ``source_paths=solution.py`` (NÃO ``paths_to_mutate``, deprecado no 3.6.0).
+    Os reprovados na correta entram como pares ``--deselect <node id>`` em
+    ``pytest_add_cli_args`` (um argumento por linha), garantindo baseline verde:
+    sem isso o mutmut aborta com ``failed to collect stats``.
+    """
+    lines = ["[mutmut]", "source_paths=solution.py"]
+    if deselect_node_ids:
+        lines.append("pytest_add_cli_args=")
+        for nid in deselect_node_ids:
+            lines.append("    --deselect")
+            lines.append(f"    {nid}")
+    return "\n".join(lines) + "\n"
+
+
+def prepare_workdir(req_id: str, strategy: str, failing_tests: list[str], *,
+                    generated_dir=DEFAULT_GENERATED, impl_dir=DEFAULT_IMPL) -> Path:
+    """Monta um diretório isolado para o mutmut e devolve seu caminho.
+
+    Copia ``correct.py`` → ``solution.py`` e o teste gerado → ``test_generated.py``;
+    escreve ``setup.cfg`` deselecionando ``failing_tests`` (node ids). O chamador
+    deve remover o diretório ao terminar.
+    """
+    workdir = Path(tempfile.mkdtemp(prefix=f"mutmut_{req_id}_{strategy}_"))
+    shutil.copyfile(impl_dir / req_id / "correct.py", workdir / "solution.py")
+    shutil.copyfile(generated_dir / strategy / f"test_{req_id}.py",
+                    workdir / "test_generated.py")
+    node_ids = [f"test_generated.py::{t}" for t in failing_tests]
+    (workdir / "setup.cfg").write_text(_setup_cfg(node_ids), encoding="utf-8")
+    return workdir
+
+
+def run_mutmut(workdir: Path, timeout: int) -> tuple[str, str]:
+    """Roda ``mutmut run`` e depois ``mutmut results`` com cwd no ``workdir``.
+
+    Usa ``sys.executable -m mutmut`` (o binário do PATH pode apontar para outro
+    interpretador). ``results`` é chamado SEM ``--all`` — com ``--all`` os mortos
+    também seriam listados e a convenção de score (killed = total − listados)
+    ficaria incorreta. Devolve ``(run_stdout, results_stdout)``.
+    """
+    run = subprocess.run(
+        [sys.executable, "-m", "mutmut", "run"],
+        cwd=workdir, timeout=timeout, text=True,
+        stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+    )
+    results = subprocess.run(
+        [sys.executable, "-m", "mutmut", "results"],
+        cwd=workdir, timeout=timeout, text=True,
+        stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+    )
+    return run.stdout, results.stdout
+
+
+def show_survivor_diff(workdir: Path, mutant_id: str) -> str:
+    """Diff de um mutante via ``mutmut show <id>`` (cwd no workdir)."""
+    r = subprocess.run(
+        [sys.executable, "-m", "mutmut", "show", mutant_id],
+        cwd=workdir, text=True,
+        stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+    )
+    return r.stdout

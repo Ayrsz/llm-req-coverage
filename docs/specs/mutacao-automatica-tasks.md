@@ -61,13 +61,13 @@
 
 ## Bloco D — Camada de invocação (I/O; não unit-testada)
 
-### [ ] T09 — `prepare_workdir`
+### [x] T09 — `prepare_workdir`
 - **O que fazer:** criar dir temporário; copiar `implementations/req_XXX/correct.py` → `solution.py`; escrever `setup.cfg` com `[mutmut]\nsource_paths=solution.py`; escrever `test_generated.py` contendo **apenas os testes verdes** (T07). Reusar o padrão de isolamento de `run_tests.py::run_against_variant`.
 - **Onde fazer:** `evaluation/mutation_run.py`.
 - **Pré-req:** T07.
 - **Como validar:** chamada manual gera um dir com `solution.py`, `setup.cfg` (com `source_paths`) e `test_generated.py` só com os verdes; `pytest test_generated.py` nesse dir passa (baseline verde).
 
-### [ ] T10 — `run_mutmut` e `show_survivor_diff`
+### [x] T10 — `run_mutmut` e `show_survivor_diff`
 - **O que fazer:** `run_mutmut(workdir, timeout)` executa `mutmut run` e depois `mutmut results` **com cwd no workdir**, devolvendo as duas saídas brutas (tratar `timeout` como em `run_tests.py`). **`mutmut results` deve ser chamado sem a flag `--all`** — com `--all` os mortos passam a ser listados e a convenção de score do T06 fica incorreta. `show_survivor_diff(workdir, mutant_id)` roda `mutmut show <id>` e devolve o diff bruto.
 - **Onde fazer:** `evaluation/mutation_run.py`.
 - **Pré-req:** T09.

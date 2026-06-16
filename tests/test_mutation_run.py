@@ -163,3 +163,32 @@ def test_should_skip_lista_vazia():
 
 def test_should_skip_com_testes():
     assert mr.should_skip(["test_x"]) is False
+
+
+# --- T09: prepare_workdir (filesystem; não invoca mutmut) ------------------
+
+def test_prepare_workdir_monta_arquivos():
+    failing = ["test_calculate_final_price_unknown_customer_type_treated_as_common[uppercase_premium_customer_type]"]
+    workdir = mr.prepare_workdir("req_001", "two_step", failing)
+    try:
+        assert (workdir / "solution.py").exists()
+        assert (workdir / "test_generated.py").exists()
+        cfg = (workdir / "setup.cfg").read_text(encoding="utf-8")
+        assert "source_paths=solution.py" in cfg
+        # o reprovado vira node id deselecionado
+        assert "--deselect" in cfg
+        assert f"test_generated.py::{failing[0]}" in cfg
+    finally:
+        import shutil
+        shutil.rmtree(workdir, ignore_errors=True)
+
+
+def test_prepare_workdir_sem_reprovados_nao_emite_deselect():
+    workdir = mr.prepare_workdir("req_001", "direct", [])
+    try:
+        cfg = (workdir / "setup.cfg").read_text(encoding="utf-8")
+        assert "source_paths=solution.py" in cfg
+        assert "--deselect" not in cfg
+    finally:
+        import shutil
+        shutil.rmtree(workdir, ignore_errors=True)
