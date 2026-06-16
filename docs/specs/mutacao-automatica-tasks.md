@@ -96,7 +96,7 @@
 - **Como validar:** **CA2** — `mutation_score_auto` tem ≥2 valores distintos (não 1.0 em tudo); **CA3** — `mutation_survivors.csv` lista sobreviventes por config com `diff`. **CA1** — sobre os `generated_tests/` já existentes (sem re-rodar `generate_tests.py`), `python evaluation/run_tests.py` → `python evaluation/metrics.py` reproduz `results_matrix.csv`/`metrics_summary.csv`, e `git status` confirma que os `bug_00N.py` e os scripts antigos estão intactos. **CA5** — `python -m pytest` verde.
 - **Como validar:** **Baseline verde funcionando** — a config `req_001/two_step` aparece no `mutation_summary.csv` com `status="ok"` (não `skipped`) e `mutants_total > 0`. Isso comprova que o teste `invalid` foi filtrado e o `mutmut` não abortou (`failed to collect stats`).
 
-### [ ] T14 — Atualizar documentação
+### [x] T14 — Atualizar documentação
 - **O que fazer:** acrescentar `mutation_run.py` à estrutura/comandos e descrever `mutation_score_auto` (mutmut, muitos mutantes) **vs** `mutation_score` manual (5 por req) lado a lado, deixando explícito que **não são numericamente comparáveis** (conjuntos de mutantes diferentes) e sim complementares; mencionar o filtro de baseline verde e o status `skipped`.
 - **Onde fazer:** `CLAUDE.md` e `README.md`.
 - **Pré-req:** T13.
@@ -104,15 +104,15 @@
 
 ## Definition of Done (espelha o plano)
 
-- [ ] DoD1 — `mutation_run.py` roda standalone e produz `mutation_summary.csv` por config. *(T11, T12)*
-- [ ] DoD2 — CA1: `bug_00N.py` intactos; pipeline antigo reproduz seus CSVs. *(T13)*
-- [ ] DoD3 — CA2: `mutation_score_auto` com ≥2 valores distintos. *(T13)*
-- [ ] DoD4 — CA3: sobreviventes listados por config. *(T12, T13)*
-- [ ] DoD5 — CA4: `tests/test_mutation_run.py` cobre parsing+score+linhas de CSV, offline. *(T04, T06, T07, T12)*
-- [ ] DoD6 — CA5: `python -m pytest` verde. *(T13)*
-- [ ] DoD7 — `mutmut==3.6.0` nas deps; instalação limpa roda. *(T01)*
-- [ ] DoD8 — docs atualizadas. *(T14)*
-- [ ] DoD9 — baseline verde garantido (filtro via `results_matrix.csv`; config sem verdes = `skipped`). *(T07, T08)*
+- [x] DoD1 — `mutation_run.py` roda standalone e produz `mutation_summary.csv` por config. *(T11, T12)*
+- [x] DoD2 — CA1: `bug_00N.py` intactos; pipeline antigo reproduz seus CSVs. *(T13)*
+- [x] DoD3 — CA2: `mutation_score_auto` com ≥2 valores distintos. *(T13)*
+- [x] DoD4 — CA3: sobreviventes listados por config. *(T12, T13)*
+- [x] DoD5 — CA4: `tests/test_mutation_run.py` cobre parsing+score+linhas de CSV, offline. *(T04, T06, T07, T12)*
+- [x] DoD6 — CA5: `python -m pytest` verde. *(T13)*
+- [x] DoD7 — `mutmut==3.6.0` nas deps; instalação limpa roda. *(T01)*
+- [x] DoD8 — docs atualizadas. *(T14)*
+- [x] DoD9 — baseline verde garantido (filtro via `results_matrix.csv`; config sem verdes = `skipped`). *(T07, T08)*
 
 ## Paralelização
 

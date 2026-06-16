@@ -50,8 +50,11 @@ evaluation/
   generate_tests.py      # gera os testes pytest (2 estratégias)
   run_tests.py           # executa cada teste contra cada implementação
   metrics.py             # calcula as métricas
+  mutation_run.py        # mutação automática (mutmut) sobre a suíte gerada
   results_matrix.csv     # matriz de execução (gerada)
   metrics_summary.csv    # métricas (gerada)
+  mutation_summary.csv   # mutation_score automático por config (gerado)
+  mutation_survivors.csv # mutantes sobreviventes, com diff (gerado)
 reports/                 # relatório do experimento
 ```
 
@@ -80,6 +83,26 @@ mutation_score     = mutantes mortos / total de mutantes (por requisito)
 
 Também são reportadas redundância (testes que matam o mesmo conjunto de bugs) e
 a quebra por estratégia (direct × two_step → QP5).
+
+### Mutação manual vs automática
+
+Há **dois** `mutation_score`, complementares e **não comparáveis numericamente**
+(medem conjuntos de mutantes diferentes):
+
+- **manual** (`metrics.py` → `metrics_summary.csv`): sobre os 5 mutantes manuais
+  por requisito (`bug_00N.py`), derivados de uma taxonomia de faltas. Serve à
+  análise fina **por tipo de defeito** (QP4), mas satura em 1.0 (poucos mutantes).
+- **automático** (`mutation_run.py` → `mutation_summary.csv`, coluna
+  `mutation_score_auto`): o [`mutmut`](https://github.com/boxed/mutmut) gera
+  dezenas de mutantes sobre `correct.py` e a suíte gerada pelo LLM tenta matá-los.
+  Volta a discriminar entre estratégias/requisitos. Os mutantes sobreviventes
+  (com diff) vão para `mutation_survivors.csv` — um sobrevivente pode ser
+  **mutante equivalente** (não-matável), então exige triagem humana.
+
+Para garantir o **baseline verde** que o `mutmut` exige (a suíte precisa passar
+inteira na implementação não-mutada), `mutation_run.py` deseleciona os testes que
+reprovam na `correct.py`, lidos de `results_matrix.csv`; uma config sem nenhum
+teste verde é marcada `skipped`.
 
 ## Setup
 
@@ -111,7 +134,15 @@ python evaluation/run_tests.py
 
 # 3) Calcular as métricas.
 python evaluation/metrics.py
+
+# 4) Mutação automática (mutmut) sobre a suíte gerada.
+#    Não chama o LLM; usa results_matrix.csv para o baseline verde.
+python evaluation/mutation_run.py
 ```
+
+Flags de `mutation_run.py`: `--strategy {direct,two_step,all}`, `--limit`,
+`--timeout` (s por config), `--matrix`, `--out`, `--survivors-out`. Requer
+`results_matrix.csv` (passo 2) para o filtro de baseline verde.
 
 Principais flags de `generate_tests.py`: `--strategy {direct,two_step,all}`,
 `--model`, `--temperature`, `--limit`, `--sleep`, `--cache-dir`, `--no-cache`.
