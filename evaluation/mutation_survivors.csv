@@ -1,0 +1,41 @@
+requirement,strategy,mutant_id,status,diff
+req_001,direct,solution.x_calculate_final_price__mutmut_4,survived,"# solution.x_calculate_final_price__mutmut_4: survived
+--- solution.py
++++ solution.py
+@@ -1,6 +1,6 @@
+ def calculate_final_price(value: float, customer_type: str) -> float:
+     v = Decimal(str(value))
+-    if v < 0:
++    if v <= 0:
+         return 0.0
+     if v <= 100:
+         return _round2(v)
+"
+req_001,two_step,solution.x__round2__mutmut_3,survived,"# solution.x__round2__mutmut_3: survived
+--- solution.py
++++ solution.py
+@@ -1,2 +1,2 @@
+ def _round2(x: Decimal) -> float:
+-    return float(x.quantize(Decimal(""0.01""), rounding=ROUND_HALF_UP))
++    return float(x.quantize(Decimal(""0.01""), rounding=None))
+"
+req_001,two_step,solution.x__round2__mutmut_5,survived,"# solution.x__round2__mutmut_5: survived
+--- solution.py
++++ solution.py
+@@ -1,2 +1,2 @@
+ def _round2(x: Decimal) -> float:
+-    return float(x.quantize(Decimal(""0.01""), rounding=ROUND_HALF_UP))
++    return float(x.quantize(Decimal(""0.01""), ))
+"
+req_001,two_step,solution.x_calculate_final_price__mutmut_4,survived,"# solution.x_calculate_final_price__mutmut_4: survived
+--- solution.py
++++ solution.py
+@@ -1,6 +1,6 @@
+ def calculate_final_price(value: float, customer_type: str) -> float:
+     v = Decimal(str(value))
+-    if v < 0:
++    if v <= 0:
+         return 0.0
+     if v <= 100:
+         return _round2(v)
+"

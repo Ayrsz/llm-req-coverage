@@ -1,0 +1,7 @@
+requirement,strategy,mutants_total,mutants_killed,mutants_survived,mutants_timeout,mutants_suspicious,mutation_score_auto,status
+req_001,direct,26,25,1,0,0,0.9615,ok
+req_001,two_step,26,23,3,0,0,0.8846,ok
+req_002,direct,15,15,0,0,0,1.0,ok
+req_002,two_step,15,15,0,0,0,1.0,ok
+req_003,direct,18,18,0,0,0,1.0,ok
+req_003,two_step,18,18,0,0,0,1.0,ok

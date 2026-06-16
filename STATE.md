@@ -11,7 +11,18 @@ Specs: [docs/specs/mutacao-automatica.md](docs/specs/mutacao-automatica.md) ·
 - [x] T02 — fixtures reais em `tests/fixtures/` (run, results, show).
 - [x] T03–T06 — camada pura de `evaluation/mutation_run.py` + `tests/test_mutation_run.py` (13 testes verdes); `tests/conftest.py` torna `evaluation/` importável.
 - **Checkpoint (parada pedida):** `python -m pytest` na raiz VERDE (13 passed), antes da camada de I/O.
-- [ ] T07–T14 — pendentes (próximo: T07/T08 filtro de baseline verde; depois I/O T09/T10).
+- [x] T07–T08 — filtro de baseline verde (`select_passing/failing_tests`, `should_skip`).
+- [x] T09–T10 — camada de I/O (`prepare_workdir` com deselect, `run_mutmut`, `show_survivor_diff`).
+- [x] T11–T12 — orquestração (`evaluate_config`/`main`) + escrita de `mutation_summary.csv`/`mutation_survivors.csv`.
+- [x] T13 — rodadas as 6 configs; CA1/CA2/CA3/CA5 validados (ver achados abaixo).
+- [ ] T14 — pendente (atualizar README.md/CLAUDE.md).
+
+### T13 — resultados e achados (mutação automática, 6 configs)
+- `mutation_score_auto`: req_001 direct=0.9615, two_step=0.8846; req_002 e req_003 = 1.0 nas duas estratégias.
+- **CA2 satisfeito** (3 valores distintos, não-saturado em tudo) — mas o teto só quebrou no req_001; req_002/req_003 **ainda saturam em 1.0** mesmo com mutação automática. Achado honesto: em funções-brinquedo deste tamanho, a discriminação plena provavelmente exige os requisitos maiores da Fase 3.
+- **Sobreviventes (CA3):** 1 em req_001/direct, 3 em req_001/two_step. Inclui **mutante equivalente** real (`if v < 0` → `if v <= 0`) e mutações no `_round2` (`rounding=None`/sem `rounding`) — sinalizam que "sobrevivente" exige triagem humana (pode ser equivalente, não lacuna).
+- **CA1:** `bug_00N.py` e scripts antigos intocados; re-rodar `run_tests.py`+`metrics.py` reproduz os CSVs **semanticamente idênticos** — única diferença é EOL (o `csv` default escreve CRLF; os versionados são LF). Não é regressão desta feature; os CSVs antigos foram restaurados (não sobrescritos).
+- **Decisão:** `_write_csv` usa `lineterminator="\n"` para os novos CSVs saírem em LF, consistente com os artefatos versionados.
 
 ### Decisão de escopo nova (T06)
 - Adicionado **`pytest.ini`** na raiz com `testpaths = tests`. Sem ele, `python -m pytest` coletava `generated_tests/*` (que fazem `from solution import ...`) → 6 erros de coleta, quebrando o CA5. Não interfere nos runs isolados (`run_tests.py`/`mutmut` rodam com cwd em `/tmp`, fora desta árvore — verificado).

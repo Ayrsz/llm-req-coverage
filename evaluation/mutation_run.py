@@ -308,7 +308,9 @@ def evaluate_config(req_id: str, strategy: str, *, timeout: int = 120,
 def _write_csv(path: Path, fieldnames: list[str], rows: list[dict]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        # lineterminator="\n": fins de linha LF, consistente com os CSVs já
+        # versionados (o default do csv é "\r\n").
+        writer = csv.DictWriter(f, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 

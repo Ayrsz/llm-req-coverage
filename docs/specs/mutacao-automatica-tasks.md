@@ -89,7 +89,7 @@
 
 ## Bloco F — Execução real, validação e docs
 
-### [ ] T13 — Rodar nas 6 configs e validar CA2/CA3
+### [x] T13 — Rodar nas 6 configs e validar CA2/CA3
 - **O que fazer:** `python evaluation/mutation_run.py` nas 3 req × 2 estratégias; inspecionar os CSVs. Registrar achados (scores, sobreviventes; nota sobre mutante equivalente exigir triagem humana).
 - **Onde fazer:** execução + `reports/` (ou nota no PR/STATE.md).
 - **Pré-req:** T12.
