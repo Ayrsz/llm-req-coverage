@@ -149,7 +149,54 @@ enorme nas duas: a suíte mínima do direct é só **39 de 421** testes úteis (
 do two_step, **41 de 307** (~13%). A aparente vantagem do `two_step` no piloto era
 **artefato de volume/N** — sob suíte mínima, ela desaparece.
 
-## 8. Limitações observadas
+## 8. Triagem dos mutantes sobreviventes (equivalente vs. lacuna)
+
+Os 57 não-mortos reduzem-se a **31 mutantes distintos** (o resto são os mesmos
+mutantes sobrevivendo nas duas estratégias). Inspecionando o `diff` de cada um
+(`mutation_survivors.csv`): **17 equivalentes**, **12 lacunas reais** e **2 por
+timeout**.
+
+### Equivalentes (17) — não-matáveis; sobreviver aqui é esperado
+- **req_005 (5):** a guarda `a<=0 or b<=0 or c<=0` é **redundante** com a
+  desigualdade triangular estrita — qualquer lado ≤0 já reprova como `"invalido"`
+  via a desigualdade, então mutar a guarda (`or`→`and`, `<=`→`<`) não muda a saída.
+- **req_012 (6):** `>`→`>=` nas fronteiras de faixa (a parcela tributável é 0 no
+  limite); `+=`→`=` na 1ª faixa (`tax` é 0 antes dela); guardas de renda `<0`→`<=0`
+  e `<0`→`<1` (renda subtributável → imposto 0 de qualquer forma — confirmado:
+  `income_tax(0)=0.0`).
+- **req_011 (2):** escalar a contagem (default `0`→`1`; passo `+1`→`+2`) é uniforme
+  → não altera o `argmax`.
+- **req_001 (1):** `v < 0`→`v <= 0` (em `v==0` ambos retornam `0.0`).
+- **req_008 (1):** `year<=0`→`year<=1` (o ano 1 não é bissexto de qualquer modo).
+- **req_007 (1):** `strip("XX-XX")` ≡ `strip("-")` num slug já minúsculo (o `X`
+  nunca aparece).
+- **req_013 (1):** `excess>0`→`excess>=0` (a sobretaxa é 0 no peso-limite).
+
+### Lacunas reais de cobertura (12) — defeitos que os testes não exercitam
+- **Modo de arredondamento (6):** o helper `_round2` (`ROUND_HALF_UP` → padrão
+  `HALF_EVEN`) sobrevive em **req_001, req_012 e req_013** — nenhum teste fixa um
+  caso de meio-centavo (`x,xx5`). **Lacuna sistêmica** (mesmo helper, 3 reqs).
+- **req_011 (3):** `best=None` / `best_count=None` / `get(None,…)` sobrevivem
+  porque os testes nunca cobrem "o mais frequente **não** é o primeiro distinto" —
+  o vencedor aparece sempre cedo na lista.
+- **req_007 (2):** fronteiras de caractere `z` e `9` (`<=`→`<`) — falta entrada com
+  `z`/`9` que deva permanecer no slug.
+- **req_006 (1):** a faixa de char do octeto passa a aceitar `:`–`W`
+  (`"9"`→`"XX9XX"`) — falta octeto com caractere nessa faixa.
+
+### Timeout (2)
+- **req_007:** `while "--" in slug` invertido e `replace("--")` quebrado geram
+  **loop infinito**. São *detectáveis* (qualquer entrada trava), mas o `mutmut`
+  marca `timeout`, não `killed`.
+
+**Implicações.** (1) Mais da metade dos sobreviventes distintos é **equivalente** —
+o `mutation_score_auto` bruto **subestima** a qualidade da suíte; o ajustado
+(descontando equivalentes) é bem maior. (2) As lacunas reais apontam ações
+concretas: fixar **testes de meio-centavo** para o arredondamento (resolve 3 reqs),
+testar **"vencedor não-primeiro"** em `most_frequent`, e **fronteiras de caractere**
+em `slugify`/`is_valid_ipv4`.
+
+## 9. Limitações observadas
 
 - **Viés de autoria dos bugs manuais:** o `mutation_score` manual ainda satura
   em ~1.0 na maioria dos reqs; a mutação automática mitiga ao gerar mutantes mais
@@ -161,5 +208,9 @@ do two_step, **41 de 307** (~13%). A aparente vantagem do `two_step` no piloto e
   fechá-los nos `.md` é trabalho de curadoria pendente.
 - **Redundância alta:** o número de testes não reflete diversidade de cobertura
   (389/272 redundantes).
-- **Sobreviventes não triados:** os 57 mutantes não-mortos precisam de revisão
-  humana (equivalente vs. lacuna) antes de virar conclusão sobre cobertura.
+- **Score automático bruto:** ~55% dos sobreviventes distintos são equivalentes
+  (§8), então o `mutation_score_auto` bruto subestima a qualidade; a leitura
+  honesta exige o score ajustado pela triagem.
+- **Validade externa não testada:** 1 modelo (gemini-2.5-flash), 1 execução,
+  temp 0 — sem variância nem segundo modelo; resultados são exploratórios, não
+  generalizáveis. Funções pequenas e puras não representam código real.
