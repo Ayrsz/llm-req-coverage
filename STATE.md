@@ -32,7 +32,7 @@ todo `implementations/req_*` — rodar após cada par autorado.
 - [x] T01–T02 — teste de consistência + gabarito/taxonomia.
 - [x] T03–T08 — 12 novos requisitos (req_004..req_015) autorados em paralelo por subagentes; cada um `correct.py` + 5 mutantes (taxonomia fixa).
 - [x] T09 — **CA1/CA2/CA4/CA5 OK**: 15 reqs/15 dirs, `pytest` 41 passed, sem termos não-determinísticos, originais intactos. **Divergência dos 60 mutantes verificada por probe diferencial** (nenhum equivalente; os subagentes já haviam podado equivalentes em req_005/bug_005 e req_011/bug_004).
-- [ ] T10 — gerar testes do LLM (faseado por quota; **pendente**, gargalo de API).
+- [x] T10 — testes do LLM gerados para os 15 reqs × 2 estratégias (30 arquivos). Quota diária estourou 2×; concluído com chave nova. **Exceção:** `generated_tests/direct/test_req_012.py` saiu degenerado a temp 0 (uma linha gigante de "6", loop de repetição do modelo — saída determinística, ficou cacheada); removida a entrada de cache envenenada e **regenerado a `--temperature 0.4`** (único arquivo fora do temp 0; 32 testes, passa na correta).
 - [ ] T11–T13 — regenerar pipeline (run_tests → metrics → mutation_run; nessa ordem).
 - [ ] T14 — docs (tabela 3→15 + N).
 

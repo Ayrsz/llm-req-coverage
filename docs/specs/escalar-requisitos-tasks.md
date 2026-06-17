@@ -71,7 +71,7 @@
 
 ## Bloco E — Regeneração do pipeline (ordem importa)
 
-### [ ] T10 — Gerar testes do LLM (faseado por quota)
+### [x] T10 — Gerar testes do LLM (faseado por quota)
 - **O que fazer:** `python evaluation/generate_tests.py --sleep N` para os novos reqs (apoiar no cache; retomar entre dias se a quota estourar). Não-bloqueante: configs não geradas viram `skip`/`skipped` adiante.
 - **Onde fazer:** `generated_tests/{direct,two_step}/`.
 - **Pré-req:** T03–T08.
