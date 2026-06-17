@@ -8,4 +8,7 @@ __pycache__/
 
 # Arquivos locais de ferramentas/agente e specs internas (não versionar)
 CLAUDE.md
+STATE.md
 spec/
+docs/
+.claude/
