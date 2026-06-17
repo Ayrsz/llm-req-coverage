@@ -1,0 +1,547 @@
+This page is meant for describing particular behaviours you would like to see in a revamped Bookmark system.
+
+== Reintroduction of a Necessary feature==
+<ol>
+<li>why can't you use Alt-Enter to access the properties of a bookmark? </li>
+
+<li>I really like Firefox but I find that it is missing one key feature for me to transition from Mozilla 1.7.12 to Firefox 1.5.0.4, that is the lack of the same Mozilla "Bookmark This <u>G</u>roup of Tabs" feature in Firefox. 
+
+Now I know that Firefox has a "Bookmark All Tabs..." option but unlike Mozilla it creates a folder just like any other and has an option to "open in tabs" at the bottom of the folder. I can see why they did this and it would be nice to be able to enter a bookmark group to access only one tab... Yet it is something that is really rarely needed and could be done by hovering over the tab group for a short while.
+
+Now this might seam like a minor gripe considering all the other positives Firefox has over Mozilla, Yet I am truly addicted to the bookmark group in Mozilla and there are a few main reasons behind this:
+*it looks different than the other folders and is easy to distinguish
+*one simple click on the bookmark group to open it
+*The "Bookmark This <u>G</u>roup of Tabs" defaults to show you the file tree (for lack of a better term) giving you a quicker way to save the bookmark group.
+
+Now I have been unable to find any extention that would allow me to use the same Mozilla bookmark group functions inside of Firefox. Is it possable that this could be included? Pretty please! </li>
+</ol>
+I REALLY would LOVE a solution to this Please help.... Thanks! -- [[User:UKPhoenix79|UKPhoenix79]] 23:21, 13 July 2006 (PDT)
+
+== Smart Folders and Tagging ==
+
+I would like to be able to sort my bookmarks into "Smart Folders," and have those folders contain bookmarks based on various criteria, including by way of a user-definable "tagging" system.
+
+For example, let's say I have a few dozen bookmarks.  Some tagged with "News," some with "Games" and others with "Ottawa."  Some of these bookmarks are Live Bookmarks, and others are just regular old bookmarks.  I would like to have one Smart Folder that contains all of the "News" + "Ottawa" bookmarks, another with "News" + "Games," another with just "Games," a fourth with just "News," and a final with all the Live Bookmarks, regardless of tagging or other criteria.
+
+=== Basically already available ===
+
+You can create a bookmark to a url like [find:datasource=rdf:bookmarks&match=http://home.netscape.com/NC-rdf#Name&method=contains&text=Mozilla].
+
+This will give you a "folder" with all bookmarks containing "Mozilla" in their name, dynamically generated. I don't really know how flexible this can be used and where you can find more documentation about it, but the basic functionality is available.
+:Um... how do you do this?
+
+== More on Smart Folders ==
+
+Smart Folders are sounding a lot like vfolders/iTunes Smart Playlists/stored queries.  Some other cool things that could be done with smart folders: "All bookmarks I've visited in the last week", "Top 10 Bookmarks I've most frequently visited".  More complex stuff maybe? "All bookmarks I've visited and spent more than 10 min on the page".  (How do you track how long you spend on a page?)
+
+Another cool thing: When bookmarking, have it check del.icio.us and then return a dialog that goes something like this: 
+"This page has been tagged accordingly:
+ [x] web [x] css [x]news [ ] html
+Add own tags: [............]"
+This feature would save quite a lot of people a lot of tagwork.
+
+(Perhaps just the framework for such integration could be put in place.  It seems to me that integration with del.icio.us or any other non-mozilla site should be an extension, not part of the core code.)
+
+== Add Bookmark Dialog ==
+
+The "Add Bookmark" dialog should have some way to add comments or tags.  And these comments or tags should be searchable from the side bar.  Just a small dialog box below the "Create In" dropdown would be great.
+
+== Add/Edit Bookmark in Sidebar –�Information Management ==
+
+Bookmarks could become an active workspace when the �Add Bookmark�? form would be placed in the sidebar and when the same form in the sidebar would be used to show all saved tags and descriptions simultaneously with the opened website. The Flat Bookmark Extension is a good example of improved usability within the bookmark manager because it avoids the extra step to open the dialog every time a note needs to be changed. Unfortunately, it is not yet integrated in the sidebar nor associated with the opened website. The flat editing of tags, annotations, citations, notes, etc. in the sidebar every time the website is loaded would make it to an information management because it can recall information and changes are easy to enter. Direct access to the description field and to the tags of a bookmark could be a major step forward and improve the usability of web browsers.
+
+== Keyword Option for Bookmark Folders ==
+
+What about adding keywords to bookmark folders like we have for bookmarks? That would be smooth. Then you can open a folder from the search bar. This would be very useful for opening a group of bookmarks in a subfolder, instead of accessing from the bookmarks toolbar. The keyword should trigger the "open in tabs" command.
+
+See: [https://bugzilla.mozilla.org/show_bug.cgi?id=213402 bug 213402]
+
+''Don't like surprises, just want the keywords added to folders, bring up bookmarks sidebar if and only if needed, but not the
+opening of all bookmarks in that folder.'' 
+
+I like typing in a single letter within a folder on the personal toolbar to get to the area I want (actually usually one letter beyond what I want) and if there is only one bookmark beginning with that letter it goes to that bookmark,  I add a fake bookmark for such cases to stop that from happening so I can examine my choices.  To open an entire folder of bookmarks; likewise, is going to open
+up a can of worms -- would not like 500 bookmarks opened up into tabs.  There
+is a suggestion elsewhere to add use of Ctrl select to select individual
+bookmarks but is dependent upon bookmarks not disappearing once a selection is made and that would be further jeopardy if all bookmarks in a folder are automatically opened.
+
+== Keyword Shortcuts in Sidebar ==
+
+The <b>[https://addons.mozilla.org/firefox/1043/ KeywordBar]</b> Extension
+(for sidebar)
+including double-click to place keyword shortcut onto the location bar,
+and the <b>
+[https://addons.mozilla.org/firefox/622 Locate in Bookmarkfolders]</b>  Extension to locate the folder of the keyword
+or other bookmark within the Bookmarks Manager should be incorporated into Firefox.  These inclusions would give the keyword shortcuts (%S) a much more deserving prominence in Firefox.
+
+== Unread Items in Live Bookmarks ==
+
+For me to use Live Bookmarks instead of just defaulting to my RSS reader, the "new" or simply "unread" bookmark items would need to be differentiated from "old" or "read" items.  If I could just visually and quickly scan for new items, I would be much more likely to use Live Bookmarks.
+
+It would be nice if bookmarks supported the CSS ''':visited''' pseudo-class, which would be an elegant way of solving this enchantment and would probably be useful in general.
+
+If live bookmark items were marked "read" or "unread" as described above, I'd love to have a button on the toolbar called "Next unread" to jump between all the new items. If the button showed a count of the unread items, that would be even better.
+
+== LiveBookmarks Homepage ==
+
+I'd like to click in a LiveBookmark Folder and go to the feed's homepage, e.g. If the feed url is http://www.mozilla.org/rss.xml clicking in the LiveBookmark folder should lead to http://www.mozilla.org/
+
+== Aggregated Live Bookmarks in a Smart Folder ==
+
+I'd like to be able to designate a Smart Folder for Live Bookmarks that would display all items (possibly even only the "new" or "unread" items) contained by that set of Live Bookmarks at once (instead of having to open each Live Bookmark individually).
+
+For example, I have three Live Bookmarks, each of which contains 10 items in total.  The first has three new items, the second has 2 new items, and the third has 6 new items.  If I designate a Smart Folder to display all "new" Live bookmark items, it would look something like this:
+
+<pre>
+> My Super Smart Folder Name
+                       > Bookmark 1 New Item 1
+                       > Bookmark 1 New Item 2
+                       > Bookmark 1 New Item 3
+                       > Bookmark 2 New Item 1
+                       > Bookmark 2 New Item 2
+                       > Bookmark 3 New Item 1
+                       > Bookmark 3 New Item 2
+                       > Bookmark 3 New Item 3
+                       > Bookmark 3 New Item 4
+                       > Bookmark 3 New Item 5
+                       > Bookmark 3 New Item 6
+</pre>
+
+Being able to specify how those items are sorted as part of the Smart Folder properties would be an extra bonus (e.g., by date, by site, alphabetically, or whatever).
+
+== Bookmarks Combined From Several Files ==
+
+Currently all bookmarks for a user (well, profile) are stored in ''bookmarks.html''.  It is possible to share that file with others (by doing things that Firefox remains blissfully unaware of, such as using symlinks or synching the file), but that only works for sharing the ''entire'' bookmarks; I've encountered several situations where I wish to share just some of my bookmarks, a subtree of them say:
+
+* I use Firefox at both home and work.  Generally, I do different things in each place, so they have different bookmarks: at work, I have lots of prominent links to internal systems, which I hardly ever need to access from home.  However, there are some bookmark folders I'd like to have in both places, such as those with links to technical reference material like the W3C specs.
+
+* Everybody in the team at work needs bookmarks (with keywords for URL searches) to the same internal systems.  We've all had to accumulate these individually.  It would be nice just to have them in one place, so we know they are all exactly the same (and new people can easily be given them, too).
+
+* Sometimes, I give presentations using Firefox for rendering HTML slides.  I have a separate profile for that, with settings more appropriate for use in front of an audience on a big screen, but it'd be nice to have a subset of my normal bookmarks available.
+
+Obviously, this wouldn't be trivial to do, and is very hard to do well.  At the moment, I don't think it's possible at all.  The bare minimum support that I think is needed from Firefox is the ability to combine bookmark subtrees from different sources.  That is, that at some point in ''bookmarks.html'' there can be a 'linked folder' which renders just like an ordinary folder but whose content is stored in a separate file; ''bookmarks.html'' just contains the folder's label and the path to that file.
+
+Then all the synching can be managed outside Firefox (or with extensions or whatever) —�so long as the basic 'subtree combining' feature is there (even if it requires manually setting up) other things can be added on top of it.
+
+This could be done in conjuntion with tagging.  Create an option to export either subfolders or bookmarks with certain tags into a portable XML file that can then be imported elsewhere.
+
+== Remote Bookmarks ==
+
+Building on Live Bookmarks, it would be great to be able to store your bookmarks on a server, but be able to interact with them through the normal bookmarks manager.  
+Adding and deleting bookmarks should work as usual, but with the results being stored remotely, on a server (such as http://del.icio.us).
+
+I agree! I use different computers at home, work, and school, and love having access to one respository of "bookmarks," stored online. Having a slick interface to such a repository would be an excellent, often-used feature.
+
+This is the one reason that I have abandoned traditional bookmarks in favor of a web-based solution, [http://www.myhq.com myhq.com]. 
+Another option is to use a third-party toolbar such as http://toolbar.a9.com/
+
+Building on this idea further: There are some bookmarks that I would want to share with others. It would be nice to syndicate them with RSS and display them on a website as a feed or formatted with CSS. This could be through a service or via a plugin for blogging software.
+
+The other point here is that there are cases where I don't want to share my bookmarks. E.g. links to financial information, services like my web host and my flickr login. I keep these in a separate folder so I would only need to exclude that folder from export.
+
+On the synchronization of bookmarks, you might want to check out how that is handled in [http://mirror.open-xchange.org/ox/EN/community/ Open-Xchange.]
+
+I would love to be able to get rid of bookmarks folders altogether with tagging. As such I wouldn't want to have to keep private bookmarks in a different folder than public/shared bookmarks
+
+I, too agree with this. Have a simple xml file (hopefully hosted by mozilla, but of course with its limits... maybe google could help out ;) ). When you load firefox, firefox would check for any changes to the file on the server. If none are found, it stops. If changes are found, it downloads them.
+
+Saving bookmarks could either be instantly (this may cause a small wait period for slower users), when the bookmark list is not being used, or 'onClose' if that even exists.
+
+Using [http://www.opml.org/ OPML] might be a win for this over RSS. OPML allows for hierarchical data like bookmark folders. Also bookmarks are more of a list type thing than a feed type thing. Of course you could have both.
+
+Including features found in: [http://sourceforge.net/projects/bookmarksync bookmarksync] would be great. This is a big issue for me, too. - and being able to edit and change the hosting server as a preference would be great. thx.
+Looks like [http://www.sync2it.com/b2/index.php synch2it] has done more development on the client and server side, too - features from here should give good ideas.  The #1 most important bookmarking feature for me is when I need to synch bookmarks between my home computers, my work computers, and my laptop, and extra nice if I can get to them when I'm an internet cafe.
+
+Being able to specify a particular bookmark folder to point to a particular file on a WebDAV server would be useful. The code would seem to be around as part of the Sunbird project where it is used to sync up local and remote ical files. That would make it easy to share a sub-tree of your bookmarks between locations/computers/people and give some control over who gets to add/change and who gets to read only.
+
+The first post pretty much had it! You should be able to edit your bookmarks through Firefox as per usual, and then an extension or something would silently sync your bookmarks with a server somewhere. This way no matter where you go you could always have your same bookmarks available to you. Also, on the idea of making your bookmarks publicly available, all you would need to do is add a little locked/unlocked button besides each bookmark to control which ones are public and private.
+
+== Relative Bookmarks ==
+Provide Relative Bookmark features for  '''profile''', '''chrome''',  '''cache''' folders, and portable device '''drive letter''' (Firefox Portable), along with user assigned folders to provide better access from any computer and with various portable devices. 
+
+   profile://.          (for the profile folder itself)
+   profile://..         (up one level from the profile folder)
+   profile://bookmarks.html        (simple way to locate bookmarks)
+   cache://.            (experienced users may move the cache file)
+
+This would greatly simplify locating these folders for user browsing and editing as needed, and identifying the profile actually in use.&nbsp;
+
+=== Additional Relative Bookmarks features for Portability ===
+For a presentation file:///c:\big\pathname\file.htm#relativebookmarks might be referred to by that name on the c: drive  and on a portable device have part of filename given a shortcut type descriptor  
+   presentation://file.htm#relativebookmarks
+which would facilitate use of existing keyword shortcuts 
+   presentation://%S
+   presentation://chapter4/%S     
+Note %S currently provides for fragment id (file.htm#id); and %s  currently does not.  
+   
+The means of bookmarking a string reference to a relative tag, so existing
+bookmarks remain as they are but could be treated differently on a portable device.  Any bookmark starting with c:/site  could also be found with the '''portable://''' prefix.
+
+   presentation  =  file:///c:/big/pathname/
+   portable      =  file:///c:/site
+   portable2     =  http://www.example.com/user3/
+
+And specifically to address reassignments when using USB devices used in such implementations as Firefox Portable (http://portableapps.com/apps/internet/firefox_portable)  one must
+currently use  SUBST to alias a  drive or a pathname in a command
+window external to both Firefox and Firefox bookmarks.
+
+To alias a drive letter to a path on the active drive (external to Firefox)
+   SUBST W:   \firefoxportable\data\profile 
+
+To alias a drive letter to the current drive letter (external to Firefox)
+   SUBST X:   \
+
+This assumes that you would be able to have specific drive letters not assigned (W: and X:) so that you can create aliases.  
+
+The above usage implementation suggestions should not conflict with the use of user defined keyword shortcuts of portable:, presentation:, presentation:b, which when used as keyword shortcuts have a space immediately after the shortcut.  The use of colons in all my keyword shortcuts has proved very advantageous to me.
+
+== Meta Description ==
+
+The default description for a bookmark should be filled in with the description provided by the meta tag.
+
+It would also be useful when looking through the bookmarks list if the description for a bookmark were displayed when a user pauses on the bookmark (i.e. alt text). The only time one sees a bookmark's description is in the bookmarks manager. This should be integrated as standard, and would be very simple to implement as well.
+
+== Richer Links ==
+
+Right now, the only relationships possible between bookmarks are ordinal (they can be in a series) and hierarchical. Only the title and description may be specified by the user. The meaningful relationships between two sites/bookmarks are not constrained to this set. Allowing the user (or website providing the link) to provide additional information would allow bookmarking to more accurately represent the mental relationships the user has between sites.
+
+Propositionally, support for bookmarking xlinks would provide the informational basis for these enriched relationships.
+
+Examples of user interaction possible with interrelationships:
+
+A user drags a link to a bookmark region, which expands to show a "space" of bookmarks. The user places the bookmark in a rhizomatic relationship to another bookmark. That information is stored in the bookmark as it is saved.
+
+A laptop user bookmarks a page "within 250 feet of this location." in the future, whenever she is in that physical region, the bookmark moves to the top of her bookmarks list.
+
+A website designer could specify the relationships between her pages using xlink; when bookmarked, a user could navigate the site from the bookmark without loading the site.
+
+== Editing and Synchronization ==
+
+Mainly, my largest issue now is that I always keep a very close watch on my bookmarks, and when editing them, I find the two-pane navigation helpful, but ineffective. The reason I need two panes is because when moving bookmarks from a temp folder to its final location, I need to see both folders at once - I hate having to drag and drop while waiting for auto-scrolling. If the two panes would both be expandable to view folders and bookmarks it would be much more useful!
+
+Right now the left pane is useless to me, because I can already see the folder structure in the right pane. 
+
+My bookmarks file has been organized and reorganized for almost four years now, and at 300k I don't have time to clean it out all of the time. I would love a field on each bookmark to either show the last date I edited it, or the last date I visited that address. Then I could see which bookmarks I have not seen in a long time, and then delete those as I obviously don't need them. That would be an amazing feature!
+
+I use the bookmarks synchronizer extension all of the time, so I still need to have that ability.
+
+I have a large number of bookmarks that point to a mirror server.  If that server goes down or its domain changes (this has happened more than once), I can open my bookmarks file in an ASCII editor and globally change the domain of all affected bookmarks to another mirror.  PLEASE do not change the format of the bookmarks file in a way that will prevent me from doing this without at least adding a global change capability to the Bookmarks Manager.
+
+== "Bookmark current site here" ==
+
+When the user opens the Bookmarks-menu and ''right-clicks'' on a '''Bookmark folder''', the '''"Bookmark current site here"''' option could appear in the popped up '''context menu'''. (Or is "Add Bookmark here" better?)
+
+This is a very simple suggestion, but I want to record it here anyway, so it won't be forgotten. I used to like the "Add bookmark here"-extension (though I don't know if it's still maintained). It'd be cool to have it built in by default ( -- perhaps with a modification: In the extension, the option appeared ''among/below'' the actual bookmarks, but doesn't that clutter up the menus too much?)
+
+Currently (using a Nighly from the Deer Park trunk -- Mozilla/5.0 (Windows; U; Win98; en-US; rv:1.8b2) Gecko/20050705 Firefox/1.0+), when right-clicking on a Bookmark folder, the '''New Bookmark''' option appears in the popped up context menu. The user can fill in a new Name, Location, Keyword and Description. 
+
+Something like this is what I'm looking for -- though I would want the Name, Location etc of the '''current site''' to be '''pre-filled in as default values'''.
+
+Bookmark Synchronization API - I would love to see a simple API for adding new bookmarks and deleting existing bookmarks via an external application.  Two simple functions that would greatly simplify cross-browser synchronization.
+
+== Standard Extensibility from Chrome ==
+
+Having looked up a bookmark node by ID/URL/etc., found it via iteration, whatever...  an extension should be able to watch for onclick events, et al (the addObserver notes imply bookmark changes only, not events).
+
+Bookmark context menus should be extensible via normal XUL overlays.  
+
+This is an area where the current code is just terrifying.
+
+== Visual Bookmarks ==
+
+Visual bookmarks are a screen shot of a bookmarked webpage created the last time it was visited or when the bookmark is created. The idea is that visually oriented people --aka designers-- would likely remember a website more by it's design and appearance than the name or current title of the website that they saw for the split second while they click '''OK''' on the '''Add Bookmark''' Window. Another reason for visual bookmarks is when people are use to a website for it's design and have stopped visiting it regularly for a while, and when they are fumbling through their bookmarks looking for it again it may have changed it's design. With '''Visual Bookmarks''', a screen capture could be made of the old design to help them realize that what they are looking for well, isn't anymore. 
+
+To implement it there should be an array of options like file format, screenshot dimensions, history, and update interval. File format/saving options are self explanitory and really a high quality JPEG or PNG would be best. The dimensions of the screenshot would be equivilent to setting the inner part of the window to exactly 900x900 or 3600x800 and taking the inner screenshot from there; assuming they entered 900x900 or 3600x800, it could be anything. It is important that they are NOT setting the window size as menu bars etc would be variable between clients and frivilous. A screenshot history option are how many out of date screenshots to keep, perhaps a redesign locator which could compare screen shot similarities to detect a design change, but that is probably FAR to ambitious. The update interval would be the frequency screenshots are to be updated, set globally and per screenshot.
+
+The output of these screenshots would appear perhaps when a bookmark is hovered over or in the '''Manage Bookmarks...''' window.
+
+Alternatively, the page itself could be saved as an html file instead of an image. This will not only serve the purpose mentioned above, but also allow access to the text on the page(for copy/paste etc). I often bookmark pages because they contain some useful snippet of information and not because I plan to visit them repeatedly. Having a saved copy of the page  gives the user offline access to the contents on the day the page was bookmarked. This would be some kind of a simplified archival system.
+
+===  Color in bookmarks ===
+I'd like to also see the possibility of color in bookmarks, so it becomes easy to for instance separate bookmarks for hotel sites from bookmarks from airlines sites in a travel bookmark folder
+
+== Automatic Grouping of Bookmarks ==
+
+I would love to see a system that would allow automatic grouping of similar bookmarks, being too lazy to keep my ever growing bookmarks properly categorized.
+
+In another section someone has suggested tagging for categorization. I have situations where a site I visit is both a source of news and a source of reviews for instance. How cool would it be if you typed a bookmark tag into the address bar and it opened, in tabs, all the bookmarks that had that tag?
+
+How about mozilla learning how you categorize your bookmarks? Say you have a bookmark folder of all your css design tips. After a while, mozilla would smarten up, and the next time you bookmark a similar site, it would offer to automatically put that site into your css design tips folder. Could this be done with some bayesian filtering?
+
+== Search Behavior ==
+
+I rarely resort to search except when I can't find a bookmark. Move, Properties and Rename are currently "grayed out" in bookmark search (filtered) results. I've found the bookmark, but it's clumsy to manage it. The only way I've found is to copy the URL, Delete the bookmark and then bookmark it again. Enabling those options, or at least the "Move" option would be a big help in keeping large collections of bookmarks tidy.
+
+In general it would be nice to access bookmarks by a search field (not in bookmark manager) - could even be in the bookmark toolbar, optional.
+
+
+== Shortcut to Bookmarks Manager ==
+
+Need a shortcut key to the Bookmarks Manager ("Manage Bookmarks...")
+would affect additions to keywords in HELP,  Bookmarks menu and View menu.  Bookmarks (Ctrl+B) is not the same as Bookmaks Manager.
+
+Also a means of referencing Bookmarks Manager or a specific webpage
+on starting up Firefox from the desktop (shortcut url) as there are 
+many that seem to think a Favorites folder on the system desktop (Windows desktop) is where to start off from.
+
+== Enhanced Bookmark Search ==
+Enhanced Bookmark Search (Extension) could use some improvement in filtering capability (AND logic), but should be incorporated into Firefox.
+
+== Shortcuts ==
+
+It would be nice to be able to assign shortcuts to bookmarks and bookmark folders.
+
+If "shortcuts" means virtual bookmarks that point to other bookmarks such that, when the target bookmark is changed, the shortcut is automatically changed too, this is [https://bugzilla.mozilla.org/show_bug.cgi?id=34059 bug #34059].  At least part of this was a capability in Netscape 4 and should definitely be implemented. Note that the [http://pyxml.sourceforge.net/topics/xbel/ XBEL] standard supports the old Netscape aliasing of bookmarks.
+
+The ability to open external programs and documents (like Windows shortcuts) on the computer would be very useful. There are some extensions currently that do similar things to this.
+
+A strong second on this suggestion. The ability to import MSIE Favorites is crippled without this.
+
+== Bookmark Maintenance ==
+Over the long term, the bookmarks list becomes less useful as it becomes weighed down with the cruft of bookmarks that have lost usefulness for various reasons including:
+* The page is gone (404)
+* The page has moved somewhere else (301/302)
+* The information has fallen out of date
+* The user has forgotten why the page was worth bookmarking
+* The user lost track of the original bookmark, making redundant bookmarks
+(no doubt this list can be expanded)
+
+:: The GNOME Epiphany browser detects when a link has moved and offers to update the bookmark location.  That's pretty handy.
+:: [[User:Mikelward|Mikelward]] 03:14, 7 June 2007 (PDT)
+ 
+Eventually it becomes easier to Google for the links anew rather than hunt through the unweildy bookmark list.  Faciliating management of these issues would be very helpful for maintaining a streamlined, functional list.  Some possibilities:
+
+=== Live Collections Using Advanced Metadata  ===
+Similar to the Live Folders concept mentioned above, but allow bookmarks to be automatically collected based on metadata ''other than'' just tags (such as server-provided data).
+
+For instance, periodically do HTTP HEAD requests to bookmarked addresses, and flag those that return statuses other than 200 OK.  Collected into live folders based on their status codes, the user would be able to easily cull dead links and decide whether to update the moved ones.
+
+Likewise, allow bookmarks to be grouped based on criteria such as last access date (to cull, or rediscover, links you never use anymore), the page's Last-Modified date (to identify resources that have grown irrelevant), and duplicate/similar addresses (including those that have obviously different URLs but would become redundant based on a 301/302 status update).
+
+If the client-side metadata (such as last access) could be shared across workstations (i.e. between work and home computers), that would also be cool.
+
+=== Visual Cues in Bookmarks Menu ===
+Favicons and screenshot previews are helpful visual cues about a bookmark.  Extend this concept to other metadata.  For instance, maybe the user would want 404s to be grayed out, and recently-visited links to be bolded. Or certain tags might be asssociated with small graphics similar to favicons, so the user can quickly skim down a long list, identify the few bookmarks that meet his/her criteria (ex. "IE + hacks + 4stars")--even through he doesn't recall their titles.
+
+This could also be done through the use of super-imposed mini-icons over the favicon. It would be similar to the shortcut arrow that windows and mac users are familiar with. Perhaps a tiny '''(X)''' in the bottom right side of the favicon for a bookmark that was a 404, or a colored star system for the rating, etc.
+
+=== Bookmarks Menu Sorting===
+Allow user-defined sorting of the Bookmarks menu.  Chronological order quickly becomes non-meaningful in a long list.  Allow sorting by title, domain, or date, etc. 
+
+A pair of persistent no-sort options too, please, on a folder by folder basis. No sort folder contents only, no sort entire folder substructure. I often do not want particular folders sorted, particularly when exporting bookmarks to edit them into a web page. If you also increased the size of the manager's description form, I could go back to using the bookmarks tools as a handy outliner like I did in Mozilla. A related enhancement: enable separate exporting of bookmarks folder substructures with a templating capability so users and developers can more easily define export formats, and add export to clipboard (rather than a file) as an option. Fore some ideas on implementation, see the CopyURL-Plus extension, the handiest browser extension on my desktop.--Marbux
+
+It would also be useful to be able to sort the folders/subfolders separately from the individual pages. (naowro)
+
+=== Mac-Compatibile Shortcuts in Bookmark Manager ===
+Add support for command-deleting (the standard Mac shortcut for "delete selection") of bookmarks and folders in Bookmark Manager.
+
+== Sorting ==
+
+I like to keep my bookmarks (mostly) sorted alphabetically (by Name), per folder. Right now, I need to do this sorting manually! The Bookmark Manager provides for a sorted *View* but this does not actually sort the bookmarks themselves. They still appear unsorted in the Bookmarks menu. What I would like to do is make any selection of bookmarks in the Manager, and be able to sort them alphabetically, once and for all, Sorted view or not. Being able to sort an entire folder without first having to make a (rather huge, in some cases) selection would also help, but this alone is not enough. Sometimes I keep several sections in a folder using Separators, and I want each section sorted separately.
+
+We already do Sorting with View, so it seems simple enough to go the extra mile and save the sort result to disk again. Actually I'm surprised no one has come up with this before, I've wanted it for a long time, and sorting is a basic function of any information management system.
+
+In addition to saving the sorting with a view to disk (for both the manager and the bookmarks view itself), the ability to apply differing sorting algorithms (alphabetically, last visited date etc.)
+
+== Multiple Keywords == 
+
+Having a keyword for a bookmark is great. Sometimes however, there are sites for which multiple keywords would make sense, and I can never remember the one that I actually used. It would greatly help if the Keywords field would accept multiple keywords, perhaps separated by a space or a comma.
+
+[New "I"] A feature that I would find useful would be a cross-referencing indexing system--  Keywords would be entered for each bookmark (or Tag).  The bookmark would be added automatically to folders titled with each keyword.  For example-- if a bookmark had keywords of {photos, winter, camping, cooking}, it would appear in folders Photos, Winter, Camping, -and- Cooking.
+
+This would NOT duplicate the bookmark, but just add it to an additional index. That way, a change under one folder would appear under all folders.  [Yes, I've just designed in a database.]  And deleting one entry would remove it from all folders it appeared in (with a suitable warning about removing an entry from multiple folders).
+
+Within each folder I could sort the accumulated entries according to any attributes of the original entry.
+
+== More on sorting ==
+
+Sorting should be as flexible as possible: in addtion to the existing sorting, you should be able to sort folders by one specific criteria, or just a group of selected folders or bookmarks within one folder (by doing CTRL+item selection and then right click + "sort selected items by...")
+
+Related firefox bug:
+[https://bugzilla.mozilla.org/show_bug.cgi?id=265401]
+has been closed as WONTFIX. Please vote for this bug to get this resolved.
+
+== More on bookmark maintenance ==
+
+Having an automatic checking of bookmarks option would be nice, so you could get a warning if one URL you have bookmarked is now re-directed or is no longer available.
+
+
+== "Open in tabs" option improvement ==
+
+In addition to the existing option, it should be possible to open selected items (bookmarks or entire folders) in tabs (by doing CTRL+item selection and then right click + "open selected items in tabs"). This option should be available through the Bookmarks Manager too.
+
+
+== Bookmarks access ==
+
+Would it be possible to have the "Bookmark this page" and "Manage Bookmarks" items from the Bookmarks menu always fixed, so they don't disappear when scrolling down the Bookmarks menu?
+
+
+== Temporary/Time Based Bookmarks ==
+I think many of us frequently need to save websites we wish to return but don't want to keep them bookmarked forever.  For instance when I comment on blogs I often like to return to reply to the discussion later but if I kept every article I'd commented on in my bookmarks it would rapidly grow unwieldy.  An earlier contributor uses bookmarks for keeping a 'to visit' list and would like to be reminded about the contents of the list when non-empty.  Similar use cases would be remembering items you are comparing to purchase, funny pages you want to show friends, long articles you are reading, remembering conferences or other events that will lose relevance shortly, and remembering stories to write a blog entry about.
+
+In firefox 2 this sort of use is very cumbersome.  With 'add bookmark here' bookmarks can be added efficently enough but every time one wants to remove bookmarks you need to go to the manage bookmark's screen.  Some more efficent means of removing temporary bookmarks is needed, perhaps several.  The following features all seem good:
+
+1) Expiration times for bookmarks, when created you can specify a date on which the bookmark will be deleted/become invisible.
+
+2) Folder based expiration times, particular folders could time out bookmarks when they age past a certain date.
+
+3) Most recently used display with bookmarks disappearing after they fall below some threshold.
+
+4) The above but at the user's request.
+
+5) Easy option to delete without entering the organize bookmarks page.
+
+Of course all of these really need appropriate sort option.
+
+:: How about a special tag called "temp" that only keeps things for one or two days?
+:: How about a tag "new" that is removed as soon as you click on it?
+:: How about per-tag expiry rules?
+:: [[User:Mikelward|Mikelward]] 03:12, 7 June 2007 (PDT)
+
+== POST bookmarks ==
+Some website searches dumbly use POST instead of GET so you can't just associate a simple keyword and smart bookmark.  Making it possible to store POST requests would prevent me from writing boring javascript bookmarklets.
+
+
+== Links to other bookmarks and folders ==
+It would be nice to be able to create the equivalent of symlinks for individual bookmarks and folders.  A use for this would be to include a current bookmark or folder on the Bookmarks Toolbar Folder without having to make another copy of it. This would close
+[https://bugzilla.mozilla.org/show_bug.cgi?id=298009 bug #298009].
+
+== Offline readable ==
+In the bookmark properties dialog, I'd like to see a check box asking me if the page should be offline readable. This would be similar to the "Select this folder for offline use" option in Thunderbird. As far as I know, other browsers like IE (sorry) have had this feature for quite a while.
+This option should not only be present in the properties dialog of an individual bookmark but also in the properties dialog of a bookmark folder.
+
+== Personal Toolbar Folder / Bookmarks Toolbar ==
+I like to keep a large number of items in the Personal Toolbar Folder, but I remove the "Name" from the properties, leaving only the favicon. However, when I hover over the favicon, only the URL is shown in the tooltips text. I'd like to be able to have the name of the site in the tooltip text, but not next to the item in the toolbar. Perhaps this could be achieved by having a "Show?" checkbox next to the Name in the Properties window?
+
+=== Display of Folders on the Personal Toolbar ===
+Kind of the opposite approach of the above, but can be worked in together with options.
+
+Space on the Personal Toolbar is too valuable to waste on individual bookmarks,
+so would like the ability to show folder names without folder icon, and they
+must be distinguishable from adjacent folder names even if the name contains spaces, and must be distinguishable from individual bookmarks.  I give all
+folders that show on the Personal Toolbar short names.  So if they could appear in a small variable width box that would be ideal.  For example everything in my "K" folder actually also has a keyword shortcut.  Some like blogs have additional
+subfolders, several of which are groups of bookmarklets.  My bookmarks Toolbar looks something like: (the first two have leading spaces to maintain sort order)
+<br>&nbsp; [ HOME] [ View] [Blogs] [Design] [Effects] [G] [I] [ID] [K] [R] [T] [zA] ...
+
+There are actually individual bookmarks on far right, all of which are on the extended toolbar, perhaps with more space the favicon only might get some of them on the primary portion of the toolbar.
+
+== Bookmark Display ==  
+
+In a [http://www.mozillazine.org/talkback.html?article=5444 poll] conducted by MozillaZine last year about home pages, a number of respondents indicated they use  their bookmarks file as their home page.  The ability to do this should not only be preserved but enhanced.  One enhancement would be to fix [https://bugzilla.mozilla.org/show_bug.cgi?id=234831 bug #234831], to recognize line breaks the Description portion of a bookmark.  Another would be to implement [https://bugzilla.mozilla.org/show_bug.cgi?id=255274 bug #255274], to have the capability of having a style-sheet control the display format (e.g., line spacing, margins, font size).  Of course, all this should include making the bookmarks file a valid HTML file, including a <!DOCTYPE> declaration.  
+
+Another display bug that should be fixed is [https://bugzilla.mozilla.org/show_bug.cgi?id=245934 #245934].  The Bookmarks Manager normalized window size is forgotten if the window was maximized when it was closed.
+
+== Bookmark Added Already Message ==
+
+I would be happy to have a function that can check if the Bookmark I'm adding now isn't added already (in any section of Bookmark folder). Well, I know there might be a confusion because of dynamic URIs for example but could save some doubled Bookmarks...
+
+
+== More on Search ==
+And please include a field or property that shows where a bookmark is in the bookmark folder tree. This is needed when your re-grouping bookmarks. Currently, if you search on a bookmark and find a few related ones, there's no way to tell where they are on the bookmark tree and if they need to be moved/re-grouped to a more rational structure.
+
+In addition, please have a look at the bookmark manager
+of the old Netscape Communicator 4.78. In contrast to Firefox, 
+the old bookmark editor of Netscape Communicator is very fast 
+and convenient. Moving and copying bookmarks between 
+(sub)folders is much faster than with Firefox and Mozilla,
+in particular, on Sun Solaris. Please learn from the old editors!
+
+In particular, I have hundreds of folders and subfolders
+with thousands of bookmarks. And the function 
+"Find in Bookmarks" of Netscape Communicator 
+allows to search for text in bookmarks as well as 
+in folder/subfolder titles and to jump from one 
+search hit to the next search hit within the tree.
+
+Example: Using the search string "Java", it is very useful 
+to find all subfolders titled "Java applications/programming/etc." 
+contained in diverse folders named "applications" and "programming". 
+
+To sum up, make the folder titles and bookmarks
+searchable at the same time! The resulting list 
+should return folders and bookmarks that contain the
+search string anywhere in their title/name/location/description/tags. 
+Alternatively, the user should be able to jump from
+one hit to the next hit in the bookmark tree
+as it is implemented in the Netscape Communicator.
+
+If some user does not want to find folder titles,
+then the user should be able to turn this off.
+But I prefer to find not only bookmarks, but also
+folders containing my text in the title.
+
+== Projects ==
+I think it would be a very useful feature to be able to create projects with the Bookmarks tool. A project would be similar to a folder, only clicking that project folder would open all associated web pages, a page with relevant live bookmark feeds, and any programs or documents used in the project.
+
+
+== Favorites on the Start menu ==
+
+Since a part of firefox's appeal is its ability to run on older OSs, it would be nice if Firefox bookmarks could be put into the Favorites menu on the start menu.
+
+== Copying bookmarks to pasteboard ==
+
+This might be more appropriate as a Firefox extension, but as a web researcher/writer, I have often wished for an option in the context menu to copy and paste bookmarks to my text editor with the HTML markup intact. Perhaps even with options to include the bookmark's keywords, description, or other properties enabled through the planned conversion to database bookmarks storage? The [http://copyurlplus.mozdev.org/index.html CopyUrlPlus] extension is somewhat like I'm looking for, although it only works with web pages rather than bookmarks, and it would benefit from submenuing capability.
+
+==Duplicate Handling==
+It would be nice if Firefox warned you about adding a bookmark that matches one with the same URL.
+
+I have a large list of bookmarks, e.g. 200+ with 30+ folders. Sometimes I bookmark the same page more than once (mainly by accident). it should deal with this intelligently, e.g., don't just add another entry, but preferably add any new description/tags to the old location, so that you don't have the same page bookmarked multiple times.
+
+Added thought: It would be nice to have a "duplicate bookmark 
+warning", with the options |add new one here|copy existing|cancel|
+
+==Tagging and sharing==
+
+An interesting read is this blog entry:
+http://www.contentious.com/archives/2005/04/20/furl-delicious-almost-perfect-together
+which discusses one user's method of tagging and sharing. It has some good usages that should be considered for a new system.
+
+== Extend %s Hack ==
+
+Currently, the %s hack provides a tremendous degree of freedom for customization and is extremely powerful. But it could become more flexible when it would respond to the three cases: 
+
+# keyword only = empty string (and not %s) and it should be optionally possible to supply a different URL for this case
+# keyword with option = option string, and 
+# keyword only but marked text in the website =  marked text (the option string should have a higher priority than marked text). This should be optional by checkbox. This would extent all the wonderful search options to the text within the website so that copy and paste can be avoided.
+
+== Dynamic Bookmarks Search -- LiveFolders ==
+
+Adding input options to chrome URLs or a similar mechanisms would allow to bookmark dynamic search lists or "LiveFolders" and open them with keywords, e.g. 
+chrome://browser/content/bookmarks/bookmarksManager.xul?search=rediscover
+
+== Favorites and Web Index in Two Different Interfaces ==
+
+The redesign of graphical interfaces for bookmarks must address two different purposes. One is a menu for quick access to websites and the other is a personal index of marked websites. Both concepts are important for the interaction with the web and have been kept in one interface over time. But it may be better to have two separate interfaces.
+
+The menu's purpose is fast access to frequently visited websites, also referred to as FAVORITES. In principle, its function is similar to program menus or to sidebars with a small number of items. In contrast to the function of favorites, there is a large number of bookmarks that have been saved because they were interesting or valuable. This personal WEB INDEX is a "permanent history" of marked websites. Searching this INDEX can provide pre-selected information very quickly. Tagging seems a perfect tool to categorize these bookmarks for the WEB INDEX in a very flexible, quick, and simple way.
+For more details please see: http://pubnotes.wordpress.com/2007/10/14/rethinking-bookmarks-ui/
+
+== Machine-readable/processible bookmarks ==
+
+Bookmarks should be stored in some kind of XML format (e.g. RDF / RSS / Atom / whatever) so that they can be parsed automatically by scripts or other utilities. The existing format is very difficult (if not impossible) to parse, except for Firefox itself.
+
+== Exporting Bookmarks ==
+
+When we export bookmarks, it would be nice to have a property on each category and bookmark that could make them private and so, not exportable. This is important because if we want to share our bookmarks there are always bookmarks that should not be shared.
+
+If there was some automatism that would export public bookmarks to a server that also would be very interesting.
+
+== Exporting Folder(s) for Documentation ==
+
+Would like to be able to export a folder (with subfolders and bookmarks) as HTML 
+retaining HREF, TITLE, SHORTCUTURL  the and ability to discard timestamps and information not
+usually relevent to documentation (ADD_DATE, LAST_MODIFIED, LAST_CHARSET, ICON, generated ID).  
+<p>
+Also see a need for a Bookmarks Documentation bookmarklet with the ability to do the same working from a selection within bookmarks.html to extract source to
+the clipboard.
+
+== Old style netscape bookmarks ==
+
+Bookmarks should be displayed in multiple columns side by side like the old netscape used to.  Or at least there should be an option to do so.  I have like, 2000 entries in my bookmark file.  I don't sort them, nor group them.  That way I always can go to the bottom of the list and reconstruct a chronological order.  So if I want to know when I visited a site, I can do so.  It is very time consuming to have to scroll down through all of these.  In the old netscape 4.1 they would be displayed in columns like the program list is in windows 2000.  That is my single biggest gripe about firefox.  How do you make firefox do this?
+
+== Integrate bookmark backup into Firefox ==
+
+After reading enough reports in mozilla.feedback, bugzilla, etc., it is clear to me that it would be useful to incorporate some sort of bookmark backup within the browser. This needs to be something fairly simple - just an easy one touch way to backup their bookmarks so that all is not lost in the event something happens during update, etc. As bookmarks are the lifeblood of many users, I think this is a useful thing to consider. And I realize there are extensions available to do this, but many users either do not know about them or aren't willing to go the extra length to install an extension.
+
+== Sort entries in a live bookmark alphabetically instead of chronologically ==
+
+I use live bookmarks to display my bookmark collection from a social bookmarking service. However inside a single live bookmark, moazilla displays the entries (each entry being a different bookmarked url) in the order in which I added them on the social bookmarking service.  I would like the option to make them appear sorted alphabetically, instead of sorted by time of addition.

@@ -672,3 +672,172 @@ req_013,two_step,solution.x_shipping_cost__mutmut_14,survived,"# solution.x_ship
  
      if express:
 "
+req_016,direct,solution.x_most_visited_urls__mutmut_1,survived,"# solution.x_most_visited_urls__mutmut_1: survived
+--- solution.py
++++ solution.py
+@@ -3,7 +3,7 @@
+ 
+     Desempate: ordem de primeira aparição em ``visits``. ``n <= 0`` → ``[]``.
+     """"""
+-    if n <= 0:
++    if n < 0:
+         return []
+     counts = {}
+     first_seen = {}
+"
+req_016,direct,solution.x_most_visited_urls__mutmut_8,survived,"# solution.x_most_visited_urls__mutmut_8: survived
+--- solution.py
++++ solution.py
+@@ -9,7 +9,7 @@
+     first_seen = {}
+     for i, url in enumerate(visits):
+         if url not in counts:
+-            counts[url] = 0
++            counts[url] = 1
+             first_seen[url] = i
+         counts[url] += 1
+     # ordena por (frequência decrescente, primeira aparição crescente)
+"
+req_016,direct,solution.x_most_visited_urls__mutmut_9,survived,"# solution.x_most_visited_urls__mutmut_9: survived
+--- solution.py
++++ solution.py
+@@ -10,7 +10,7 @@
+     for i, url in enumerate(visits):
+         if url not in counts:
+             counts[url] = 0
+-            first_seen[url] = i
++            first_seen[url] = None
+         counts[url] += 1
+     # ordena por (frequência decrescente, primeira aparição crescente)
+     ranked = sorted(counts, key=lambda u: (-counts[u], first_seen[u]))
+"
+req_016,direct,solution.x_most_visited_urls__mutmut_12,survived,"# solution.x_most_visited_urls__mutmut_12: survived
+--- solution.py
++++ solution.py
+@@ -11,7 +11,7 @@
+         if url not in counts:
+             counts[url] = 0
+             first_seen[url] = i
+-        counts[url] += 1
++        counts[url] += 2
+     # ordena por (frequência decrescente, primeira aparição crescente)
+     ranked = sorted(counts, key=lambda u: (-counts[u], first_seen[u]))
+     return ranked[:n]
+"
+req_016,two_step,solution.x_most_visited_urls__mutmut_1,survived,"# solution.x_most_visited_urls__mutmut_1: survived
+--- solution.py
++++ solution.py
+@@ -3,7 +3,7 @@
+ 
+     Desempate: ordem de primeira aparição em ``visits``. ``n <= 0`` → ``[]``.
+     """"""
+-    if n <= 0:
++    if n < 0:
+         return []
+     counts = {}
+     first_seen = {}
+"
+req_016,two_step,solution.x_most_visited_urls__mutmut_8,survived,"# solution.x_most_visited_urls__mutmut_8: survived
+--- solution.py
++++ solution.py
+@@ -9,7 +9,7 @@
+     first_seen = {}
+     for i, url in enumerate(visits):
+         if url not in counts:
+-            counts[url] = 0
++            counts[url] = 1
+             first_seen[url] = i
+         counts[url] += 1
+     # ordena por (frequência decrescente, primeira aparição crescente)
+"
+req_016,two_step,solution.x_most_visited_urls__mutmut_9,survived,"# solution.x_most_visited_urls__mutmut_9: survived
+--- solution.py
++++ solution.py
+@@ -10,7 +10,7 @@
+     for i, url in enumerate(visits):
+         if url not in counts:
+             counts[url] = 0
+-            first_seen[url] = i
++            first_seen[url] = None
+         counts[url] += 1
+     # ordena por (frequência decrescente, primeira aparição crescente)
+     ranked = sorted(counts, key=lambda u: (-counts[u], first_seen[u]))
+"
+req_016,two_step,solution.x_most_visited_urls__mutmut_10,survived,"# solution.x_most_visited_urls__mutmut_10: survived
+--- solution.py
++++ solution.py
+@@ -11,7 +11,7 @@
+         if url not in counts:
+             counts[url] = 0
+             first_seen[url] = i
+-        counts[url] += 1
++        counts[url] = 1
+     # ordena por (frequência decrescente, primeira aparição crescente)
+     ranked = sorted(counts, key=lambda u: (-counts[u], first_seen[u]))
+     return ranked[:n]
+"
+req_016,two_step,solution.x_most_visited_urls__mutmut_12,survived,"# solution.x_most_visited_urls__mutmut_12: survived
+--- solution.py
++++ solution.py
+@@ -11,7 +11,7 @@
+         if url not in counts:
+             counts[url] = 0
+             first_seen[url] = i
+-        counts[url] += 1
++        counts[url] += 2
+     # ordena por (frequência decrescente, primeira aparição crescente)
+     ranked = sorted(counts, key=lambda u: (-counts[u], first_seen[u]))
+     return ranked[:n]
+"
+req_017,direct,solution.x_filter_by_tag__mutmut_8,survived,"# solution.x_filter_by_tag__mutmut_8: survived
+--- solution.py
++++ solution.py
+@@ -8,7 +8,7 @@
+     target = tag.lower()
+     result = []
+     for bm in bookmarks:
+-        tags = [t.lower() for t in bm.get(""tags"", [])]
++        tags = [t.lower() for t in bm.get(""tags"", None)]
+         if target in tags:
+             result.append(bm[""title""])
+     return result
+"
+req_017,direct,solution.x_filter_by_tag__mutmut_10,survived,"# solution.x_filter_by_tag__mutmut_10: survived
+--- solution.py
++++ solution.py
+@@ -8,7 +8,7 @@
+     target = tag.lower()
+     result = []
+     for bm in bookmarks:
+-        tags = [t.lower() for t in bm.get(""tags"", [])]
++        tags = [t.lower() for t in bm.get(""tags"", )]
+         if target in tags:
+             result.append(bm[""title""])
+     return result
+"
+req_017,two_step,solution.x_filter_by_tag__mutmut_8,survived,"# solution.x_filter_by_tag__mutmut_8: survived
+--- solution.py
++++ solution.py
+@@ -8,7 +8,7 @@
+     target = tag.lower()
+     result = []
+     for bm in bookmarks:
+-        tags = [t.lower() for t in bm.get(""tags"", [])]
++        tags = [t.lower() for t in bm.get(""tags"", None)]
+         if target in tags:
+             result.append(bm[""title""])
+     return result
+"
+req_017,two_step,solution.x_filter_by_tag__mutmut_10,survived,"# solution.x_filter_by_tag__mutmut_10: survived
+--- solution.py
++++ solution.py
+@@ -8,7 +8,7 @@
+     target = tag.lower()
+     result = []
+     for bm in bookmarks:
+-        tags = [t.lower() for t in bm.get(""tags"", [])]
++        tags = [t.lower() for t in bm.get(""tags"", )]
+         if target in tags:
+             result.append(bm[""title""])
+     return result
+"

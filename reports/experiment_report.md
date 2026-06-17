@@ -214,3 +214,63 @@ em `slugify`/`is_valid_ipv4`.
 - **Validade externa não testada:** 1 modelo (gemini-2.5-flash), 1 execução,
   temp 0 — sem variância nem segundo modelo; resultados são exploratórios, não
   generalizáveis. Funções pequenas e puras não representam código real.
+  *(Parcialmente endereçado na Fase 6, §10.)*
+
+## 10. Validade externa (Fase 6)
+
+As §1–9 descrevem o núcleo de **15 requisitos sintéticos** (funções-brinquedo). A
+Fase 6 testa se as taxas **se mantêm fora desse conjunto**, derivando requisitos
+de **documentos reais** do Firefox (pasta `dataset/`), mantendo a interface por
+assinatura:
+
+- **req\_016** `most_visited_urls(visits, n)` — de `dataset/req_history.txt`
+  ("*a query folder ... which contains the 20 most frequently visited URLs in
+  history*"). Generalizamos o "20" para `n`.
+- **req\_017** `filter_by_tag(bookmarks, tag)` — de `dataset/req_bookmark.txt`
+  (seção "*Smart Folders and Tagging*").
+- Nota: **req\_002** (`validate_password`) já era derivado de documento real
+  (`dataset/req_password.txt`), então o pipeline já continha 1 requisito de
+  origem realista; a Fase 6 acrescenta mais 2 explicitamente rotulados.
+
+Cada novo requisito isola o **núcleo determinístico** do texto (contagem/ranking;
+filtragem por tag) — o documento real é a *origem*, não a função em si (que
+permanece pura e testável por execução, como exige o harness).
+
+### Comparação: real-doc (req\_016–017) vs brinquedo (req\_001–015)
+
+| Métrica (média por requisito) | Brinquedo (15) | Real-doc (2) | Mantém? |
+| ----------------------------- | -------------: | -----------: | :-----: |
+| `valid_rate`                  |          1,000 |        1,000 | ✓ igual |
+| `correct_pass_rate`           |         0,9871 |       1,0000 | ✓ (melhor) |
+| `bug_detection_rate`          |          0,729 |        0,835 | ✓ (melhor) |
+| `mutation_score_auto`         |          0,939 |        0,819 | ↓ (pior) |
+
+Detalhe por requisito (direct / two\_step):
+
+| Req | bug\_detection | mut\_auto | invalids |
+| --- | -------------: | --------: | -------: |
+| req\_016 (history) | 0,75 / 0,82 | 0,79 / 0,74 | 0 |
+| req\_017 (bookmark) | 0,92 / 0,85 | 0,875 / 0,875 | 0 |
+
+### Leitura
+
+As **taxas de cabeçalho se mantêm** fora das funções-brinquedo: executabilidade
+permanece perfeita (1,00), a correção é igual ou melhor (nenhum `invalid` nos dois
+reqs), e a **detecção de defeitos é até maior**
+(0,835 vs 0,729) — os requisitos derivados de documento real não degradaram o
+desempenho do LLM neste recorte.
+
+O sinal honesto está no `mutation_score_auto`, **menor** nos reqs reais (0,819 vs
+0,939): as funções derivadas de documento real geram mutantes automáticos que a
+suíte do LLM mata com menos completude (mais sobreviventes proporcionalmente). Ou
+seja, embora o LLM **detecte** defeitos bem, ele deixa **mais lacunas residuais**
+em funções um pouco mais ricas (ranqueamento com desempate, normalização de
+caixa) — coerente com o achado da Fase 3 (reqs maiores discriminam mais).
+
+### Ameaças remanescentes
+
+Ainda são **apenas 2 requisitos reais**, e o núcleo extraído continua sendo função
+pequena, pura e determinística (isolada de um documento ambíguo). Não há, ainda,
+estado real, I/O ou integração. Logo, a Fase 6 oferece validade externa
+**exploratória** — evidência encorajadora de que as taxas não colapsam fora do
+conjunto sintético, não prova de generalização.

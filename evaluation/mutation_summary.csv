@@ -29,3 +29,7 @@ req_014,direct,17,17,0,0,0,1.0,ok
 req_014,two_step,17,17,0,0,0,1.0,ok
 req_015,direct,26,26,0,0,0,1.0,ok
 req_015,two_step,26,26,0,0,0,1.0,ok
+req_016,direct,19,15,4,0,0,0.7895,ok
+req_016,two_step,19,14,5,0,0,0.7368,ok
+req_017,direct,16,14,2,0,0,0.875,ok
+req_017,two_step,16,14,2,0,0,0.875,ok
