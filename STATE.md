@@ -34,7 +34,8 @@ todo `implementations/req_*` — rodar após cada par autorado.
 - [x] T09 — **CA1/CA2/CA4/CA5 OK**: 15 reqs/15 dirs, `pytest` 41 passed, sem termos não-determinísticos, originais intactos. **Divergência dos 60 mutantes verificada por probe diferencial** (nenhum equivalente; os subagentes já haviam podado equivalentes em req_005/bug_005 e req_011/bug_004).
 - [x] T10 — testes do LLM gerados para os 15 reqs × 2 estratégias (30 arquivos). Quota diária estourou 2×; concluído com chave nova. **Exceção:** `generated_tests/direct/test_req_012.py` saiu degenerado a temp 0 (uma linha gigante de "6", loop de repetição do modelo — saída determinística, ficou cacheada); removida a entrada de cache envenenada e **regenerado a `--temperature 0.4`** (único arquivo fora do temp 0; 32 testes, passa na correta).
 - [x] T11 — matriz regenerada p/ 15 reqs: `results_matrix.csv` = **1014 linhas** (`useful=728, weak=270, invalid=16`, 0 `not_executable`). As 16 `invalid` são testes que reprovam na `correct.py` (subespecificação/achados, previstos no plano), não erro de pipeline.
-- [ ] T12–T13 — metrics → mutation_run (nessa ordem).
+- [x] T12 — `metrics_summary.csv` regenerado (33 linhas: 15 reqs + ALL × 2 estratégias); reproduz byte a byte o versionado. Agregados: direct `bug_det=0.7309 mut_sc=0.9733`; two_step `bug_det=0.7275 mut_sc=0.96`. valid_rate=1.0 em tudo; correct_pass_rate ≥0.91.
+- [ ] T13 — mutation_run (**BLOQUEIO:** mutmut não roda nativo no Windows neste env — ver nota de ambiente).
 - [ ] T14 — docs (tabela 3→15 + N).
 
 ### ⚠️ AMBIENTE (mudou desde a Fase 2 — LER ANTES DE RODAR)

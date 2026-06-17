@@ -83,7 +83,7 @@
 - **Pré-req:** T10.
 - **Como validar:** a matriz cobre os reqs com teste gerado; reqs sem teste aparecem como `skip`; arquivo regenerado sem erro.
 
-### [ ] T12 — Recalcular métricas
+### [x] T12 — Recalcular métricas
 - **O que fazer:** `python evaluation/metrics.py`.
 - **Onde fazer:** `evaluation/metrics_summary.csv`.
 - **Pré-req:** T11.
