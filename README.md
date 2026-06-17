@@ -63,6 +63,28 @@ Cada `req_XXX.md` declara a **assinatura da função** e o **módulo a importar*
 assinatura; o runner monta a variante escolhida como `solution.py` num diretório
 isolado, e o teste sempre faz `from solution import ...`.
 
+## Requisitos atuais
+
+N=15, cobrindo 6 classes de problema (Fase 3):
+
+| Req | Classe | Tema | Assinatura |
+|---|---|---|---|
+| `req_001` | regra ramificada | preço final com desconto | `calculate_final_price(value: float, customer_type: str) -> float` |
+| `req_002` | string/validação | força de senha | `validate_password(password: str) -> bool` |
+| `req_003` | numérico/fronteira | faixa etária | `age_bracket(age: int) -> str` |
+| `req_004` | numérico/fronteira | categoria de IMC | `bmi_category(weight: float, height: float) -> str` |
+| `req_005` | numérico/fronteira | tipo de triângulo | `triangle_type(a: int, b: int, c: int) -> str` |
+| `req_006` | string/validação | validar IPv4 | `is_valid_ipv4(s: str) -> bool` |
+| `req_007` | string/transformação | slug de título | `slugify(text: str) -> str` |
+| `req_008` | data/tempo | ano bissexto | `is_leap_year(year: int) -> bool` |
+| `req_009` | data/tempo | dias entre datas ISO | `days_between(start: str, end: str) -> int` |
+| `req_010` | coleção/agregação | média acima de limiar | `average_above(values: list, threshold: float) -> float` |
+| `req_011` | coleção/agregação | item mais frequente | `most_frequent(items: list) -> str` |
+| `req_012` | regra ramificada | imposto progressivo | `income_tax(income: float) -> float` |
+| `req_013` | regra ramificada | custo de frete | `shipping_cost(weight: float, region: str, express: bool) -> float` |
+| `req_014` | estado simples | saldo após operações | `final_balance(initial: float, operations: list) -> float` |
+| `req_015` | estado simples | aplicar comandos a contador | `apply_commands(start: int, commands: list) -> int` |
+
 ## Classificação dos testes
 
 | Classificação    | Significado                                                              |
@@ -173,4 +195,4 @@ O free tier do Gemini impõe limites baixos (ex.: ~20 gerações/dia em
 - **Escopo:** funções pequenas e determinísticas; não cobre sistemas com estado,
   I/O, UI ou integração externa.
 - **Dependência da assinatura:** o requisito padroniza a interface para reduzir isso.
-- **N pequeno:** piloto com 3 requisitos; ampliar para conclusões mais fortes.
+- **N moderado:** 15 requisitos em 6 classes (Fase 3); ampliar mais para conclusões mais fortes.

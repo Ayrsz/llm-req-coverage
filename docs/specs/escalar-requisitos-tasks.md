@@ -97,7 +97,7 @@
 
 ## Bloco F — Documentação
 
-### [ ] T14 — Atualizar tabela de requisitos e N nas docs
+### [x] T14 — Atualizar tabela de requisitos e N nas docs
 - **O que fazer:** atualizar a tabela "Requisitos atuais" (3 → 15, com classe) e o N citado nas limitações.
 - **Onde fazer:** `README.md` e `CLAUDE.md`.
 - **Pré-req:** T09.
@@ -111,7 +111,7 @@
 - [x] DoD4 — CA4: teste de consistência cobre todos e passa. *(T01, T03–T08)*
 - [x] DoD5 — CA5: `python -m pytest` verde, sem API. *(T09)*
 - [x] DoD6 — CA6: 4 CSVs regenerados; `skip`/`skipped` sem quebra. *(T11, T12, T13)*
-- [ ] DoD7 — docs atualizadas. *(T14)*
+- [x] DoD7 — docs atualizadas. *(T14)*
 
 ## Paralelização
 
