@@ -1,0 +1,11 @@
+# solution.x_calculate_final_price__mutmut_4: survived
+--- solution.py
++++ solution.py
+@@ -1,6 +1,6 @@
+ def calculate_final_price(value: float, customer_type: str) -> float:
+     v = Decimal(str(value))
+-    if v < 0:
++    if v <= 0:
+         return 0.0
+     if v <= 100:
+         return _round2(v)

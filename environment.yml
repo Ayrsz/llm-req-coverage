@@ -1,0 +1,11 @@
+name: llm-req-coverage
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pytest>=8.0
+  - pip
+  - pip:
+      - google-genai>=1.0.0
+      - python-dotenv>=1.0.0
+      - mutmut==3.6.0
