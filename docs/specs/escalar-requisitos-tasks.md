@@ -77,7 +77,7 @@
 - **Pré-req:** T03–T08.
 - **Como validar:** existem `test_req_XXX.py` para os reqs gerados; quota esgotada não derruba o restante do pipeline.
 
-### [ ] T11 — Regenerar a matriz de execução
+### [x] T11 — Regenerar a matriz de execução
 - **O que fazer:** `python evaluation/run_tests.py` (precisa vir **antes** do `mutation_run.py`, que lê a matriz para o baseline verde).
 - **Onde fazer:** `evaluation/results_matrix.csv`.
 - **Pré-req:** T10.

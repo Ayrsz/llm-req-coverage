@@ -33,8 +33,14 @@ todo `implementations/req_*` — rodar após cada par autorado.
 - [x] T03–T08 — 12 novos requisitos (req_004..req_015) autorados em paralelo por subagentes; cada um `correct.py` + 5 mutantes (taxonomia fixa).
 - [x] T09 — **CA1/CA2/CA4/CA5 OK**: 15 reqs/15 dirs, `pytest` 41 passed, sem termos não-determinísticos, originais intactos. **Divergência dos 60 mutantes verificada por probe diferencial** (nenhum equivalente; os subagentes já haviam podado equivalentes em req_005/bug_005 e req_011/bug_004).
 - [x] T10 — testes do LLM gerados para os 15 reqs × 2 estratégias (30 arquivos). Quota diária estourou 2×; concluído com chave nova. **Exceção:** `generated_tests/direct/test_req_012.py` saiu degenerado a temp 0 (uma linha gigante de "6", loop de repetição do modelo — saída determinística, ficou cacheada); removida a entrada de cache envenenada e **regenerado a `--temperature 0.4`** (único arquivo fora do temp 0; 32 testes, passa na correta).
-- [ ] T11–T13 — regenerar pipeline (run_tests → metrics → mutation_run; nessa ordem).
+- [x] T11 — matriz regenerada p/ 15 reqs: `results_matrix.csv` = **1014 linhas** (`useful=728, weak=270, invalid=16`, 0 `not_executable`). As 16 `invalid` são testes que reprovam na `correct.py` (subespecificação/achados, previstos no plano), não erro de pipeline.
+- [ ] T12–T13 — metrics → mutation_run (nessa ordem).
 - [ ] T14 — docs (tabela 3→15 + N).
+
+### ⚠️ AMBIENTE (mudou desde a Fase 2 — LER ANTES DE RODAR)
+- **Usar SEMPRE o env conda `llm-req-coverage`**: `python.exe` em `C:\Users\Eduar\miniconda3\envs\llm-req-coverage\` (Python **3.11.15** conda-forge, pytest 9.1.0, pygments OK, mutmut 3.6.0). O `python` "nu" do PATH resolve para o Python 3.11 do **AppData**, cujo pytest está QUEBRADO (sem `pygments`) → toda a matriz vira `not_executable`. STATE da Fase 2 dizia "miniconda 3.13" — **desatualizado**.
+- `conda` não está no PATH do shell; invocar o interpretador por caminho absoluto.
+- **mutmut neste env recusa rodar nativo no Windows** ("please use WSL", issue boxed/mutmut#397) — impacta T13; decidir caminho (WSL vs. interpretador onde mutmut roda) antes de regenerar `mutation_summary.csv`.
 
 Decisões de autoria documentadas nos `.md`: req_006 rejeita zero à esquerda; req_008 `year<=0`→False; req_009 retorno com sinal + sentinela `-999999` p/ inválido; req_011 desempate = primeira ocorrência; req_014 saque ignora se sem saldo; req_015 piso 0 no contador.
 
