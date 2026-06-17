@@ -121,12 +121,35 @@ funções simples morrem amplamente (score 1.0 em req_002/003/004/009/010/014/01
   com redundância maior (389 vs 272);
 - two_step expõe mais ambiguidade (11 `invalid` vs 5).
 
+- **controlando por volume** (suíte mínima, §7): equivalência confirmada —
+  direct mata 73 mutantes com 39 testes, two_step 72 com 41.
+
 Conclusão honesta: no conjunto ampliado **não há vantagem clara do two_step**; o
 sinal favorável do piloto era de N pequeno. As estratégias se equivalem em poder
 de detecção, com perfis diferentes (direct mais redundante e robusto a
 ambiguidade; two_step mais explorador de casos-limite).
 
-## 7. Limitações observadas
+## 7. Comparação controlando por volume (Fase 4)
+
+A contagem bruta de testes favorece quem gera mais — a comparação justa usa a
+**suíte mínima** (set-cover guloso determinístico: menor subconjunto que mata o
+mesmo conjunto de mutantes manuais), os **testes essenciais** (kills únicos) e os
+**kills por teste**. Colunas em `metrics_summary.csv` (`min_suite_size`,
+`essential_tests`, `kills_per_test_mean`).
+
+| Estratégia | testes úteis | mutantes mortos | suíte mínima | essenciais | kills/teste |
+| ---------- | -----------: | --------------: | -----------: | ---------: | ----------: |
+| direct     |          421 |              73 |           39 |         11 |        1.86 |
+| two_step   |          307 |              72 |           41 |         13 |        1.72 |
+
+**Leitura:** controlando por volume, as estratégias são **equivalentes** — direct
+mata 73 mutantes com 39 testes; two_step mata 72 com 41. As diferenças de tamanho
+de suíte (39 vs 41) e de kills/teste (1.86 vs 1.72) são marginais. A redundância é
+enorme nas duas: a suíte mínima do direct é só **39 de 421** testes úteis (~9%); a
+do two_step, **41 de 307** (~13%). A aparente vantagem do `two_step` no piloto era
+**artefato de volume/N** — sob suíte mínima, ela desaparece.
+
+## 8. Limitações observadas
 
 - **Viés de autoria dos bugs manuais:** o `mutation_score` manual ainda satura
   em ~1.0 na maioria dos reqs; a mutação automática mitiga ao gerar mutantes mais
