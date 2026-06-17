@@ -89,7 +89,7 @@
 - **Pré-req:** T11.
 - **Como validar:** `metrics_summary.csv` tem linhas por estratégia/requisito para o conjunto ampliado.
 
-### [ ] T13 — Rodar mutação automática no conjunto ampliado
+### [x] T13 — Rodar mutação automática no conjunto ampliado
 - **O que fazer:** `python evaluation/mutation_run.py` (após T11).
 - **Onde fazer:** `evaluation/mutation_summary.csv`, `mutation_survivors.csv`.
 - **Pré-req:** T11.
@@ -110,7 +110,7 @@
 - [x] DoD3 — CA3: cada novo req com `correct.py` + 5 `bug_*.py`, 1 defeito, importáveis. *(T03–T08)*
 - [x] DoD4 — CA4: teste de consistência cobre todos e passa. *(T01, T03–T08)*
 - [x] DoD5 — CA5: `python -m pytest` verde, sem API. *(T09)*
-- [ ] DoD6 — CA6: 4 CSVs regenerados; `skip`/`skipped` sem quebra. *(T11, T12, T13)*
+- [x] DoD6 — CA6: 4 CSVs regenerados; `skip`/`skipped` sem quebra. *(T11, T12, T13)*
 - [ ] DoD7 — docs atualizadas. *(T14)*
 
 ## Paralelização

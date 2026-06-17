@@ -35,13 +35,14 @@ todo `implementations/req_*` — rodar após cada par autorado.
 - [x] T10 — testes do LLM gerados para os 15 reqs × 2 estratégias (30 arquivos). Quota diária estourou 2×; concluído com chave nova. **Exceção:** `generated_tests/direct/test_req_012.py` saiu degenerado a temp 0 (uma linha gigante de "6", loop de repetição do modelo — saída determinística, ficou cacheada); removida a entrada de cache envenenada e **regenerado a `--temperature 0.4`** (único arquivo fora do temp 0; 32 testes, passa na correta).
 - [x] T11 — matriz regenerada p/ 15 reqs: `results_matrix.csv` = **1014 linhas** (`useful=728, weak=270, invalid=16`, 0 `not_executable`). As 16 `invalid` são testes que reprovam na `correct.py` (subespecificação/achados, previstos no plano), não erro de pipeline.
 - [x] T12 — `metrics_summary.csv` regenerado (33 linhas: 15 reqs + ALL × 2 estratégias); reproduz byte a byte o versionado. Agregados: direct `bug_det=0.7309 mut_sc=0.9733`; two_step `bug_det=0.7275 mut_sc=0.96`. valid_rate=1.0 em tudo; correct_pass_rate ≥0.91.
-- [ ] T13 — mutation_run (**BLOQUEIO:** mutmut não roda nativo no Windows neste env — ver nota de ambiente).
+- [x] T13 — `mutation_summary.csv` regenerado p/ 15 reqs: **30 configs, todas `ok`** (0 skip/quebra → CA6). `mutation_survivors.csv` = **57 sobreviventes** (req_012=16, req_005=10, req_011=10, req_007=9, req_013=4, req_001=4, req_006=2, req_008=2) p/ triagem (equivalentes vs. lacuna). Discriminação agora real: `mutation_score_auto` 0.71–1.0; reqs maiores não saturam mais (hipótese da Fase 3 confirmada). Rodado no **WSL** (mutmut só roda em Linux).
 - [ ] T14 — docs (tabela 3→15 + N).
 
 ### ⚠️ AMBIENTE (mudou desde a Fase 2 — LER ANTES DE RODAR)
 - **Usar SEMPRE o env conda `llm-req-coverage`**: `python.exe` em `C:\Users\Eduar\miniconda3\envs\llm-req-coverage\` (Python **3.11.15** conda-forge, pytest 9.1.0, pygments OK, mutmut 3.6.0). O `python` "nu" do PATH resolve para o Python 3.11 do **AppData**, cujo pytest está QUEBRADO (sem `pygments`) → toda a matriz vira `not_executable`. STATE da Fase 2 dizia "miniconda 3.13" — **desatualizado**.
 - `conda` não está no PATH do shell; invocar o interpretador por caminho absoluto.
-- **mutmut neste env recusa rodar nativo no Windows** ("please use WSL", issue boxed/mutmut#397) — impacta T13; decidir caminho (WSL vs. interpretador onde mutmut roda) antes de regenerar `mutation_summary.csv`.
+- **mutmut tem guard rígido de plataforma:** `mutmut/__main__.py` faz `if platform.system()=="Windows": sys.exit(1)` no import (qualquer subcomando). Logo o `mutmut` NÃO roda no env conda do Windows — só `run_tests.py`/`metrics.py` (pytest puro) rodam lá.
+- **Mutação (T13) roda no WSL:** existe um env conda gêmeo `llm-req-coverage` dentro do WSL Ubuntu (`/home/eduardo/miniconda3/envs/llm-req-coverage`, Python 3.11.15 Linux, pytest 9.1.0, mutmut 3.6.0). Repro: `wsl -d Ubuntu bash -lc "conda activate llm-req-coverage && cd '/mnt/c/.../llm-requirements-document-coverage' && python evaluation/mutation_run.py"` (workdirs vão p/ `/tmp` Linux; lê o repo via `/mnt/c`). Levou ~2 min para as 30 configs.
 
 Decisões de autoria documentadas nos `.md`: req_006 rejeita zero à esquerda; req_008 `year<=0`→False; req_009 retorno com sinal + sentinela `-999999` p/ inválido; req_011 desempate = primeira ocorrência; req_014 saque ignora se sem saldo; req_015 piso 0 no contador.
 

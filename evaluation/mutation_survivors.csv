@@ -39,3 +39,636 @@ req_001,two_step,solution.x_calculate_final_price__mutmut_4,survived,"# solution
      if v <= 100:
          return _round2(v)
 "
+req_005,direct,solution.x_triangle_type__mutmut_1,survived,"# solution.x_triangle_type__mutmut_1: survived
+--- solution.py
++++ solution.py
+@@ -1,6 +1,6 @@
+ def triangle_type(a: int, b: int, c: int) -> str:
+     # Guarda: lados positivos e desigualdade triangular estrita.
+-    if a <= 0 or b <= 0 or c <= 0:
++    if a <= 0 or b <= 0 and c <= 0:
+         return ""invalido""
+     if a + b <= c or a + c <= b or b + c <= a:
+         return ""invalido""
+"
+req_005,direct,solution.x_triangle_type__mutmut_2,survived,"# solution.x_triangle_type__mutmut_2: survived
+--- solution.py
++++ solution.py
+@@ -1,6 +1,6 @@
+ def triangle_type(a: int, b: int, c: int) -> str:
+     # Guarda: lados positivos e desigualdade triangular estrita.
+-    if a <= 0 or b <= 0 or c <= 0:
++    if a <= 0 and b <= 0 or c <= 0:
+         return ""invalido""
+     if a + b <= c or a + c <= b or b + c <= a:
+         return ""invalido""
+"
+req_005,direct,solution.x_triangle_type__mutmut_3,survived,"# solution.x_triangle_type__mutmut_3: survived
+--- solution.py
++++ solution.py
+@@ -1,6 +1,6 @@
+ def triangle_type(a: int, b: int, c: int) -> str:
+     # Guarda: lados positivos e desigualdade triangular estrita.
+-    if a <= 0 or b <= 0 or c <= 0:
++    if a < 0 or b <= 0 or c <= 0:
+         return ""invalido""
+     if a + b <= c or a + c <= b or b + c <= a:
+         return ""invalido""
+"
+req_005,direct,solution.x_triangle_type__mutmut_5,survived,"# solution.x_triangle_type__mutmut_5: survived
+--- solution.py
++++ solution.py
+@@ -1,6 +1,6 @@
+ def triangle_type(a: int, b: int, c: int) -> str:
+     # Guarda: lados positivos e desigualdade triangular estrita.
+-    if a <= 0 or b <= 0 or c <= 0:
++    if a <= 0 or b < 0 or c <= 0:
+         return ""invalido""
+     if a + b <= c or a + c <= b or b + c <= a:
+         return ""invalido""
+"
+req_005,direct,solution.x_triangle_type__mutmut_7,survived,"# solution.x_triangle_type__mutmut_7: survived
+--- solution.py
++++ solution.py
+@@ -1,6 +1,6 @@
+ def triangle_type(a: int, b: int, c: int) -> str:
+     # Guarda: lados positivos e desigualdade triangular estrita.
+-    if a <= 0 or b <= 0 or c <= 0:
++    if a <= 0 or b <= 0 or c < 0:
+         return ""invalido""
+     if a + b <= c or a + c <= b or b + c <= a:
+         return ""invalido""
+"
+req_005,two_step,solution.x_triangle_type__mutmut_1,survived,"# solution.x_triangle_type__mutmut_1: survived
+--- solution.py
++++ solution.py
+@@ -1,6 +1,6 @@
+ def triangle_type(a: int, b: int, c: int) -> str:
+     # Guarda: lados positivos e desigualdade triangular estrita.
+-    if a <= 0 or b <= 0 or c <= 0:
++    if a <= 0 or b <= 0 and c <= 0:
+         return ""invalido""
+     if a + b <= c or a + c <= b or b + c <= a:
+         return ""invalido""
+"
+req_005,two_step,solution.x_triangle_type__mutmut_2,survived,"# solution.x_triangle_type__mutmut_2: survived
+--- solution.py
++++ solution.py
+@@ -1,6 +1,6 @@
+ def triangle_type(a: int, b: int, c: int) -> str:
+     # Guarda: lados positivos e desigualdade triangular estrita.
+-    if a <= 0 or b <= 0 or c <= 0:
++    if a <= 0 and b <= 0 or c <= 0:
+         return ""invalido""
+     if a + b <= c or a + c <= b or b + c <= a:
+         return ""invalido""
+"
+req_005,two_step,solution.x_triangle_type__mutmut_3,survived,"# solution.x_triangle_type__mutmut_3: survived
+--- solution.py
++++ solution.py
+@@ -1,6 +1,6 @@
+ def triangle_type(a: int, b: int, c: int) -> str:
+     # Guarda: lados positivos e desigualdade triangular estrita.
+-    if a <= 0 or b <= 0 or c <= 0:
++    if a < 0 or b <= 0 or c <= 0:
+         return ""invalido""
+     if a + b <= c or a + c <= b or b + c <= a:
+         return ""invalido""
+"
+req_005,two_step,solution.x_triangle_type__mutmut_5,survived,"# solution.x_triangle_type__mutmut_5: survived
+--- solution.py
++++ solution.py
+@@ -1,6 +1,6 @@
+ def triangle_type(a: int, b: int, c: int) -> str:
+     # Guarda: lados positivos e desigualdade triangular estrita.
+-    if a <= 0 or b <= 0 or c <= 0:
++    if a <= 0 or b < 0 or c <= 0:
+         return ""invalido""
+     if a + b <= c or a + c <= b or b + c <= a:
+         return ""invalido""
+"
+req_005,two_step,solution.x_triangle_type__mutmut_7,survived,"# solution.x_triangle_type__mutmut_7: survived
+--- solution.py
++++ solution.py
+@@ -1,6 +1,6 @@
+ def triangle_type(a: int, b: int, c: int) -> str:
+     # Guarda: lados positivos e desigualdade triangular estrita.
+-    if a <= 0 or b <= 0 or c <= 0:
++    if a <= 0 or b <= 0 or c < 0:
+         return ""invalido""
+     if a + b <= c or a + c <= b or b + c <= a:
+         return ""invalido""
+"
+req_006,direct,solution.x_is_valid_ipv4__mutmut_15,survived,"# solution.x_is_valid_ipv4__mutmut_15: survived
+--- solution.py
++++ solution.py
+@@ -9,7 +9,7 @@
+             return False
+         # Apenas dígitos decimais ASCII; rejeita sinais, espaços, letras e
+         # dígitos unicode não-ASCII (que quebrariam int()).
+-        if not all(""0"" <= ch <= ""9"" for ch in octet):
++        if not all(""0"" <= ch <= ""XX9XX"" for ch in octet):
+             return False
+         # Sem zeros à esquerda: comprimento > 1 não pode começar por '0'.
+         if len(octet) > 1 and octet[0] == ""0"":
+"
+req_006,two_step,solution.x_is_valid_ipv4__mutmut_15,survived,"# solution.x_is_valid_ipv4__mutmut_15: survived
+--- solution.py
++++ solution.py
+@@ -9,7 +9,7 @@
+             return False
+         # Apenas dígitos decimais ASCII; rejeita sinais, espaços, letras e
+         # dígitos unicode não-ASCII (que quebrariam int()).
+-        if not all(""0"" <= ch <= ""9"" for ch in octet):
++        if not all(""0"" <= ch <= ""XX9XX"" for ch in octet):
+             return False
+         # Sem zeros à esquerda: comprimento > 1 não pode começar por '0'.
+         if len(octet) > 1 and octet[0] == ""0"":
+"
+req_007,direct,solution.x_slugify__mutmut_31,survived,"# solution.x_slugify__mutmut_31: survived
+--- solution.py
++++ solution.py
+@@ -9,7 +9,7 @@
+     for ch in lowered:
+         if ch in ("" "", ""_""):
+             result.append(""-"")
+-        elif (""a"" <= ch <= ""z"") or (""0"" <= ch <= ""9"") or ch == ""-"":
++        elif (""a"" <= ch <= ""z"") or (""0"" <= ch < ""9"") or ch == ""-"":
+             # 4) Mantem apenas [a-z0-9-]; demais caracteres sao removidos.
+             result.append(ch)
+         # caractere fora do conjunto permitido: descartado.
+"
+req_007,direct,solution.x_slugify__mutmut_49,survived,"# solution.x_slugify__mutmut_49: survived
+--- solution.py
++++ solution.py
+@@ -18,4 +18,4 @@
+     while ""--"" in slug:
+         slug = slug.replace(""--"", ""-"")
+     # 6) Apara hifens das pontas.
+-    return slug.strip(""-"")
++    return slug.strip(""XX-XX"")
+"
+req_007,direct,solution.x_slugify__mutmut_40,timeout,"# solution.x_slugify__mutmut_40: timeout
+--- solution.py
++++ solution.py
+@@ -15,7 +15,7 @@
+         # caractere fora do conjunto permitido: descartado.
+     slug = """".join(result)
+     # 5) Colapsa hifens repetidos.
+-    while ""--"" in slug:
++    while ""--"" not in slug:
+         slug = slug.replace(""--"", ""-"")
+     # 6) Apara hifens das pontas.
+     return slug.strip(""-"")
+"
+req_007,direct,solution.x_slugify__mutmut_46,timeout,"# solution.x_slugify__mutmut_46: timeout
+--- solution.py
++++ solution.py
+@@ -16,6 +16,6 @@
+     slug = """".join(result)
+     # 5) Colapsa hifens repetidos.
+     while ""--"" in slug:
+-        slug = slug.replace(""--"", ""-"")
++        slug = slug.replace(""XX--XX"", ""-"")
+     # 6) Apara hifens das pontas.
+     return slug.strip(""-"")
+"
+req_007,two_step,solution.x_slugify__mutmut_26,survived,"# solution.x_slugify__mutmut_26: survived
+--- solution.py
++++ solution.py
+@@ -9,7 +9,7 @@
+     for ch in lowered:
+         if ch in ("" "", ""_""):
+             result.append(""-"")
+-        elif (""a"" <= ch <= ""z"") or (""0"" <= ch <= ""9"") or ch == ""-"":
++        elif (""a"" <= ch < ""z"") or (""0"" <= ch <= ""9"") or ch == ""-"":
+             # 4) Mantem apenas [a-z0-9-]; demais caracteres sao removidos.
+             result.append(ch)
+         # caractere fora do conjunto permitido: descartado.
+"
+req_007,two_step,solution.x_slugify__mutmut_31,survived,"# solution.x_slugify__mutmut_31: survived
+--- solution.py
++++ solution.py
+@@ -9,7 +9,7 @@
+     for ch in lowered:
+         if ch in ("" "", ""_""):
+             result.append(""-"")
+-        elif (""a"" <= ch <= ""z"") or (""0"" <= ch <= ""9"") or ch == ""-"":
++        elif (""a"" <= ch <= ""z"") or (""0"" <= ch < ""9"") or ch == ""-"":
+             # 4) Mantem apenas [a-z0-9-]; demais caracteres sao removidos.
+             result.append(ch)
+         # caractere fora do conjunto permitido: descartado.
+"
+req_007,two_step,solution.x_slugify__mutmut_49,survived,"# solution.x_slugify__mutmut_49: survived
+--- solution.py
++++ solution.py
+@@ -18,4 +18,4 @@
+     while ""--"" in slug:
+         slug = slug.replace(""--"", ""-"")
+     # 6) Apara hifens das pontas.
+-    return slug.strip(""-"")
++    return slug.strip(""XX-XX"")
+"
+req_007,two_step,solution.x_slugify__mutmut_40,timeout,"# solution.x_slugify__mutmut_40: timeout
+--- solution.py
++++ solution.py
+@@ -15,7 +15,7 @@
+         # caractere fora do conjunto permitido: descartado.
+     slug = """".join(result)
+     # 5) Colapsa hifens repetidos.
+-    while ""--"" in slug:
++    while ""--"" not in slug:
+         slug = slug.replace(""--"", ""-"")
+     # 6) Apara hifens das pontas.
+     return slug.strip(""-"")
+"
+req_007,two_step,solution.x_slugify__mutmut_46,timeout,"# solution.x_slugify__mutmut_46: timeout
+--- solution.py
++++ solution.py
+@@ -16,6 +16,6 @@
+     slug = """".join(result)
+     # 5) Colapsa hifens repetidos.
+     while ""--"" in slug:
+-        slug = slug.replace(""--"", ""-"")
++        slug = slug.replace(""XX--XX"", ""-"")
+     # 6) Apara hifens das pontas.
+     return slug.strip(""-"")
+"
+req_008,direct,solution.x_is_leap_year__mutmut_2,survived,"# solution.x_is_leap_year__mutmut_2: survived
+--- solution.py
++++ solution.py
+@@ -1,6 +1,6 @@
+ def is_leap_year(year: int) -> bool:
+     # Ano não positivo é entrada inválida: não é bissexto.
+-    if year <= 0:
++    if year <= 1:
+         return False
+     # Regra gregoriana: divisível por 4 e (não por 100 ou por 400).
+     return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+"
+req_008,two_step,solution.x_is_leap_year__mutmut_2,survived,"# solution.x_is_leap_year__mutmut_2: survived
+--- solution.py
++++ solution.py
+@@ -1,6 +1,6 @@
+ def is_leap_year(year: int) -> bool:
+     # Ano não positivo é entrada inválida: não é bissexto.
+-    if year <= 0:
++    if year <= 1:
+         return False
+     # Regra gregoriana: divisível por 4 e (não por 100 ou por 400).
+     return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+"
+req_011,direct,solution.x_most_frequent__mutmut_6,survived,"# solution.x_most_frequent__mutmut_6: survived
+--- solution.py
++++ solution.py
+@@ -5,7 +5,7 @@
+     # Conta as ocorrencias preservando a ordem de primeira aparicao das chaves.
+     counts = {}
+     for item in items:
+-        counts[item] = counts.get(item, 0) + 1
++        counts[item] = counts.get(None, 0) + 1
+     best = items[0]
+     best_count = counts[best]
+     # Percorre as chaves na ordem de insercao (= ordem de primeira ocorrencia);
+"
+req_011,direct,solution.x_most_frequent__mutmut_10,survived,"# solution.x_most_frequent__mutmut_10: survived
+--- solution.py
++++ solution.py
+@@ -5,7 +5,7 @@
+     # Conta as ocorrencias preservando a ordem de primeira aparicao das chaves.
+     counts = {}
+     for item in items:
+-        counts[item] = counts.get(item, 0) + 1
++        counts[item] = counts.get(item, 1) + 1
+     best = items[0]
+     best_count = counts[best]
+     # Percorre as chaves na ordem de insercao (= ordem de primeira ocorrencia);
+"
+req_011,direct,solution.x_most_frequent__mutmut_11,survived,"# solution.x_most_frequent__mutmut_11: survived
+--- solution.py
++++ solution.py
+@@ -5,7 +5,7 @@
+     # Conta as ocorrencias preservando a ordem de primeira aparicao das chaves.
+     counts = {}
+     for item in items:
+-        counts[item] = counts.get(item, 0) + 1
++        counts[item] = counts.get(item, 0) + 2
+     best = items[0]
+     best_count = counts[best]
+     # Percorre as chaves na ordem de insercao (= ordem de primeira ocorrencia);
+"
+req_011,direct,solution.x_most_frequent__mutmut_16,survived,"# solution.x_most_frequent__mutmut_16: survived
+--- solution.py
++++ solution.py
+@@ -12,6 +12,6 @@
+     # so substitui em frequencia ESTRITAMENTE maior, preservando o empate inicial.
+     for item, count in counts.items():
+         if count > best_count:
+-            best = item
++            best = None
+             best_count = count
+     return best
+"
+req_011,direct,solution.x_most_frequent__mutmut_17,survived,"# solution.x_most_frequent__mutmut_17: survived
+--- solution.py
++++ solution.py
+@@ -13,5 +13,5 @@
+     for item, count in counts.items():
+         if count > best_count:
+             best = item
+-            best_count = count
++            best_count = None
+     return best
+"
+req_011,two_step,solution.x_most_frequent__mutmut_6,survived,"# solution.x_most_frequent__mutmut_6: survived
+--- solution.py
++++ solution.py
+@@ -5,7 +5,7 @@
+     # Conta as ocorrencias preservando a ordem de primeira aparicao das chaves.
+     counts = {}
+     for item in items:
+-        counts[item] = counts.get(item, 0) + 1
++        counts[item] = counts.get(None, 0) + 1
+     best = items[0]
+     best_count = counts[best]
+     # Percorre as chaves na ordem de insercao (= ordem de primeira ocorrencia);
+"
+req_011,two_step,solution.x_most_frequent__mutmut_10,survived,"# solution.x_most_frequent__mutmut_10: survived
+--- solution.py
++++ solution.py
+@@ -5,7 +5,7 @@
+     # Conta as ocorrencias preservando a ordem de primeira aparicao das chaves.
+     counts = {}
+     for item in items:
+-        counts[item] = counts.get(item, 0) + 1
++        counts[item] = counts.get(item, 1) + 1
+     best = items[0]
+     best_count = counts[best]
+     # Percorre as chaves na ordem de insercao (= ordem de primeira ocorrencia);
+"
+req_011,two_step,solution.x_most_frequent__mutmut_11,survived,"# solution.x_most_frequent__mutmut_11: survived
+--- solution.py
++++ solution.py
+@@ -5,7 +5,7 @@
+     # Conta as ocorrencias preservando a ordem de primeira aparicao das chaves.
+     counts = {}
+     for item in items:
+-        counts[item] = counts.get(item, 0) + 1
++        counts[item] = counts.get(item, 0) + 2
+     best = items[0]
+     best_count = counts[best]
+     # Percorre as chaves na ordem de insercao (= ordem de primeira ocorrencia);
+"
+req_011,two_step,solution.x_most_frequent__mutmut_16,survived,"# solution.x_most_frequent__mutmut_16: survived
+--- solution.py
++++ solution.py
+@@ -12,6 +12,6 @@
+     # so substitui em frequencia ESTRITAMENTE maior, preservando o empate inicial.
+     for item, count in counts.items():
+         if count > best_count:
+-            best = item
++            best = None
+             best_count = count
+     return best
+"
+req_011,two_step,solution.x_most_frequent__mutmut_17,survived,"# solution.x_most_frequent__mutmut_17: survived
+--- solution.py
++++ solution.py
+@@ -13,5 +13,5 @@
+     for item, count in counts.items():
+         if count > best_count:
+             best = item
+-            best_count = count
++            best_count = None
+     return best
+"
+req_012,direct,solution.x__round2__mutmut_3,survived,"# solution.x__round2__mutmut_3: survived
+--- solution.py
++++ solution.py
+@@ -1,2 +1,2 @@
+ def _round2(x: Decimal) -> float:
+-    return float(x.quantize(Decimal(""0.01""), rounding=ROUND_HALF_UP))
++    return float(x.quantize(Decimal(""0.01""), rounding=None))
+"
+req_012,direct,solution.x__round2__mutmut_5,survived,"# solution.x__round2__mutmut_5: survived
+--- solution.py
++++ solution.py
+@@ -1,2 +1,2 @@
+ def _round2(x: Decimal) -> float:
+-    return float(x.quantize(Decimal(""0.01""), rounding=ROUND_HALF_UP))
++    return float(x.quantize(Decimal(""0.01""), ))
+"
+req_012,direct,solution.x_income_tax__mutmut_4,survived,"# solution.x_income_tax__mutmut_4: survived
+--- solution.py
++++ solution.py
+@@ -1,7 +1,7 @@
+ def income_tax(income: float) -> float:
+     # Imposto progressivo: cada faixa tributa só a parcela dentro do intervalo.
+     inc = Decimal(str(income))
+-    if inc < 0:
++    if inc <= 0:
+         return 0.0
+ 
+     # Limites superiores das faixas (fechados na faixa de baixo).
+"
+req_012,direct,solution.x_income_tax__mutmut_5,survived,"# solution.x_income_tax__mutmut_5: survived
+--- solution.py
++++ solution.py
+@@ -1,7 +1,7 @@
+ def income_tax(income: float) -> float:
+     # Imposto progressivo: cada faixa tributa só a parcela dentro do intervalo.
+     inc = Decimal(str(income))
+-    if inc < 0:
++    if inc < 1:
+         return 0.0
+ 
+     # Limites superiores das faixas (fechados na faixa de baixo).
+"
+req_012,direct,solution.x_income_tax__mutmut_19,survived,"# solution.x_income_tax__mutmut_19: survived
+--- solution.py
++++ solution.py
+@@ -11,7 +11,7 @@
+ 
+     tax = Decimal(""0"")
+     # Faixa 2: parcela acima de 2000 até 3000, a 7.5%.
+-    if inc > b1:
++    if inc >= b1:
+         part = min(inc, b2) - b1
+         tax += part * Decimal(""0.075"")
+     # Faixa 3: parcela acima de 3000 até 4500, a 15%.
+"
+req_012,direct,solution.x_income_tax__mutmut_26,survived,"# solution.x_income_tax__mutmut_26: survived
+--- solution.py
++++ solution.py
+@@ -13,7 +13,7 @@
+     # Faixa 2: parcela acima de 2000 até 3000, a 7.5%.
+     if inc > b1:
+         part = min(inc, b2) - b1
+-        tax += part * Decimal(""0.075"")
++        tax = part * Decimal(""0.075"")
+     # Faixa 3: parcela acima de 3000 até 4500, a 15%.
+     if inc > b2:
+         part = min(inc, b3) - b2
+"
+req_012,direct,solution.x_income_tax__mutmut_31,survived,"# solution.x_income_tax__mutmut_31: survived
+--- solution.py
++++ solution.py
+@@ -15,7 +15,7 @@
+         part = min(inc, b2) - b1
+         tax += part * Decimal(""0.075"")
+     # Faixa 3: parcela acima de 3000 até 4500, a 15%.
+-    if inc > b2:
++    if inc >= b2:
+         part = min(inc, b3) - b2
+         tax += part * Decimal(""0.15"")
+     # Faixa 4: parcela acima de 4500, a 22.5%.
+"
+req_012,direct,solution.x_income_tax__mutmut_43,survived,"# solution.x_income_tax__mutmut_43: survived
+--- solution.py
++++ solution.py
+@@ -19,7 +19,7 @@
+         part = min(inc, b3) - b2
+         tax += part * Decimal(""0.15"")
+     # Faixa 4: parcela acima de 4500, a 22.5%.
+-    if inc > b3:
++    if inc >= b3:
+         part = inc - b3
+         tax += part * Decimal(""0.225"")
+ 
+"
+req_012,two_step,solution.x__round2__mutmut_3,survived,"# solution.x__round2__mutmut_3: survived
+--- solution.py
++++ solution.py
+@@ -1,2 +1,2 @@
+ def _round2(x: Decimal) -> float:
+-    return float(x.quantize(Decimal(""0.01""), rounding=ROUND_HALF_UP))
++    return float(x.quantize(Decimal(""0.01""), rounding=None))
+"
+req_012,two_step,solution.x__round2__mutmut_5,survived,"# solution.x__round2__mutmut_5: survived
+--- solution.py
++++ solution.py
+@@ -1,2 +1,2 @@
+ def _round2(x: Decimal) -> float:
+-    return float(x.quantize(Decimal(""0.01""), rounding=ROUND_HALF_UP))
++    return float(x.quantize(Decimal(""0.01""), ))
+"
+req_012,two_step,solution.x_income_tax__mutmut_4,survived,"# solution.x_income_tax__mutmut_4: survived
+--- solution.py
++++ solution.py
+@@ -1,7 +1,7 @@
+ def income_tax(income: float) -> float:
+     # Imposto progressivo: cada faixa tributa só a parcela dentro do intervalo.
+     inc = Decimal(str(income))
+-    if inc < 0:
++    if inc <= 0:
+         return 0.0
+ 
+     # Limites superiores das faixas (fechados na faixa de baixo).
+"
+req_012,two_step,solution.x_income_tax__mutmut_5,survived,"# solution.x_income_tax__mutmut_5: survived
+--- solution.py
++++ solution.py
+@@ -1,7 +1,7 @@
+ def income_tax(income: float) -> float:
+     # Imposto progressivo: cada faixa tributa só a parcela dentro do intervalo.
+     inc = Decimal(str(income))
+-    if inc < 0:
++    if inc < 1:
+         return 0.0
+ 
+     # Limites superiores das faixas (fechados na faixa de baixo).
+"
+req_012,two_step,solution.x_income_tax__mutmut_19,survived,"# solution.x_income_tax__mutmut_19: survived
+--- solution.py
++++ solution.py
+@@ -11,7 +11,7 @@
+ 
+     tax = Decimal(""0"")
+     # Faixa 2: parcela acima de 2000 até 3000, a 7.5%.
+-    if inc > b1:
++    if inc >= b1:
+         part = min(inc, b2) - b1
+         tax += part * Decimal(""0.075"")
+     # Faixa 3: parcela acima de 3000 até 4500, a 15%.
+"
+req_012,two_step,solution.x_income_tax__mutmut_26,survived,"# solution.x_income_tax__mutmut_26: survived
+--- solution.py
++++ solution.py
+@@ -13,7 +13,7 @@
+     # Faixa 2: parcela acima de 2000 até 3000, a 7.5%.
+     if inc > b1:
+         part = min(inc, b2) - b1
+-        tax += part * Decimal(""0.075"")
++        tax = part * Decimal(""0.075"")
+     # Faixa 3: parcela acima de 3000 até 4500, a 15%.
+     if inc > b2:
+         part = min(inc, b3) - b2
+"
+req_012,two_step,solution.x_income_tax__mutmut_31,survived,"# solution.x_income_tax__mutmut_31: survived
+--- solution.py
++++ solution.py
+@@ -15,7 +15,7 @@
+         part = min(inc, b2) - b1
+         tax += part * Decimal(""0.075"")
+     # Faixa 3: parcela acima de 3000 até 4500, a 15%.
+-    if inc > b2:
++    if inc >= b2:
+         part = min(inc, b3) - b2
+         tax += part * Decimal(""0.15"")
+     # Faixa 4: parcela acima de 4500, a 22.5%.
+"
+req_012,two_step,solution.x_income_tax__mutmut_43,survived,"# solution.x_income_tax__mutmut_43: survived
+--- solution.py
++++ solution.py
+@@ -19,7 +19,7 @@
+         part = min(inc, b3) - b2
+         tax += part * Decimal(""0.15"")
+     # Faixa 4: parcela acima de 4500, a 22.5%.
+-    if inc > b3:
++    if inc >= b3:
+         part = inc - b3
+         tax += part * Decimal(""0.225"")
+ 
+"
+req_013,direct,solution.x_shipping_cost__mutmut_14,survived,"# solution.x_shipping_cost__mutmut_14: survived
+--- solution.py
++++ solution.py
+@@ -7,7 +7,7 @@
+ 
+     # Adicional proporcional ao peso acima de 5 kg.
+     excess = w - _WEIGHT_THRESHOLD
+-    if excess > 0:
++    if excess >= 0:
+         base += excess * _PER_KG
+ 
+     if express:
+"
+req_013,two_step,solution.x__round2__mutmut_3,survived,"# solution.x__round2__mutmut_3: survived
+--- solution.py
++++ solution.py
+@@ -1,2 +1,2 @@
+ def _round2(x: Decimal) -> float:
+-    return float(x.quantize(Decimal(""0.01""), rounding=ROUND_HALF_UP))
++    return float(x.quantize(Decimal(""0.01""), rounding=None))
+"
+req_013,two_step,solution.x__round2__mutmut_5,survived,"# solution.x__round2__mutmut_5: survived
+--- solution.py
++++ solution.py
+@@ -1,2 +1,2 @@
+ def _round2(x: Decimal) -> float:
+-    return float(x.quantize(Decimal(""0.01""), rounding=ROUND_HALF_UP))
++    return float(x.quantize(Decimal(""0.01""), ))
+"
+req_013,two_step,solution.x_shipping_cost__mutmut_14,survived,"# solution.x_shipping_cost__mutmut_14: survived
+--- solution.py
++++ solution.py
+@@ -7,7 +7,7 @@
+ 
+     # Adicional proporcional ao peso acima de 5 kg.
+     excess = w - _WEIGHT_THRESHOLD
+-    if excess > 0:
++    if excess >= 0:
+         base += excess * _PER_KG
+ 
+     if express:
+"
