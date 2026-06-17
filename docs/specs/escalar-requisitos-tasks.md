@@ -25,37 +25,37 @@
 > Cada tarefa entrega, para os 2 requisitos: `requirements/req_XXX.md` (gabarito completo, com `from solution import`) + `implementations/req_XXX/correct.py` + `bug_001..bug_005.py` (1 defeito cada, taxonomia T02, mesma assinatura, determinístico — sem `now()`/`random`/I/O).
 > **Validação comum a T03–T08:** `python -m pytest tests/test_requirements_consistency.py` cobre os novos reqs e passa; leitura dos critérios de aceite no `.md`; `correct.py` satisfaz os ACs declarados.
 
-### [ ] T03 — Numérico/fronteira (req_004, req_005)
+### [x] T03 — Numérico/fronteira (req_004, req_005)
 - **O que fazer:** `req_004` `bmi_category(weight: float, height: float) -> str`; `req_005` `triangle_type(a: int, b: int, c: int) -> str`.
 - **Onde fazer:** `requirements/req_004.md`, `req_005.md`; `implementations/req_004/`, `req_005/`.
 - **Pré-req:** T01, T02.
 - **Como validar:** validação comum do Bloco C.
 
-### [ ] T04 — String/validação e transformação (req_006, req_007)
+### [x] T04 — String/validação e transformação (req_006, req_007)
 - **O que fazer:** `req_006` `is_valid_ipv4(s: str) -> bool`; `req_007` `slugify(text: str) -> str`.
 - **Onde fazer:** `requirements/req_006.md`, `req_007.md`; `implementations/req_006/`, `req_007/`.
 - **Pré-req:** T01, T02.
 - **Como validar:** validação comum do Bloco C.
 
-### [ ] T05 — Data/tempo (req_008, req_009)
+### [x] T05 — Data/tempo (req_008, req_009)
 - **O que fazer:** `req_008` `is_leap_year(year: int) -> bool`; `req_009` `days_between(start: str, end: str) -> int` (datas ISO **como argumento**, sem `now()`).
 - **Onde fazer:** `requirements/req_008.md`, `req_009.md`; `implementations/req_008/`, `req_009/`.
 - **Pré-req:** T01, T02.
 - **Como validar:** validação comum do Bloco C.
 
-### [ ] T06 — Coleção/agregação (req_010, req_011)
+### [x] T06 — Coleção/agregação (req_010, req_011)
 - **O que fazer:** `req_010` `average_above(values: list, threshold: float) -> float`; `req_011` `most_frequent(items: list) -> str` (definir desempate no `.md`).
 - **Onde fazer:** `requirements/req_010.md`, `req_011.md`; `implementations/req_010/`, `req_011/`.
 - **Pré-req:** T01, T02.
 - **Como validar:** validação comum do Bloco C.
 
-### [ ] T07 — Regra de negócio ramificada (req_012, req_013)
+### [x] T07 — Regra de negócio ramificada (req_012, req_013)
 - **O que fazer:** `req_012` `income_tax(income: float) -> float` (faixas progressivas); `req_013` `shipping_cost(weight: float, region: str, express: bool) -> float`.
 - **Onde fazer:** `requirements/req_012.md`, `req_013.md`; `implementations/req_012/`, `req_013/`.
 - **Pré-req:** T01, T02.
 - **Como validar:** validação comum do Bloco C.
 
-### [ ] T08 — Estado simples/contador (req_014, req_015)
+### [x] T08 — Estado simples/contador (req_014, req_015)
 - **O que fazer:** `req_014` `final_balance(initial: float, operations: list) -> float`; `req_015` `apply_commands(start: int, commands: list) -> int` (estado interno determinístico, sem efeito externo).
 - **Onde fazer:** `requirements/req_014.md`, `req_015.md`; `implementations/req_014/`, `req_015/`.
 - **Pré-req:** T01, T02.
@@ -63,7 +63,7 @@
 
 ## Bloco D — Verificação do conjunto
 
-### [ ] T09 — Suíte verde com os 15 requisitos
+### [x] T09 — Suíte verde com os 15 requisitos
 - **O que fazer:** rodar a suíte completa da ferramenta com o conjunto ampliado.
 - **Onde fazer:** —.
 - **Pré-req:** T03–T08.
@@ -105,11 +105,11 @@
 
 ## Definition of Done (espelha o plano)
 
-- [ ] DoD1 — CA1: 15 reqs + 15 dirs; `req_001..003` intactos. *(T09)*
-- [ ] DoD2 — CA2: 6 classes representadas. *(T03–T08, T09)*
-- [ ] DoD3 — CA3: cada novo req com `correct.py` + 5 `bug_*.py`, 1 defeito, importáveis. *(T03–T08)*
-- [ ] DoD4 — CA4: teste de consistência cobre todos e passa. *(T01, T03–T08)*
-- [ ] DoD5 — CA5: `python -m pytest` verde, sem API. *(T09)*
+- [x] DoD1 — CA1: 15 reqs + 15 dirs; `req_001..003` intactos. *(T09)*
+- [x] DoD2 — CA2: 6 classes representadas. *(T03–T08, T09)*
+- [x] DoD3 — CA3: cada novo req com `correct.py` + 5 `bug_*.py`, 1 defeito, importáveis. *(T03–T08)*
+- [x] DoD4 — CA4: teste de consistência cobre todos e passa. *(T01, T03–T08)*
+- [x] DoD5 — CA5: `python -m pytest` verde, sem API. *(T09)*
 - [ ] DoD6 — CA6: 4 CSVs regenerados; `skip`/`skipped` sem quebra. *(T11, T12, T13)*
 - [ ] DoD7 — docs atualizadas. *(T14)*
 

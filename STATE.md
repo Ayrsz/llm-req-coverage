@@ -28,6 +28,16 @@ Critérios de aceitação (AC1..). Função **determinística** — proibido `no
 **Rede de segurança:** `tests/test_requirements_consistency.py` (T01) valida o contrato de
 todo `implementations/req_*` — rodar após cada par autorado.
 
+### Progresso Fase 3
+- [x] T01–T02 — teste de consistência + gabarito/taxonomia.
+- [x] T03–T08 — 12 novos requisitos (req_004..req_015) autorados em paralelo por subagentes; cada um `correct.py` + 5 mutantes (taxonomia fixa).
+- [x] T09 — **CA1/CA2/CA4/CA5 OK**: 15 reqs/15 dirs, `pytest` 41 passed, sem termos não-determinísticos, originais intactos. **Divergência dos 60 mutantes verificada por probe diferencial** (nenhum equivalente; os subagentes já haviam podado equivalentes em req_005/bug_005 e req_011/bug_004).
+- [ ] T10 — gerar testes do LLM (faseado por quota; **pendente**, gargalo de API).
+- [ ] T11–T13 — regenerar pipeline (run_tests → metrics → mutation_run; nessa ordem).
+- [ ] T14 — docs (tabela 3→15 + N).
+
+Decisões de autoria documentadas nos `.md`: req_006 rejeita zero à esquerda; req_008 `year<=0`→False; req_009 retorno com sinal + sentinela `-999999` p/ inválido; req_011 desempate = primeira ocorrência; req_014 saque ignora se sem saldo; req_015 piso 0 no contador.
+
 ---
 
 ## Histórico — Fase 2 (Avaliação por mutação automática, CONCLUÍDA)
